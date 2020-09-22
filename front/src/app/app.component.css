@@ -7,9 +7,12 @@
     display: flex;
     height: auto;
     border: solid 1px white;
-    
 }
 
 app-date {
+    border: dotted 1px red;
+}
+
+app-meteo {
     border: dotted 1px red;
 }
