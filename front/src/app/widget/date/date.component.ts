@@ -6,16 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date.component.css']
 })
 export class DateComponent implements OnInit {
-  // Defini tes variables ici (type-les c'est mieux)
-  currentCity: String;
+  currentDate: Date;
 
-  // La dedans tu fais des imports de services (on ne devrait pas en avoir besoin dans l'immédiat)
   constructor() { }
 
-  //Cette méthode est appelé quand le composant est appelé
   ngOnInit(): void {
+    this.currentDate = new Date();
   }
-
-  //Défini tes méthodes en dessous
-
 }
