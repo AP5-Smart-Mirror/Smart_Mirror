@@ -26,7 +26,14 @@ async function getWeatherProm() {
 };
 
 async function getWeather() {
-    return jsonTreatment(await getWeatherProm());
+    var json;
+    try {
+        json = await getWeatherProm()
+    } catch (error) {
+        json;
+        json["error"] = "Can't reach the openweathermap's server to get the data";
+    }
+    return jsonTreatment(json);
 }
 
 
