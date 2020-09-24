@@ -1,14 +1,16 @@
+const moment = require("moment");
+
 function jsonClock()
 {
-    var now = new Date();
+    moment.locale();
     var newJson = {};
-    newJson['dayname'] = now.getDay();
-    newJson['monthname'] = now.getMonth(); 
-    newJson['day'] = now.getDate();
-    newJson['year'] = now.getFullYear();
-    newJson['hours'] = now.getHours(); 
-    newJson['minutes'] = now.getMinutes();
-    newJson['secondes'] = now.getSeconds();
+    newJson['dayname'] = moment().format('dddd');
+    newJson['monthname'] = moment().format('MMMM'); 
+    newJson['day'] = moment().format('Do');
+    newJson['year'] = moment().format('YYYY');
+    newJson['hours'] = moment().format('h'); 
+    newJson['minutes'] = moment().format('mm');
+    newJson['secondes'] = moment().format('ss');
     return newJson
 
 }
