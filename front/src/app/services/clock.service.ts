@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Clock } from '../models/clock';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,12 @@ export class ClockService {
 
   constructor() { }
 
-  getClock(): Observable<any> {
-    return new Observable(observer => {
-      this.httpClient.get( 'https://localhost:3000/api' + '/clock', // this.url + this.objectName,
+  getClock(): Observable<Clock> {
+    return this.httpClient.get<Clock>(this.url + '/clock');
+    
+    
+    /*return new Observable(observer => {
+      this.httpClient.get( this.url + '/clock', // this.url + this.objectName,
       {observe: 'response'}).subscribe(page => {
         observer.next(page.body);
       },
@@ -29,6 +33,6 @@ export class ClockService {
       () => {
         observer.complete();
       });
-    });
+    });*/
   }
 }

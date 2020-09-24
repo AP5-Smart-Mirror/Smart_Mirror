@@ -8,18 +8,22 @@ import { ClockService } from '../../services/clock.service';
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.css']
 })
+
 export class DateComponent implements OnInit {
-  clock: Observable<Clock>;
+  clock: Clock;
 
   constructor(
     private clockService: ClockService
   ) { }
 
   ngOnInit(): void {
-    this.init()
+    this.init();
   }
 
   init(): void {
-    this.clock = this.clockService.getClock();
+    this.clockService.getClock().subscribe(
+      clock => {
+        this.clock = clock;
+      });
   }
 }

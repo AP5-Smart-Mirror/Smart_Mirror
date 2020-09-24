@@ -4,8 +4,8 @@ import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MeteoComponent } from './widget/meteo/meteo.component';
-import { DateComponent } from './widget/date/date.component';
+import { MeteoComponent } from './widgets/meteo/meteo.component';
+import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localeFr);
