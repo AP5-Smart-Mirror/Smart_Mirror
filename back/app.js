@@ -10,8 +10,14 @@ app.get('/', function(req, res) {
     res.send(message);
 });
 
-app.get('/api/weather/get', function(req,res){
+app.get('/api/clock', function(req,res){
+});
+
+app.get('/api/weather', function(req,res){
     weather.getWeather().then(json => (res.send(json)));
+});
+
+app.get('/api/news', function(req,res){
 });
 
 app.listen(port, function(){
