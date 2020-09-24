@@ -1,5 +1,6 @@
 var express = require('express');
 var weather = require('./weather.js');
+var clock = require('./clock.js');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/clock', function(req,res){
+    res.send(clock.getClock());
 });
 
 app.get('/api/weather', function(req,res){
