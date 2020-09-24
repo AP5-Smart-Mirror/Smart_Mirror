@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Clock } from '../../models/clock';
+import { ClockService } from '../../services/clock.service';
 
 @Component({
   selector: 'app-date',
@@ -6,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date.component.css']
 })
 export class DateComponent implements OnInit {
-  currentDate: Date;
+  clock: Observable<Clock>;
 
-  constructor() { }
+  constructor(
+    private clockService: ClockService
+  ) { }
 
   ngOnInit(): void {
-    this.currentDate = new Date();
+    this.init()
+  }
+
+  init(): void {
+    this.clock = this.clockService.getClock();
   }
 }
