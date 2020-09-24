@@ -1,4 +1,5 @@
 const moment = require("moment");
+moment.locale('fr');
 
 function jsonClock()
 {
