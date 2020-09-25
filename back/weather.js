@@ -1,10 +1,10 @@
 var fetch = require('node-fetch');                //load the module node-fetch
 var apiKey = 'c0735eb48963d2eea782623d14502b53';  //personal key to get weather data 
-var city = 'Lille';                               //city generation
+var city = 'Lille';                               //city name to specify the weather data
 var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;   //url using previous variables
 
 function jsonTreatment(json){
-    var newJson = {};
+    var newJson = {};                                 //make a new json variable
     newJson['currenttemp'] = json['main']['temp'];    //recuperation of temperature
     newJson['city'] = city;                           
     newJson['iconurl'] = 'http://openweathermap.org/img/wn/'+ json['weather'][0]['icon'] +'.png'
@@ -28,7 +28,7 @@ function getWeatherProm() {
 };
 
 async function getWeather() {
-    return jsonTreatment(await getWeatherProm());   //return value jsonTreatment which use the return value of getWeatherProm
+    return jsonTreatment(await getWeatherProm());   //return value of jsonTreatment which use the returned value of getWeatherProm
 
 
 exports.getWeather = getWeather;             //export function getWeather

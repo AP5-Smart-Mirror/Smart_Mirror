@@ -21,5 +21,4 @@ function getClock()
 
 }
 
-console.log(getClock());
 exports.getClock = getClock;                      //export function getClock
