@@ -19,6 +19,7 @@ export class MeteoComponent implements OnInit {
   ngOnInit(): void {
     this.weather = new Weather();
     this.init();
+    setInterval( () => this.init(), 600000);
   }
   init(): void {
   this.weatherService.getWeather().pipe(
