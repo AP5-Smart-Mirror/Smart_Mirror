@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Clock } from '../../models/clock';
+import { map } from 'rxjs/operators';
 import { ClockService } from '../../services/clock.service';
 
 @Component({
@@ -11,6 +12,10 @@ import { ClockService } from '../../services/clock.service';
 
 export class DateComponent implements OnInit {
   clock: Clock;
+  dayName: String;
+  day: number;
+  monthName: String;
+  year: number;
 
   constructor(
     private clockService: ClockService
@@ -21,9 +26,13 @@ export class DateComponent implements OnInit {
   }
 
   init(): void {
-    this.clockService.getClock().subscribe(
-      clock => {
-        this.clock = clock;
-      });
+    this.clockService.getClock().pipe(
+      map(clock => {
+        this.dayName = clock.dayname;
+        this.day = clock.day;
+        this.monthName = clock.monthname;
+        this.year = clock.year;
+      })
+    ).subscribe();
   }
 }

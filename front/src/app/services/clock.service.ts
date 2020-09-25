@@ -8,17 +8,14 @@ import { Clock } from '../models/clock';
   providedIn: 'root'
 })
 export class ClockService {
-  httpClient: HttpClient;
   private url: String = environment.server_base_url;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getClock(): Observable<Clock> {
-    return this.httpClient.get<Clock>(this.url + '/clock');
-    
-    
-    /*return new Observable(observer => {
-      this.httpClient.get( this.url + '/clock', // this.url + this.objectName,
+
+    return new Observable(observer => {
+      this.httpClient.get<Clock>( this.url + '/clock',
       {observe: 'response'}).subscribe(page => {
         observer.next(page.body);
       },
@@ -33,6 +30,6 @@ export class ClockService {
       () => {
         observer.complete();
       });
-    });*/
+    });
   }
 }
