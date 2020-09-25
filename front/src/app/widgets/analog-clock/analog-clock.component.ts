@@ -7,24 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalogClockComponent implements OnInit {
   
-  
-
-
-  constructor() { 
-   
-  }
+  constructor() { }
 
   ngOnInit(): void {
-   
     this.drawClock();
-    
-   //setInterval ( () => this.drawClock(),1000);
-     
-    
   }
-  
-  
-
   
   drawClock() : void{
     
@@ -71,6 +58,7 @@ export class AnalogClockComponent implements OnInit {
     ctx.fillStyle = 'black';
     ctx.fill();
   }
+  
   drawNumbers(ctx, radius):void {
     let ang;
     let num;
@@ -110,6 +98,7 @@ export class AnalogClockComponent implements OnInit {
     this.drawHand(ctx, second, radius*0.9, radius*0.02);
     
   }
+  
   drawHand(ctx, pos, length, width):void {
     ctx.beginPath();
     ctx.lineWidth = width;
@@ -120,11 +109,6 @@ export class AnalogClockComponent implements OnInit {
     ctx.rotate(pos);
     ctx.lineTo(0, -length);
     ctx.stroke();
-    ctx.rotate(-pos);
-    
-    
-    
+    ctx.rotate(-pos); 
   }
-
-  
 }
