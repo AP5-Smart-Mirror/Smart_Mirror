@@ -11,23 +11,21 @@ import { Weather } from 'src/app/models/weather';
 })
 export class MeteoComponent implements OnInit {
   weather: Weather;
-  currenttemp: number;
-  city: String;
-  iconurl: String;
 
   constructor( 
     private weatherService: WeatherService
     ) { }
 
   ngOnInit(): void {
+    this.weather = new Weather();
     this.init();
   }
   init(): void {
   this.weatherService.getWeather().pipe(
     map(weather => {
-      this.currenttemp = weather.currenttemp;
-      this.city = weather.city;
-      this.iconurl = weather.iconurl;
+      this.weather.currenttemp = weather.currenttemp;
+      this.weather.city = weather.city;
+      this.weather.iconurl = weather.iconurl;
     })
     ).subscribe();
   }
