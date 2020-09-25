@@ -18,7 +18,6 @@ export class ClockService {
       this.httpClient.get<Clock>( this.url + '/clock',
       {observe: 'response'}).subscribe(page => {
         observer.next(page.body);
-        console.log(page.body);
       },
       error => {
         observer.error(error);
