@@ -7,8 +7,3 @@
     justify-content: space-around;
     align-items: center;
 }
-
-.horizontal {
-    display: inline-flex;
-    justify-content: center;
-}

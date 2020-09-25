@@ -1,0 +1,114 @@
+swagger: "2.0"
+info:
+  description: "This is the swagger file which describe every transactions between BACK-END and FRONT-END.\nThis aims to describes in depth objects that are used in Smart Mirror application"
+  version: "1.0.0"
+  title: "Swagger Smart Mirro"
+host: "localhost"
+basePath: "/api"
+tags:
+- name: "clock"
+  description: "Everything about Clock"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "weather"
+  description: "Everything about Weather"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "news"
+  description: "Everything about News"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /clock:
+    get:
+      tags:
+      - "clock"
+      summary: "Get current date and time"
+      description: "Multiple date and time informations"
+      responses:
+        '200':
+          description: A Clock object
+          schema:
+            $ref: '#/definitions/Clock'
+        "400":
+          description: "Invalid status value"
+  /weather:
+    get:
+      tags:
+      - "weather"
+      summary: "Get current weather"
+      description: "Multiple weather informations"
+      responses:
+        '200':
+          description: A Weather object
+          schema:
+            $ref: '#/definitions/Weather'
+        "400":
+          description: "Invalid status value"
+  /news:
+    get:
+      tags:
+      - "news"
+      summary: "Get few today news"
+      description: "Multiple news informations"
+      responses:
+        '200':
+          description: A News object
+          schema:
+            $ref: '#/definitions/News'
+definitions:
+  Clock:
+    type: "object"
+    properties:
+      dayname:
+        type: "string"
+        example: "Lundi"
+      monthname:
+        type: "string"
+        example: "Mars"
+      day:
+        type: integer
+        example: 28
+      year:
+        type: integer
+        example: 2020
+      hours:
+        type: integer
+        example: 14
+      minutes:
+        type: integer
+        example: 58
+      seconds:
+        type: integer
+        example: 34
+  Weather:
+    type: object
+    properties:
+      currenttemp:
+        type: integer
+        example: 19
+      city:
+        type: string
+        example: Lille
+      iconurl:
+        type: string
+        example: http://openweathermap.org/img/w/10d.png
+  News:
+    type: object
+    properties:
+      title:
+        type: string
+        example: "Brest bat enfin une équipe après 50 ans de défaite !"
+      link:
+        type: string
+        example: "https://france3-regions.francetvinfo.fr/bretagne/finistere/brest/football-stade-brestois-etrille-nimes-son-retour-ligue-1-1865412.html"
+  ArrayOfNews:
+    type: array
+    items:
+      $ref: '#/definitions/News'

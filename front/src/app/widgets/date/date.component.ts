@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Clock } from '../../models/clock';
+import { map } from 'rxjs/operators';
 import { ClockService } from '../../services/clock.service';
 
 @Component({
@@ -17,13 +18,19 @@ export class DateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.clock = new Clock();
     this.init();
+    setInterval( () => this.init(), 5000);
   }
 
   init(): void {
-    this.clockService.getClock().subscribe(
-      clock => {
-        this.clock = clock;
-      });
+    this.clockService.getClock().pipe(
+      map(clock => {
+        this.clock.dayname = clock.dayname;
+        this.clock.day = clock.day;
+        this.clock.monthname = clock.monthname;
+        this.clock.year = clock.year;
+      })
+    ).subscribe();
   }
 }

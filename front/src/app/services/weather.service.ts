@@ -2,26 +2,30 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Clock } from '../models/clock';
+import { Weather } from '../models/weather';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClockService {
+export class WeatherService {
   private url: String = environment.server_base_url;
 
   constructor(private httpClient: HttpClient) { }
 
-  getClock(): Observable<Clock> {
+  getWeather(): Observable<Weather> {
 
     return new Observable(observer => {
-      this.httpClient.get<Clock>( this.url + '/clock',
+      this.httpClient.get<Weather>( this.url + '/weather',
       {observe: 'response'}).subscribe(page => {
         observer.next(page.body);
       },
       error => {
+        if ( error.status === 404 ) {
+          observer.next(null);
+        } else {
         observer.error(error);
-        console.error('Get Clock Error', error.status, error.message);
+        console.error('Get Weather Error : ' + error.error.error);
+        }
       },
       () => {
         observer.complete();
