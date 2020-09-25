@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MeteoComponent } from './widgets/meteo/meteo.component';
 import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeFr);
 
@@ -14,11 +15,12 @@ registerLocaleData(localeFr);
   declarations: [
     AppComponent,
     MeteoComponent,
-    DateComponent
+    DateComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "fr-FR" },

@@ -11,7 +11,7 @@ function jsonTreatment(json){
     return newJson
 }
 
-async function getWeatherProm() {
+function getWeatherProm() {
     return new Promise((success,failure) => {
         fetch(url,
             {
@@ -22,18 +22,13 @@ async function getWeatherProm() {
             .then(response => {
                 success(response.json()); 
             })
+            .catch(err => console.error(err));
+ 
     })
 };
 
 async function getWeather() {
-    var json;
-    try {
-        json = await getWeatherProm()
-    } catch (error) {
-        json;
-        json["error"] = "Can't reach the openweathermap's server to get the data";
-    }
-    return jsonTreatment(json);
+    return jsonTreatment(await getWeatherProm());
 }
 
 

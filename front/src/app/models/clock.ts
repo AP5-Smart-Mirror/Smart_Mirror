@@ -1,6 +1,6 @@
 export class Clock {
-    dayName: String;
-    monthName: String;
+    dayname: String;
+    monthname: String;
     day: number;
     year: number;
     hours: number;
