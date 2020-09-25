@@ -16,3 +16,11 @@ app-date {
 app-meteo {
     border: dotted 1px green;
 }
+
+app-analog-clock {
+    border: dotted 1px blue;
+}
+
+app-digital-clock {
+    border: dotted 1px yellow;
+}

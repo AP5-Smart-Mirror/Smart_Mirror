@@ -18,7 +18,7 @@ registerLocaleData(localeFr);
     AppComponent,
     MeteoComponent,
     DateComponent,
-    AnalogClockComponent
+    AnalogClockComponent,
     DigitalClockComponent,
   ],
   imports: [
