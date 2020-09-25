@@ -18,14 +18,11 @@ export class ClockService {
       this.httpClient.get<Clock>( this.url + '/clock',
       {observe: 'response'}).subscribe(page => {
         observer.next(page.body);
+        console.log(page.body);
       },
       error => {
-        if ( error.status === 404 ) {
-          observer.next(null);
-        } else {
         observer.error(error);
-        console.error('Get Clock Error : ' + error.error.error);
-        }
+        console.error('Get Clock Error', error.status, error.message);
       },
       () => {
         observer.complete();
