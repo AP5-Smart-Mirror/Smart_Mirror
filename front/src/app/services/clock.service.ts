@@ -20,12 +20,8 @@ export class ClockService {
         observer.next(page.body);
       },
       error => {
-        if ( error.status === 404 ) {
-          observer.next(null);
-        } else {
         observer.error(error);
-        console.error('Get Clock Error : ' + error.error.error);
-        }
+        console.error('Get Clock Error', error.status, error.message);
       },
       () => {
         observer.complete();

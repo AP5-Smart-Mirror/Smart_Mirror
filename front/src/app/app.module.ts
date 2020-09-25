@@ -8,6 +8,7 @@ import { MeteoComponent } from './widgets/meteo/meteo.component';
 import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
 
 registerLocaleData(localeFr);
 
@@ -16,6 +17,7 @@ registerLocaleData(localeFr);
     AppComponent,
     MeteoComponent,
     DateComponent,
+    DigitalClockComponent,
   ],
   imports: [
     BrowserModule,
