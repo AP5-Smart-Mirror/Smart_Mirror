@@ -20,6 +20,7 @@ export class DateComponent implements OnInit {
   ngOnInit(): void {
     this.clock = new Clock();
     this.init();
+    setInterval( () => this.init(), 5000);
   }
 
   init(): void {
