@@ -7,6 +7,13 @@
     display: flex;
     height: auto;
     border: solid 1px white;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
 }
 
 app-date {
