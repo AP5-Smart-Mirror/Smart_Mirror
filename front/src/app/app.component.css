@@ -31,6 +31,8 @@ app-digital-clock {
 }
 
 app-analog-clock {
+    height:100%;
+    width: 100%;
     grid-column-start: 8;
     grid-column-end: 10;
     grid-row-start: 4;
