@@ -5,11 +5,11 @@ import { WeatherService } from '../../services/weather.service';
 import { Weather } from 'src/app/models/weather';
 
 @Component({
-  selector: 'app-meteo',
-  templateUrl: './meteo.component.html',
-  styleUrls: ['./meteo.component.css']
+  selector: 'app-weather',
+  templateUrl: './weather.component.html',
+  styleUrls: ['./weather.component.css']
 })
-export class MeteoComponent implements OnInit {
+export class WeatherComponent implements OnInit {
   weather: Weather;
 
   constructor( 
