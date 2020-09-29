@@ -1,26 +1,39 @@
 .content {
     height: 100vh;
     background-color: black;
-}
-
-.widgets {
-    display: flex;
-    height: auto;
-    border: solid 1px white;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(6, 1fr);
 }
 
 app-date {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
     border: dotted 1px red;
 }
 
 app-meteo {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 4;
     border: dotted 1px green;
 }
 
-app-analog-clock {
-    border: dotted 1px blue;
+app-digital-clock {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border: dotted 1px yellow;
 }
 
-app-digital-clock {
-    border: dotted 1px yellow;
+app-analog-clock {
+    grid-column-start: 8;
+    grid-column-end: 10;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    border: dotted 1px blue;
 }
