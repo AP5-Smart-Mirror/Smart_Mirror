@@ -8,31 +8,13 @@ import { ClockService } from 'src/app/services/clock.service';
   styleUrls: ['./digital-clock.component.css']
 })
 export class DigitalClockComponent implements OnInit {
-  clock : Clock;
+  date: number;
 
   constructor(private clockService : ClockService) {
   }
 
   ngOnInit(): void {
-    this.clock = new Clock();
-    this.init();
-    setInterval( () => this.init(), 1000);
+    this.date = Date.now();
+    setInterval( () => this.date = Date.now(), 1000);
   }
-
-  init() : void{
-    this.clockService.getClock().subscribe(
-      res => {
-        this.clock.hours = res.hours;
-        this.clock.minutes = res.minutes;
-        this.clock.seconds = res.seconds;
-      },
-      err => {
-        this.clock.hours = 0;
-        this.clock.minutes = 0;
-        this.clock.seconds = 0;
-      },
-      () => console.log('HTTP request completed.')
-    );
-  }
-
 }
