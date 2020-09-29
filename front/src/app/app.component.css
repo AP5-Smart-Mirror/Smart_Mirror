@@ -14,7 +14,7 @@ app-date {
     border: dotted 1px red;
 }
 
-app-meteo {
+app-weather {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 2;

@@ -4,7 +4,7 @@ import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MeteoComponent } from './widgets/meteo/meteo.component';
+import { WeatherComponent } from './widgets/weather/weather.component';
 import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
 import { AnalogClockComponent } from './widgets/analog-clock/analog-clock.component';
@@ -16,7 +16,7 @@ registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
-    MeteoComponent,
+    WeatherComponent,
     DateComponent,
     AnalogClockComponent,
     DigitalClockComponent,
