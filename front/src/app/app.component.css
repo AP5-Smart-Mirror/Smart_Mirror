@@ -11,7 +11,7 @@ app-date {
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
-    border: dotted 1px red;
+    /*border: dotted 1px red;*/
 }
 
 app-weather {
@@ -19,15 +19,15 @@ app-weather {
     grid-column-end: 3;
     grid-row-start: 5;
     grid-row-end: 7;
-    border: dotted 1px green;
+    /*border: dotted 1px green;*/
 }
 
 app-digital-clock {
-    grid-column-start: 5;
-    grid-column-end: 7;
+    grid-column-start: 9;
+    grid-column-end: 11;
     grid-row-start: 1;
     grid-row-end: 2;
-    border: dotted 1px yellow;
+    /*border: dotted 1px yellow;*/
 }
 
 app-analog-clock {
@@ -35,5 +35,5 @@ app-analog-clock {
     grid-column-end: 11;
     grid-row-start: 5;
     grid-row-end: 7;
-    border: dotted 1px blue;
+    /*border: dotted 1px blue;*/
 }
