@@ -8,7 +8,7 @@ function jsonClock()
     newJson['monthname'] = moment().format('MMMM'); 
     newJson['day'] = parseInt(moment().format('Do'));
     newJson['year'] = parseInt(moment().format('YYYY'));
-    newJson['hours'] = parseInt(moment().format('h')); 
+    newJson['hours'] = parseInt(moment().format('H')); 
     newJson['minutes'] = parseInt(moment().format('mm'));
     newJson['seconds'] = parseInt(moment().format('ss'));
     return newJson
