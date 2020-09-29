@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clock } from 'src/app/models/clock';
+import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-analog-clock',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./analog-clock.component.css']
 })
 export class AnalogClockComponent implements OnInit {
-  
-  constructor() { }
+    hour =0;
+    minute = 0;
+    second = 0;
+  constructor(private clockService : ClockService) { }
 
   ngOnInit(): void {
     this.drawClock();
@@ -16,8 +20,11 @@ export class AnalogClockComponent implements OnInit {
   drawClock() : void{
     
     let canvas = document.getElementById("clock") as HTMLCanvasElement;
+    let parent = document.getElementById("analogClock");
+    canvas.width = parent.offsetWidth;
+    canvas.height = parent.offsetHeight;
     let ctx = canvas.getContext("2d");
-    //ctx.clearRect(0,0, canvas.width, canvas.height);
+  
     let radius = canvas.height / 2;
     ctx.translate(radius, radius);
     radius = radius * 0.90
@@ -26,6 +33,7 @@ export class AnalogClockComponent implements OnInit {
     setInterval ( () => this.drawAnalogClock(ctx, radius),1000);
     
   }
+  
   drawAnalogClock(ctx, radius) : void{
     
     ctx.arc(0, 0, radius, 0 , 2 * Math.PI);
@@ -45,12 +53,12 @@ export class AnalogClockComponent implements OnInit {
     ctx.fillStyle = 'black';
     ctx.fill();
   
-    grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
-    grad.addColorStop(0, 'black');
-    grad.addColorStop(0.5, 'white');
-    grad.addColorStop(1, 'black');
+    //grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+    //grad.addColorStop(0, 'black');
+    //grad.addColorStop(0.5, 'white');
+    //grad.addColorStop(1, 'black');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = radius*0.1;
+    ctx.lineWidth = radius*0.04;
     ctx.stroke();
   
     ctx.beginPath();
@@ -80,25 +88,40 @@ export class AnalogClockComponent implements OnInit {
 
 
   drawTime(ctx, radius):void {
-    let now = new Date();
-    let hour = now.getHours();
-    let minute = now.getMinutes();
-    let second = now.getSeconds();
+    
+    
+    this.initClock();
     
     //hour
-    hour = hour%12;
-    hour = (hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
-    this.drawHand(ctx, hour, radius*0.5, radius*0.07);
+    this.hour = this.hour % 12;
+    this.hour = (this.hour*Math.PI/6)+(this.minute*Math.PI/(6*60))+(this.second*Math.PI/(360*60));
+    this.drawHand(ctx, this.hour, radius*0.5, radius*0.07);
     
     //minute
-    minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
-    this.drawHand(ctx, minute, radius*0.8, radius*0.07);
+    this.minute = (this.minute*Math.PI/30)+(this.second*Math.PI/(30*60));
+    this.drawHand(ctx, this.minute, radius*0.8, radius*0.07);
     // second
-    second = (second*Math.PI/30);
-    this.drawHand(ctx, second, radius*0.9, radius*0.02);
+    this.second = (this.second*Math.PI/30);
+    this.drawHand(ctx, this.second, radius*0.9, radius*0.02);
     
   }
-  
+
+  initClock() : void{
+    this.clockService.getClock().subscribe(
+    res => {
+      this.hour = res.hours;
+      this.minute = res.minutes;
+      this.second = res.seconds;
+    },
+    err => {
+      this.hour = 0;
+      this.minute = 0;
+      this.second = 0;
+    },
+    () => console.log('HTTP request completed.')
+    )
+  }
+    
   drawHand(ctx, pos, length, width):void {
     ctx.beginPath();
     ctx.lineWidth = width;
