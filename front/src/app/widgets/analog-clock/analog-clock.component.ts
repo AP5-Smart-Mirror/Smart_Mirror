@@ -46,11 +46,9 @@ export class AnalogClockComponent implements OnInit {
     ctx.fill();
   
     grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
-    grad.addColorStop(0, 'black');
-    grad.addColorStop(0.5, 'white');
-    grad.addColorStop(1, 'black');
+    grad.addColorStop(0, 'white');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = radius*0.1;
+    ctx.lineWidth = radius*0.03;
     ctx.stroke();
   
     ctx.beginPath();
