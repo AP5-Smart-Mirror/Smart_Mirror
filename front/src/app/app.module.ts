@@ -4,9 +4,12 @@ import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MeteoComponent } from './widget/meteo/meteo.component';
-import { DateComponent } from './widget/date/date.component';
+import { MeteoComponent } from './widgets/meteo/meteo.component';
+import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
+import { AnalogClockComponent } from './widgets/analog-clock/analog-clock.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
 
 registerLocaleData(localeFr);
 
@@ -14,11 +17,14 @@ registerLocaleData(localeFr);
   declarations: [
     AppComponent,
     MeteoComponent,
-    DateComponent
+    DateComponent,
+    AnalogClockComponent,
+    DigitalClockComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "fr-FR" },
