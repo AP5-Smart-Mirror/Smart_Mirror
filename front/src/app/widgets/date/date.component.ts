@@ -11,26 +11,12 @@ import { ClockService } from '../../services/clock.service';
 })
 
 export class DateComponent implements OnInit {
-  clock: Clock;
+  date: number;
 
-  constructor(
-    private clockService: ClockService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.clock = new Clock();
-    this.init();
-    setInterval( () => this.init(), 5000);
-  }
-
-  init(): void {
-    this.clockService.getClock().pipe(
-      map(clock => {
-        this.clock.dayname = clock.dayname;
-        this.clock.day = clock.day;
-        this.clock.monthname = clock.monthname;
-        this.clock.year = clock.year;
-      })
-    ).subscribe();
+    this.date = Date.now();
+    setInterval(() => this.date = Date.now(), 5000);
   }
 }

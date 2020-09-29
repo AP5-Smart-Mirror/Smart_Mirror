@@ -8,8 +8,9 @@ import { ClockService } from 'src/app/services/clock.service';
   styleUrls: ['./analog-clock.component.css']
 })
 export class AnalogClockComponent implements OnInit {
-    hour : number =0;
-    minute : number =0;
+    loading: boolean;
+    hour : number = 0;
+    minute : number = 0;
     second : number = 0;
   constructor(private clockService : ClockService) { }
 
