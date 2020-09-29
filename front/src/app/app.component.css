@@ -19,6 +19,8 @@ app-meteo {
 
 app-analog-clock {
     border: dotted 1px blue;
+    height:100%;
+    width: 100%;
 }
 
 app-digital-clock {

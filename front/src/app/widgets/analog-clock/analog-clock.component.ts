@@ -8,9 +8,9 @@ import { ClockService } from 'src/app/services/clock.service';
   styleUrls: ['./analog-clock.component.css']
 })
 export class AnalogClockComponent implements OnInit {
-    hour =0;
-    minute = 0;
-    second = 0;
+    hour : number =0;
+    minute : number =0;
+    second : number = 0;
   constructor(private clockService : ClockService) { }
 
   ngOnInit(): void {
@@ -53,10 +53,12 @@ export class AnalogClockComponent implements OnInit {
     ctx.fillStyle = 'black';
     ctx.fill();
   
+    //Lines to create a gradient effect on the edge of th clock
     //grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
     //grad.addColorStop(0, 'black');
     //grad.addColorStop(0.5, 'white');
     //grad.addColorStop(1, 'black');
+
     ctx.strokeStyle = grad;
     ctx.lineWidth = radius*0.04;
     ctx.stroke();
@@ -113,11 +115,7 @@ export class AnalogClockComponent implements OnInit {
       this.minute = res.minutes;
       this.second = res.seconds;
     },
-    err => {
-      this.hour = 0;
-      this.minute = 0;
-      this.second = 0;
-    },
+    
     () => console.log('HTTP request completed.')
     )
   }
