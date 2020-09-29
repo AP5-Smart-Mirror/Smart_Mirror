@@ -10,3 +10,7 @@
     display: inline-flex;
     justify-content: center;
 }
+
+.spinner {
+    stroke: white;
+}
