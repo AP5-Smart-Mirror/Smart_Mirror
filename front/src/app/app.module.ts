@@ -11,6 +11,8 @@ import { AnalogClockComponent } from './widgets/analog-clock/analog-clock.compon
 import { HttpClientModule } from '@angular/common/http';
 import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -24,7 +26,8 @@ registerLocaleData(localeFr);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "fr-FR" },

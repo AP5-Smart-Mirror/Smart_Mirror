@@ -8,9 +8,10 @@ import { ClockService } from 'src/app/services/clock.service';
   styleUrls: ['./analog-clock.component.css']
 })
 export class AnalogClockComponent implements OnInit {
-    hour : number =0;
-    minute : number =0;
-    second : number = 0;
+    date: Date;
+    hour : number;
+    minute : number;
+    second : number;
   constructor(private clockService : ClockService) { }
 
   ngOnInit(): void {
@@ -20,7 +21,7 @@ export class AnalogClockComponent implements OnInit {
   drawClock() : void{
     
     let canvas = document.getElementById("clock") as HTMLCanvasElement;
-    let parent = document.getElementById("analogClock");
+    let parent = document.getElementById("analog-clock");
     canvas.width = parent.offsetWidth;
     canvas.height = parent.offsetHeight;
     let ctx = canvas.getContext("2d");
@@ -30,7 +31,7 @@ export class AnalogClockComponent implements OnInit {
     radius = radius * 0.90
     
     this.drawAnalogClock(ctx, radius);
-    setInterval ( () => this.drawAnalogClock(ctx, radius),1000);
+    setInterval (() => this.drawAnalogClock(ctx, radius), 1000);
     
   }
   
@@ -109,15 +110,10 @@ export class AnalogClockComponent implements OnInit {
   }
 
   initClock() : void{
-    this.clockService.getClock().subscribe(
-    res => {
-      this.hour = res.hours;
-      this.minute = res.minutes;
-      this.second = res.seconds;
-    },
-    
-    () => console.log('HTTP request completed.')
-    )
+    this.date = new Date();
+    this.hour = this.date.getHours();
+    this.minute = this.date.getMinutes();
+    this.second = this.date.getSeconds();
   }
     
   drawHand(ctx, pos, length, width):void {

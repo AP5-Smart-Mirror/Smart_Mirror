@@ -12,24 +12,18 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWeather(): Observable<Weather> {
-
-    return new Observable(observer => {
-      this.httpClient.get<Weather>( this.url + '/weather',
-      {observe: 'response'}).subscribe(page => {
-        observer.next(page.body);
-      },
-      error => {
-        if ( error.status === 404 ) {
-          observer.next(null);
-        } else {
-        observer.error(error);
-        console.error('Get Weather Error : ' + error.error.error);
-        }
-      },
-      () => {
-        observer.complete();
-      });
+  getWeather(): Promise<Weather> {
+    return new Promise<Weather>((resolve, reject) => {
+      this.httpClient.get<Weather>(environment.server_base_url + '/weather')
+        .toPromise()
+        .then(
+          res => { // Success
+          resolve(res);
+          },
+          msg => { // Error
+          reject(msg);
+          }
+        );
     });
   }
 }
