@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AgendaComponent } from './widgets/agenda/agenda.component';
 
 registerLocaleData(localeFr);
 
@@ -22,6 +23,7 @@ registerLocaleData(localeFr);
     DateComponent,
     AnalogClockComponent,
     DigitalClockComponent,
+    AgendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ registerLocaleData(localeFr);
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

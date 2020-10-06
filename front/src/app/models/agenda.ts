@@ -1,3 +1,3 @@
 export class Agenda {
-    toComplete: boolean;
+    toComplete: string;
 }

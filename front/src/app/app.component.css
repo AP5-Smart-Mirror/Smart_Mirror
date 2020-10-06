@@ -37,3 +37,11 @@ app-analog-clock {
     grid-row-end: 7;
     /*border: dotted 1px blue;*/
 }
+
+app-agenda {
+    /*grid-column-start: 9;
+    grid-column-end: 11;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    border: dotted 1px blue;*/
+}

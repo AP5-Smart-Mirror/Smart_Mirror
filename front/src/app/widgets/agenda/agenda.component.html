@@ -1,0 +1,6 @@
+<div class="content">
+    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <div *ngIf="!loading" class="horizontal">
+        <h1>{{ agenda.toComplete | titlecase }}</h1>
+    </div>
+</div>

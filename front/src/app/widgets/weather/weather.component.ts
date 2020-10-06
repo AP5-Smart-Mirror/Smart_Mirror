@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { WeatherService } from '../../services/weather.service';
 import { Weather } from 'src/app/models/weather';
 
