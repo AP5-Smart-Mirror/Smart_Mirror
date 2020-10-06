@@ -1,10 +1,9 @@
 export class Clock {
-    dayname: String;
-    monthname: String;
+    dayname: string;
+    monthname: string;
     day: number;
     year: number;
     hours: number;
     minutes: number;
     seconds: number;
-  }
-  
+}

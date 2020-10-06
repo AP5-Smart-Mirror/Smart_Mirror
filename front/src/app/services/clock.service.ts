@@ -8,7 +8,7 @@ import { Clock } from '../models/clock';
   providedIn: 'root'
 })
 export class ClockService {
-  private url: String = environment.server_base_url;
+  private url: string = environment.server_base_url;
 
   constructor(private httpClient: HttpClient) { }
 

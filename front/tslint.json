@@ -61,11 +61,12 @@
       "info",
       "time",
       "timeEnd",
-      "trace"
+      "trace",
+      "log"
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -96,7 +97,8 @@
     },
     "typedef": [
       true,
-      "call-signature"
+      "call-signature",
+      "parameter"
     ],
     "typedef-whitespace": {
       "options": [
