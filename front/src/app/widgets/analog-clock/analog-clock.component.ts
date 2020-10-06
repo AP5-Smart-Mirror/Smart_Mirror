@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Clock } from 'src/app/models/clock';
-import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-analog-clock',
