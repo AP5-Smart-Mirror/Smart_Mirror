@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Weather } from '../models/weather';
+import { Widget } from '../models/widget';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherService {
+export class WidgetService {
   private url: string = environment.server_base_url;
 
   constructor(private httpClient: HttpClient) { }
 
-  getWeather(): Promise<Weather> {
-    return new Promise<Weather>((resolve, reject) => {
-      this.httpClient.get<Weather>(this.url + '/weather')
+  getWidgets(id_profile: number): Promise<Widget[]> {
+    return new Promise<Widget[]>((resolve, reject) => {
+      this.httpClient.get<Widget[]>(this.url + '/widget/' + id_profile)
         .toPromise()
         .then(
           res => { // Success
