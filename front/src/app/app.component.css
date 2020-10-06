@@ -5,7 +5,8 @@
     grid-template-columns: repeat(10,1fr);
     grid-template-rows: repeat(6, 1fr);
 }
-
+/*We use the CSS grid property to display the component on the mirror
+The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/ 
 app-date {
     grid-column-start: 1;
     grid-column-end: 5;
