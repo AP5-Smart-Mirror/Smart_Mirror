@@ -23,7 +23,7 @@ export class WeatherComponent implements OnInit {
     this.init();
     setInterval(() => this.init(), 600000);
   }
-  
+
   init(): void {
     this.weatherService.getWeather().then(weather => {
       this.loading = true;

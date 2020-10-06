@@ -8,7 +8,7 @@ import { Weather } from '../models/weather';
   providedIn: 'root'
 })
 export class WeatherService {
-  private url: String = environment.server_base_url;
+  private url: string = environment.server_base_url;
 
   constructor(private httpClient: HttpClient) { }
 

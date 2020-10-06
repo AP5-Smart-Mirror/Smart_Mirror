@@ -10,7 +10,7 @@ import { ClockService } from 'src/app/services/clock.service';
 export class DigitalClockComponent implements OnInit {
   date: number;
 
-  constructor(private clockService : ClockService) {
+  constructor(private clockService: ClockService) {
   }
 
   ngOnInit(): void {
