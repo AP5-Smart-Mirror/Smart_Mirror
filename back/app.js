@@ -2,6 +2,7 @@ var express = require('express');
 var weather = require('./weather.js')
 var weatherForecast = require('./weather_forecast.js');
 var clock = require('./clock.js');
+var news = require('./news.js');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
  
@@ -30,11 +31,11 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  
 app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    next();
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  next();
 });
 
 /**
@@ -47,8 +48,8 @@ app.use(function (req, res, next) {
  *        description: a single string is returned
  */
 app.get('/', function(req, res) {
-    var message = "Welcome to the Smart Mirror API!"
-    res.send(message);
+  var message = "Welcome to the Smart Mirror API!"
+  res.send(message);
 });
 
 // Routes
@@ -66,7 +67,7 @@ app.get('/', function(req, res) {
  *        description: "Invalid status value"
  */
 app.get('/api/clock', function(req,res){
-    res.send(clock.getClock());
+  res.send(clock.getClock());
 });
 
 /**
@@ -118,10 +119,11 @@ app.get('/api/weather_forecast', function(req,res){
  *        description: "Invalid status value"
  */
 app.get('/api/news', function(req,res){
+  news.getNews().then(json => (res.send(json)));
 });
  
 app.listen(port, function(){
-    console.log('The API is listening on port ' + port);
+  console.log('The API is listening on port ' + port);
 });
 
 
@@ -189,15 +191,20 @@ app.listen(port, function(){
  *   News:
  *    type: object
  *    properties:
- *     title:
- *      type: string
- *      example: "Brest bat enfin une équipe après 50 ans de défaite !"
- *     link:
- *      type: string
- *      example: "https://france3-regions.francetvinfo.fr/bretagne/finistere/brest/football-stade-brestois-etrille-nimes-son-retour-ligue-1-1865412.html"
+ *     news:
+ *      example: 
+ *       $ref: '#/definitions/ArrayOfNews'
  *   ArrayOfNews:
- *    type: array
- *    items:
- *     $ref: '#/definitions/News'
- * 
+ *    0:
+ *      type: array
+ *      $ref: '#/definitions/NewsItem'
+ *    1:
+ *      type: array
+ *      $ref: '#/definitions/NewsItem2'
+ *   NewsItem:
+ *    source: "Francetvinfo.fr"
+ *    title: "Miss France 2021 : à peine élue, Anastasia Salvi, Miss Franche-Comté annonce sur Instagram renoncer à son titr - France 3 Régions"
+ *   NewsItem2:
+ *    source: "L'equipe"
+ *    title: "Équipe de France : Olivier Giroud titulaire contre l'Ukraine - Foot - Bleus - L'Équipe.fr"
  */
