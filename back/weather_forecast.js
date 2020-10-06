@@ -30,21 +30,20 @@ function jsonTreatment(json,geo){
     return newJson
 }
 
-function getWeatherProm(url) {
-    return new Promise((success,failure) => {       //declaration of promise
-        fetch(url,                                  //url indication
+async function getWeatherProm(url) {
+    return await fetch(url,                                  //url indication
             {
                 headers:{
                     'Accept':'application/json'     //want json
                 }
             })           
             .then(response => {                     //display the response in json
-                success(response.json()); 
+                return response.json(); 
             })
             .catch(err => console.error(err));      //display the error in console
  
-    })
-};
+    
+}
 
 async function getWeather() {
     let geo = await geoCoder.geocode(city)
