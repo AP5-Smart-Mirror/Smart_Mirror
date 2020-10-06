@@ -1,5 +1,6 @@
 var express = require('express');
-var weather = require('./weather.js');
+var weather = require('./weather.js')
+var weatherForecast = require('./weather_forecast.js');
 var clock = require('./clock.js');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -85,6 +86,24 @@ app.get('/api/weather', function(req,res){
     weather.getWeather().then(json => (res.send(json)));
 });
 
+
+/**
+ * @swagger
+ * /api/weather_forecast:
+ *  get:
+ *    description: Use to get the current and the hourly weather from openweathermap
+ *    responses:
+ *      '200':
+ *        description: a json is returned
+ *        schema:
+ *         $ref: '#/definitions/WeatherForecast'
+ *      '400':
+ *        description: "Invalid status value"
+ */
+app.get('/api/weather_forecast', function(req,res){
+  weatherForecast.getWeather().then(json => (res.send(json)));
+});
+
 /**
  * @swagger
  * /api/news:
@@ -146,6 +165,27 @@ app.listen(port, function(){
  *     iconurl:
  *      type: string
  *      example: "http://openweathermap.org/img/w/10d.png"
+ *   WeatherForecast:
+ *    type: object
+ *    properties:
+ *     city:
+ *      type: string
+ *      example: "Lille"
+ *     current:
+ *       temp:
+ *        type: double
+ *       example: {"temp":14.59,"description":"légère pluie","iconurl":"http://openweathermap.org/img/wn/10d.png"}
+ *     hourly:
+ *      example: 
+ *       $ref: '#/definitions/ArrayOfHourly'
+ *   ArrayOfHourly:
+ *    id:
+ *      $ref: '#/definitions/Hourly'
+ *   Hourly:
+ *    dt: 1601982000
+ *    temp: 14.59
+ *    description: "légère pluie"
+ *    iconurl: "http://openweathermap.org/img/wn/10d.png"
  *   News:
  *    type: object
  *    properties:
