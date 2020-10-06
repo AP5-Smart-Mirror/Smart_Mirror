@@ -191,15 +191,20 @@ app.listen(port, function(){
  *   News:
  *    type: object
  *    properties:
- *     title:
- *      type: string
- *      example: "Brest bat enfin une équipe après 50 ans de défaite !"
- *     link:
- *      type: string
- *      example: "https://france3-regions.francetvinfo.fr/bretagne/finistere/brest/football-stade-brestois-etrille-nimes-son-retour-ligue-1-1865412.html"
+ *     news:
+ *      example: 
+ *       $ref: '#/definitions/ArrayOfNews'
  *   ArrayOfNews:
- *    type: array
- *    items:
- *     $ref: '#/definitions/News'
- * 
+ *    0:
+ *      type: array
+ *      $ref: '#/definitions/NewsItem'
+ *    1:
+ *      type: array
+ *      $ref: '#/definitions/NewsItem2'
+ *   NewsItem:
+ *    source: "Francetvinfo.fr"
+ *    title: "Miss France 2021 : à peine élue, Anastasia Salvi, Miss Franche-Comté annonce sur Instagram renoncer à son titr - France 3 Régions"
+ *   NewsItem2:
+ *    source: "L'equipe"
+ *    title: "Équipe de France : Olivier Giroud titulaire contre l'Ukraine - Foot - Bleus - L'Équipe.fr"
  */
