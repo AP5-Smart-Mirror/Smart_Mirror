@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
+    // Value by default to test behaviour
     this.widgets.push(new Widget(1, 'weather', null));
     this.profiles.push(new Profile(null, 'default', null));
     this.profiles.push(new Profile(1, "Claire", this.widgets));
@@ -28,17 +29,16 @@ export class AppComponent implements OnInit {
   init(): void {
     this.profiles = new Array<Profile>();
     this.widgets = new Array<Widget>();
-    // Value by default to test behaviour
-    this.widgets.push(new Widget(1, 'weather', null));
-    this.profiles.push(new Profile(null, 'default', null));
-    this.profiles.push(new Profile(1, "Claire", this.widgets));
-    this.profiles.push(new Profile(2, "Stefan", this.widgets));
-    this.currentProfile = this.profiles[0];
+  }
+
+  searchWidget(widget: Array<Widget>, name: string): boolean {
+    return widget.findIndex(n => n.name === name) !== -1?true:false;
   }
 
   @HostListener('document:keyup', ['$event'])
-  /*When ArrowUp key is pressed, we browse the profile array til the next profile.
-  If we reach the end of the list, we display default profile*/
+  /*When ArrowUp key is pressed, we browse the next profile.
+  If we reach the end of the list, we display default profile again
+  Loop*/
   public onKeyUp(eventData: KeyboardEvent) {
     console.log('eventData.key', eventData.key);
     if(eventData.key === 'ArrowUp'){

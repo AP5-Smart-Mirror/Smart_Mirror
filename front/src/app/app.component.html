@@ -6,11 +6,9 @@
 </div>
 
 <div class="content" *ngIf="currentProfile.name !== 'default'">
-  <div *ngFor="let widget of currentProfile.widgets">
-    <app-weather *ngIf="widget.name === 'weather'"></app-weather>
-    <app-date *ngIf="widget.name === 'date'"></app-date>
-    Hello {{ currentProfile.name }}
-    <app-analog-clock *ngIf="widget.name === 'analog-clock'"></app-analog-clock>
-    <app-digital-clock *ngIf="widget.name === 'digital-clock'"></app-digital-clock>
-  </div>
+  <app-date *ngIf="searchWidget(currentProfile.widgets, 'date')"></app-date>
+  <app-weather *ngIf="searchWidget(currentProfile.widgets, 'weather')"></app-weather>
+  Hello {{ currentProfile.name }}
+  <app-digital-clock *ngIf="searchWidget(currentProfile.widgets, 'digital-clock')"></app-digital-clock>
+  <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, 'analog-clock')"></app-analog-clock>
 </div>
