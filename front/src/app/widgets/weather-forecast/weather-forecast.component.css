@@ -1,0 +1,16 @@
+.content {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height:100%;
+    list-style-type:none; 
+}
+.horizontal {
+    display: inline-flex;
+    justify-content: center;
+}
+
+.spinner {
+    stroke: white;
+}

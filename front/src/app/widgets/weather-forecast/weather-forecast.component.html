@@ -1,0 +1,13 @@
+<div class="content">
+    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <div *ngIf="!loading" >
+        <li *ngFor="let hourly of filteredHourly" >
+            <div class="horizontal">
+                <p>{{ hourly.dt | date:'HH'}}h{{ hourly.dt | date:'mm' }}</p>
+                <img src="{{ hourly.iconurl }}" alt="icone meteo " />
+                <p>{{ hourly.temp | number:'1.0-0' }}°C </p>
+            </div>
+                  
+        </li>
+    </div>
+</div>
