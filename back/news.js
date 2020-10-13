@@ -27,10 +27,8 @@ function jsonTreatment(json){
         newJson['title'] =  item.title;
         articles.push(newJson);
     });
-    let result = {}
-    result["news"] = articles;
     
-    return result;
+    return articles;
 }
 async function getNews() {
         var json;
