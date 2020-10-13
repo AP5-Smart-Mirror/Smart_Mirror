@@ -1,16 +1,16 @@
 export class Configuration {
     id: number;
-    pos_x_start: number;
-    pos_x_end: number;
-    pos_y_start: number;
-    pos_y_end: number;
+    posXStart: number;
+    posXEnd: number;
+    posYStart: number;
+    posYEnd: number;
     size: number;
 
-    constructor(id: number, pos_x_start: number, pos_x_end: number,pos_y_start: number,pos_y_end: number){
+    constructor(id: number, posXStart: number, posXEnd: number, posYStart: number, posYEnd: number){
         this.id = id;
-        this.pos_x_start = pos_x_start;
-        this.pos_x_end = pos_x_end;
-        this.pos_y_start = pos_y_start;
-        this.pos_y_end = pos_y_end;
+        this.posXStart = posXStart;
+        this.posXEnd = posXEnd;
+        this.posYStart = posYStart;
+        this.posYEnd = posYEnd;
     }
 }
