@@ -1,3 +1,6 @@
 export class Agenda {
-    toComplete: string;
+    name: string;
+    startDate: Date;
+    endDate: Date;
+    location: string;
 }
