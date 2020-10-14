@@ -18,17 +18,19 @@ export class AgendaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.agenda.toComplete = "RDV coifffeur faire un dégradé du tonnerre t'as vu";
-    this.loading = false;
-    // this.init();
-    // setInterval(() => this.init(), 600000);
+    this.agenda = new Agenda();
+    this.init();
+    setInterval(() => this.init(), 600000);
   }
 
   init(): void {
     this.agendaService.getAgenda().then(agenda => {
+      console.log('agenda', agenda);
       this.loading = true;
-      // this.agenda.toComplete = agenda.toComplete;
+      this.agenda.name = agenda.name;
+      this.agenda.location = agenda.location;
+      this.agenda.startDate = agenda.startDate;
+      this.agenda.endDate = agenda.endDate;
     }).then(() => this.loading = false);
   }
-
 }

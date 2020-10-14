@@ -13,7 +13,7 @@ export class AgendaService {
 
   getAgenda(): Promise<Agenda> {
     return new Promise<Agenda>((resolve, reject) => {
-      this.httpClient.get<Agenda>(this.url + '/agenda')
+      this.httpClient.get<Agenda>(this.url + '/google_calendar')
         .toPromise()
         .then(
           res => { // Success

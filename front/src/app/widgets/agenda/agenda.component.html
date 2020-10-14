@@ -1,6 +1,9 @@
 <div class="content">
     <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
     <div *ngIf="!loading" class="horizontal">
-        <h1>{{ agenda.toComplete | titlecase }}</h1>
+        <h3>Votre prochain RDV :</h3>
+        <h3>{{ agenda.name | titlecase }}</h3>
+        <h5>Le {{ agenda.startDate | date:'EEEE d LLLL yyyy' }} à {{ agenda.startDate | date:'HH:mm' }}</h5>
+        <h5>Au {{ agenda.endDate | date:'EEEE d LLLL yyyy' }} à {{ agenda.endDate | date:'HH:mm' }}</h5>
     </div>
 </div>
