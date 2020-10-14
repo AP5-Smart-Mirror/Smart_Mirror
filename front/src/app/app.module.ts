@@ -13,6 +13,7 @@ import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.com
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NewsComponent } from './widgets/news/news.component';
+import { WeatherForecastComponent } from './widgets/weather-forecast/weather-forecast.component';
 
 registerLocaleData(localeFr);
 
@@ -24,6 +25,7 @@ registerLocaleData(localeFr);
     AnalogClockComponent,
     DigitalClockComponent,
     NewsComponent,
+    WeatherForecastComponent,
   ],
   imports: [
     BrowserModule,
