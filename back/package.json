@@ -12,8 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "googleapis": "^39.2.0",
     "moment": "^2.29.0",
     "node-fetch": "^2.6.1",
+    "node-geocoder": "^3.27.0",
     "nodemon": "^2.0.4",
     "swagger-jsdoc": "^4.2.0",
     "swagger-ui-express": "^4.1.4"

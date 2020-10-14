@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { WeatherForecastComponent } from './widgets/weather-forecast/weather-forecast.component';
 
 registerLocaleData(localeFr);
 
@@ -22,6 +23,7 @@ registerLocaleData(localeFr);
     DateComponent,
     AnalogClockComponent,
     DigitalClockComponent,
+    WeatherForecastComponent,
   ],
   imports: [
     BrowserModule,

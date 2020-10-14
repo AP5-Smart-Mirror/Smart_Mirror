@@ -14,7 +14,15 @@ app-date {
     grid-row-end: 2;
     border: dotted 1px red;
 }
+app-weather-forecast{
+    
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    border: dotted 1px green;
 
+}
 app-weather {
     grid-column-start: 1;
     grid-column-end: 3;
