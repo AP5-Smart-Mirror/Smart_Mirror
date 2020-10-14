@@ -29,8 +29,8 @@ export class AgendaComponent implements OnInit {
       this.loading = true;
       this.agenda.name = agenda.name;
       this.agenda.location = agenda.location;
-      this.agenda.startDate = agenda.startDate;
-      this.agenda.endDate = agenda.endDate;
+      this.agenda.start = agenda.start;
+      this.agenda.end = agenda.end;
     }).then(() => this.loading = false);
   }
 }

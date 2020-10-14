@@ -1,6 +1,6 @@
 export class Agenda {
     name: string;
-    startDate: Date;
-    endDate: Date;
+    start: Date;
+    end: Date;
     location: string;
 }
