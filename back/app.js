@@ -3,6 +3,8 @@ var weather = require('./weather.js')
 var weatherForecast = require('./weather_forecast.js');
 var clock = require('./clock.js');
 var news = require('./news.js');
+var google_calendar = require('./google_calendar.js');
+
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
  
@@ -120,6 +122,10 @@ app.get('/api/weather_forecast', function(req,res){
  */
 app.get('/api/news', function(req,res){
   news.getNews().then(json => (res.send(json)));
+});
+
+app.get('/api/google_calendar', function(req,res){
+  google_calendar.getCalendar().then(json => (res.send(json)));
 });
  
 app.listen(port, function(){
