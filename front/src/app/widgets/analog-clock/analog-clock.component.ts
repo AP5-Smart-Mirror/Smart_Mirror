@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Clock } from 'src/app/models/clock';
-import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-analog-clock',
@@ -22,7 +20,7 @@ export class AnalogClockComponent implements OnInit {
     const canvas = document.getElementById('clock') as HTMLCanvasElement;
     const parent = document.getElementById('analog-clock');
     canvas.width = parent.offsetWidth;
-    canvas.height = parent.offsetHeight;
+    canvas.height = parent.offsetHeight * 0.8;
     const ctx = canvas.getContext('2d');
 
     let radius = canvas.height / 2;

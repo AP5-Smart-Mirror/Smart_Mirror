@@ -21,7 +21,7 @@ export class NewsComponent implements OnInit {
     this.news = [];
     this.init();
     setInterval(() => this.init(), 600000);
-    setInterval(() => this.nextNews(), 15000);
+    setInterval(() => this.nextNews(), 10000);
   }
   nextNews(): void {
     const idxCurrentNews = this.news.indexOf(this.currentNews);
