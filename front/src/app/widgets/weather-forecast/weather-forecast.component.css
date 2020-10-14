@@ -1,7 +1,6 @@
 .content {
-    color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     height:100%;
     list-style-type:none; 
@@ -13,4 +12,8 @@
 
 .spinner {
     stroke: white;
+}
+
+.first {
+    font-size: x-large;
 }
