@@ -3,4 +3,3 @@ export class Weather {
     city: string;
     iconurl: string;
 }
-
