@@ -1,5 +1,5 @@
 export class Weather {
-    currentTemperature: number;
+    currenttemp: number;
     city: string;
-    iconUrl: string;
+    iconurl: string;
 }

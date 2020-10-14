@@ -27,9 +27,9 @@ export class WeatherComponent implements OnInit {
   init(): void {
     this.weatherService.getWeather().then(weather => {
       this.loading = true;
-      this.weather.currentTemperature = weather.currentTemperature;
+      this.weather.currenttemp = weather.currenttemp;
       this.weather.city = weather.city;
-      this.weather.iconUrl = weather.iconUrl;
+      this.weather.iconurl = weather.iconurl;
     }).then(() => this.loading = false);
   }
 }

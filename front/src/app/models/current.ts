@@ -1,5 +1,5 @@
 export class Current{
-    temperature: number;
+    temp: number;
     description: string;
-    iconUrl: string;
+    iconurl: string;
 }

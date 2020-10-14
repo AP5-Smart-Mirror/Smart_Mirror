@@ -3,9 +3,9 @@
     <div *ngIf="!loading" >
         <li *ngFor="let hourly of filteredHourly" >
             <div class="horizontal">
-                <p>{{ hourly.dateTime | date:'HH'}}h{{ hourly.dateTime | date:'mm' }}</p>
-                <img src="{{ hourly.iconUrl }}" alt="icone meteo " />
-                <p>{{ hourly.temperature | number:'1.0-0' }}°C </p>
+                <p>{{ hourly.dt | date:'HH'}}h{{ hourly.dt | date:'mm' }}</p>
+                <img src="{{ hourly.iconurl }}" alt="icone meteo " />
+                <p>{{ hourly.temp | number:'1.0-0' }}°C </p>
             </div>  
         </li>
     </div>

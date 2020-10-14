@@ -1,13 +1,13 @@
 export class Hourly {
-    dateTime: Date;
-    temperature: number;
+    dt: Date;
+    temp: number;
     description: string;
-    iconUrl: string;
+    iconurl: string;
 
-    constructor(dateTime: any, temperature: number, description: string, iconUrl: string){
-        this.dateTime = dateTime;
-        this.temperature = temperature;
+    constructor(dt: any, temp: number, description: string, iconurl: string){
+        this.dt = dt;
+        this.temp = temp;
         this.description = description;
-        this.iconUrl = iconUrl;
+        this.iconurl = iconurl;
     }
 }
