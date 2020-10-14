@@ -2,7 +2,7 @@
     height: 100vh;
     background-color: black;
     display: grid;
-    grid-template-columns: repeat(10,1fr);
+    grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
 
@@ -41,6 +41,14 @@ app-digital-clock {
 app-analog-clock {
     grid-column-start: 9;
     grid-column-end: 11;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    /*border: dotted 1px blue;*/
+}
+
+app-news {
+    grid-column-start: 4;
+    grid-column-end: 8;
     grid-row-start: 5;
     grid-row-end: 7;
     /*border: dotted 1px blue;*/
