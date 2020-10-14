@@ -7,6 +7,3 @@ export class WeatherForecast {
     current: Current;
     hourly: Hourly[];
 }
-
-
-
