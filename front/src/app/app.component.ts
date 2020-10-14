@@ -31,15 +31,14 @@ export class AppComponent implements OnInit {
       new Widget(4, 'digital-clock', new Configuration(null, 9, 11, 1, 2)))
     ));
     this.profiles.push(new Profile(1, 'Claire', new Array<Widget>(
-      new Widget(1, 'weather', new Configuration(null, 1, 3, 1, 4)),
+      new Widget(1, 'weather-forecast', new Configuration(null, 1, 3, 1, 4)),
       new Widget(2, 'date', new Configuration(null, 3, 7, 1, 2)),
       new Widget(3, 'analog-clock', new Configuration(null, 7, 8, 1, 2)),
       new Widget(4, 'agenda', new Configuration(null, 0, 0, 0, 0)),
       new Widget(5, 'news', new Configuration(null, 0, 0, 0, 0)))
     ));
-    // Profile stephan
     /*this.profiles.push(new Profile(2, 'Stephan', new Array<Widget>(
-      new Widget(1, 'weather', null),
+      new Widget(1, 'weather-forecast', null),
       new Widget(2, 'date', null),
       new Widget(3, 'analog-clock', null),
       new Widget(4, 'digital-clock', null))

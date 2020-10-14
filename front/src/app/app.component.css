@@ -1,56 +1,89 @@
 .content {
-    height: 100vh;
-    background-color: black;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+  height: 100vh;
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 /*We use the CSS grid property to display the component on the mirror
-The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/ 
-app-date {
-    grid-column-start: 3;
-    grid-column-end: 7;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border: dotted 1px red;
-}
-app-weather-forecast{
-    
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 5;
-    grid-row-end: 7;
-    border: dotted 1px green;
+The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/
 
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  grid-column-start: 3;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  /*border: dotted 1px white;*/
+}
+
+.animation {
+    opacity: 0;
+    animation: 2s slidein ease-in-out;
+}
+
+@keyframes slidein {
+  0% {
+    font-size: medium;
+  }
+
+  50% {
+    font-size: xx-large;
+    opacity: 1;
+  }
+
+  100% {
+    font-size: x-large;
+    opacity: 1;
+  }
+}
+
+app-date {
+  grid-column-start: 3;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  /*border: dotted 1px red;*/
+}
+app-weather-forecast {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  /*border: dotted 1px greenyellow;*/
 }
 app-weather {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    border: dotted 1px green;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  /*border: dotted 1px green;*/
 }
 
 app-digital-clock {
-    grid-column-start: 9;
-    grid-column-end: 11;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border: dotted 1px yellow;
+  grid-column-start: 9;
+  grid-column-end: 11;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  /*border: dotted 1px yellow;*/
 }
 
 app-analog-clock {
-    grid-column-start: 7;
-    grid-column-end: 8;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    /*border: dotted 1px blue;*/
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  /*border: dotted 1px blue;*/
 }
 
 app-news {
-    grid-column-start: 4;
-    grid-column-end: 8;
-    grid-row-start: 5;
-    grid-row-end: 7;
-    /*border: dotted 1px brown;*/
+  grid-column-start: 3;
+  grid-column-end: 9;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  /*border: dotted 1px brown;*/
 }
