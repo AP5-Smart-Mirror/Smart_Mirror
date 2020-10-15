@@ -20,7 +20,7 @@ export class AnalogClockComponent implements OnInit {
     const canvas = document.getElementById('clock') as HTMLCanvasElement;
     const parent = document.getElementById('analog-clock');
     canvas.width = parent.offsetWidth;
-    canvas.height = parent.offsetHeight;
+    canvas.height = parent.offsetHeight * 0.8;
     const ctx = canvas.getContext('2d');
 
     let radius = canvas.height / 2;

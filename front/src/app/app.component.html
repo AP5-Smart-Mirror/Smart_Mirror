@@ -1,7 +1,16 @@
 <div class="content">
-  <!--<app-date></app-date>
-  <app-weather></app-weather>
-  <app-digital-clock></app-digital-clock>
-  <app-analog-clock></app-analog-clock>-->
-  <app-agenda></app-agenda>
+  <div class="welcome">
+    <h1 class="animation" *ngIf="currentProfile.name !== 'default'">Bonjour {{ currentProfile.name }}, vous êtes rayonnant(e) aujourd'hui.</h1>
+    <h1 class="animation" *ngIf="currentProfile.name === 'default'">Bien le bonjour !</h1>
+  </div>
+  <app-date *ngIf="searchWidget(currentProfile.widgets, 'date')" [ngStyle]="setPositionWidget('date')"></app-date>
+  <app-weather *ngIf="searchWidget(currentProfile.widgets, 'weather')" [ngStyle]="setPositionWidget('weather')">
+  </app-weather>
+  <app-digital-clock *ngIf="searchWidget(currentProfile.widgets, 'digital-clock')"
+    [ngStyle]="setPositionWidget('digital-clock')"></app-digital-clock>
+  <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, 'analog-clock')"
+    [ngStyle]="setPositionWidget('analog-clock')"></app-analog-clock>
+  <app-news *ngIf="searchWidget(currentProfile.widgets, 'news')" [ngStyle]="setPositionWidget('news')"></app-news>
+  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
+  <app-agenda *ngIf="searchWidget(currentProfile.widgets, 'agenda')" [ngStyle]="setPositionWidget('agenda')"></app-agenda>
 </div>
