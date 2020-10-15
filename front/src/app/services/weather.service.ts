@@ -29,7 +29,7 @@ export class WeatherService {
   }
   getWeatherForecast(): Promise<WeatherForecast> {
     return new Promise<WeatherForecast>((resolve, reject) => {
-      this.httpClient.get<WeatherForecast>(environment.server_base_url + '/weather_forecast')
+      this.httpClient.get<WeatherForecast>(this.url + '/weather_forecast')
         .toPromise()
         .then(
           res => { // Success
