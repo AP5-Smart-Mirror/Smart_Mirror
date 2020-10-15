@@ -42,26 +42,28 @@ The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/
   }
 }
 
-app-date {
+/*app-date {
   grid-column-start: 3;
   grid-column-end: 8;
   grid-row-start: 1;
   grid-row-end: 2;
-  /*border: dotted 1px red;*/
+  border: dotted 1px red;
 }
+
 app-weather-forecast {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 3;
-  /*border: dotted 1px greenyellow;*/
+  border: dotted 1px greenyellow;
 }
+
 app-weather {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
-  /*border: dotted 1px green;*/
+  border: dotted 1px green;
 }
 
 app-digital-clock {
@@ -69,7 +71,7 @@ app-digital-clock {
   grid-column-end: 11;
   grid-row-start: 1;
   grid-row-end: 2;
-  /*border: dotted 1px yellow;*/
+  border: dotted 1px yellow;
 }
 
 app-analog-clock {
@@ -77,7 +79,7 @@ app-analog-clock {
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 2;
-  /*border: dotted 1px blue;*/
+  border: dotted 1px blue;
 }
 
 app-news {
@@ -85,5 +87,5 @@ app-news {
   grid-column-end: 9;
   grid-row-start: 6;
   grid-row-end: 7;
-  /*border: dotted 1px brown;*/
-}
+  border: dotted 1px brown;
+}*/
