@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
   public onKeyUp(eventData: KeyboardEvent): void {
     if (eventData.key === 'ArrowUp'){
       const idxCurrentProfile = this.profiles.indexOf(this.currentProfile);
-      // If we reach the end of the list
+      // If we don't reach the end of the list
       if (idxCurrentProfile + 1 < this.profiles.length){
         this.currentProfile = this.profiles[idxCurrentProfile + 1];
         // Go back to default profile
