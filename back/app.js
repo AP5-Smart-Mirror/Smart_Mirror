@@ -186,12 +186,23 @@ app.listen(port, function(){
  *     hourly:
  *      example: 
  *       $ref: '#/definitions/ArrayOfHourly'
+ *     daily:
+ *      example:
+ *       $ref: '#/definitions/ArrayOfDaily' 
  *   ArrayOfHourly:
  *    id:
  *      $ref: '#/definitions/Hourly'
+ *   ArrayOfDaily:
+ *    id:
+ *      $ref: '#/definitions/Daily'
  *   Hourly:
  *    dt: 1601982000
  *    temp: 14.59
+ *    description: "légère pluie"
+ *    iconurl: "http://openweathermap.org/img/wn/10d.png"
+ *   Daily:
+ *    dt: 1603537200
+ *    temp: 14.46
  *    description: "légère pluie"
  *    iconurl: "http://openweathermap.org/img/wn/10d.png"
  *   News:
