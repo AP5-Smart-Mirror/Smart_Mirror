@@ -3,7 +3,6 @@ import { Component } from "@angular/core";
 import { Configuration } from "./models/configuration";
 import { Profile } from "./models/profile";
 import { Widget } from "./models/widget";
-import { ProfileService } from "./services/profile.service";
 
 @Component({
   selector: "app-root",

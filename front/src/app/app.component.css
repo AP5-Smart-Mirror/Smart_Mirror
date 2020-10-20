@@ -21,7 +21,7 @@ The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/
   /*border: dotted 1px white;*/
 }
 
-.animation {
+#animated {
     opacity: 0;
     animation: 2s slidein ease-in-out;
 }
