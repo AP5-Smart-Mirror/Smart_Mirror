@@ -25,17 +25,17 @@ export class AppComponent implements OnInit {
 
   init(): void {
     this.profiles.push(new Profile(null, 'default', new Array<Widget>(
-      new Widget(1, 'weather-forecast', new Configuration(null, 1, 3, 5, 7)),
+      new Widget(1, 'weather-forecast', new Configuration(null, 1, 3, 4, 6)),
       new Widget(2, 'date', new Configuration(null, 3, 8, 1, 2)),
       new Widget(3, 'analog-clock', new Configuration(null, 8, 9, 1, 2)),
-      new Widget(4, 'news', new Configuration(null, 3, 9, 6, 7)))
+      new Widget(4, 'news', new Configuration(null, 2, 10, 6, 7)))
     ));
     this.profiles.push(new Profile(1, 'Claire', new Array<Widget>(
       new Widget(1, 'weather-forecast', new Configuration(null, 1, 3, 1, 4)),
-      new Widget(2, 'date', new Configuration(null, 3, 7, 1, 2)),
-      new Widget(3, 'analog-clock', new Configuration(null, 7, 8, 1, 2)),
+      new Widget(2, 'date', new Configuration(null, 3, 8, 1, 2)),
+      new Widget(3, 'analog-clock', new Configuration(null, 8, 9, 1, 2)),
       new Widget(4, 'agenda', null),
-      new Widget(5, 'news', new Configuration(null, 3, 9, 6, 7)))
+      new Widget(5, 'news', new Configuration(null, 1, 11, 6, 7)))
     ));
     this.profiles.push(new Profile(2, 'Stephan', new Array<Widget>(
       new Widget(1, 'weather', new Configuration(null, 1, 3, 1, 2)),
