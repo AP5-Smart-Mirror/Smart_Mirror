@@ -1,3 +1,4 @@
+const moment = require('moment');
 var fetch = require('node-fetch');                //load the module node-fetch
 var APIkey = 'c0735eb48963d2eea782623d14502b53';  //personal key to get weather data 
 var city = 'Lille Nord France';                   //city name to specify the weather data
@@ -26,7 +27,25 @@ function jsonTreatment(json,geo){
         hourly['iconurl'] = 'http://openweathermap.org/img/wn/'+ json["hourly"][i]['weather'][0]['icon'] +'.png'
         newHourly.push(hourly);
     }
+
+    var newDaily = [];
+
+    for (var i = 0;  i < json["daily"].length; i ++){
+        date = moment.unix(json["daily"][i]['dt']).format('dddd');
+        if(date == "samedi" || date == "dimanche"){
+            var daily = {};
+            daily['dt'] = json["daily"][i]['dt'];
+            daily['temp'] = json["daily"][i]['temp']['day'];
+            daily['description'] = json["daily"][i]['weather'][0]['description'],  
+            daily['iconurl'] = 'http://openweathermap.org/img/wn/'+ json["daily"][i]['weather'][0]['icon'] +'.png'
+            newDaily.push(daily);
+        }
+        
+
+    }
+
     newJson['hourly'] = newHourly;
+    newJson['daily'] = newDaily;
     return newJson
 }
 
