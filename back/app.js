@@ -182,7 +182,11 @@ app.listen(port, function(){
  *     current:
  *       temp:
  *        type: double
- *       example: {"temp":14.59,"description":"légère pluie","iconurl":"http://openweathermap.org/img/wn/10d.png"}
+ *       sunrise: 
+ *        type: integer
+ *       sunset:
+ *        type: integer
+ *       example: {"temp":14.59,"sunrise": 1603347747,"sunset": 1603384896,"description":"légère pluie","iconurl":"http://openweathermap.org/img/wn/10d.png"}
  *     hourly:
  *      example: 
  *       $ref: '#/definitions/ArrayOfHourly'

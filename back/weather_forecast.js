@@ -13,6 +13,8 @@ function jsonTreatment(json,geo){
     newJson['city'] = geo[0]["city"];
     var newCurrent = {}                                 //make a new json variable
     newCurrent['temp'] = json['current']['temp'];    //recuperation of temperature
+    newCurrent['sunrise'] = json['current']['sunrise'];
+    newCurrent['sunset'] = json['current']['sunset'];
     newCurrent['description'] = json["current"]['weather'][0]['description'],                  
     newCurrent['iconurl'] = 'http://openweathermap.org/img/wn/'+ json["current"]['weather'][0]['icon'] +'.png'
     newJson['current'] = newCurrent;
