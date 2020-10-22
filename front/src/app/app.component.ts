@@ -67,7 +67,8 @@ export class AppComponent implements OnInit {
           new Widget(1, "weather", new Configuration(null, 1, 3, 1, 2)),
           new Widget(2, "date", new Configuration(null, 4, 7, 1, 2)),
           new Widget(4, "digital-clock", new Configuration(null, 10, 11, 1, 2)),
-          new Widget(5, "news", new Configuration(null, 3, 9, 6, 7))
+          new Widget(5, "news", new Configuration(null, 3, 9, 6, 7)),
+          new Widget(6, "almanac", new Configuration(null, 1, 3, 2, 3))
         )
       )
     );

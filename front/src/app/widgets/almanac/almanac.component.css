@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height:100%;
+    list-style-type:none; 
+}
+
+.spinner {
+    stroke: white;
+}

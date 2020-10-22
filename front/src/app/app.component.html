@@ -11,5 +11,6 @@
     [ngStyle]="setPositionWidget('analog-clock')"></app-analog-clock>
   <app-news *ngIf="searchWidget(currentProfile.widgets, 'news')" [ngStyle]="setPositionWidget('news')"></app-news>
   <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
+  <app-almanac *ngIf="searchWidget(currentProfile.widgets, 'almanac')" [ngStyle]="setPositionWidget('almanac')"></app-almanac>
   <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, 'agenda')" [ngStyle]="setPositionWidget('agenda')"></app-agenda>-->
 </div>
