@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 var graph = require('@microsoft/microsoft-graph-client');
+var moment = require("moment");  //use librairy moment
+moment.locale('fr');   //localisation date in French
 require('isomorphic-fetch');
 
 module.exports = {
@@ -15,9 +17,10 @@ module.exports = {
   // <GetEventsSnippet>
   getEvents: async function(accessToken,calendarsid) {
     const client = getAuthenticatedClient(accessToken);
-
+    var startDate = moment().format("YYYY-MM-DDTHH:MM:SS");
+    var endDate = moment().add(7,'days').format("YYYY-MM-DDTHH:MM:SS");
     const events = await client
-      .api(`/me/calendars/${calendarsid}/calendarview?startDateTime=2020-10-27T10:00:00&endDateTime=2020-11-03T10:00:00`)
+      .api(`/me/calendars/${calendarsid}/calendarview?startDateTime=${startDate}&endDateTime=${endDate}`)
       .select('subject,organizer,start,end')
      // .orderby('createdDateTime DESC')
       .get();

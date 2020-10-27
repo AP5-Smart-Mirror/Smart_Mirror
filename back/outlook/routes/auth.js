@@ -12,9 +12,9 @@ router.get('/signin',
       {
         response: res,
         prompt: 'login',
-        failureRedirect: '/',
+        failureRedirect: '/outlook',
         failureFlash: true,
-        successRedirect: '/'
+        successRedirect: '/outlook'
       }
     )(req,res,next);
   }
@@ -25,9 +25,9 @@ router.post('/callback',
     passport.authenticate('azuread-openidconnect',
       {
         response: res,
-        failureRedirect: '/',
+        failureRedirect: '/outlook',
         failureFlash: true,
-        successRedirect: '/'
+        successRedirect: '/outlook'
       }
     )(req,res,next);
   }
