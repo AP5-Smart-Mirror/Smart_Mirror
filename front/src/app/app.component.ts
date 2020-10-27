@@ -47,15 +47,14 @@ export class AppComponent implements OnInit {
         1,
         "Claire",
         new Array<Widget>(
-          new Widget(
-            1,
-            "weather-forecast",
-            new Configuration(null, 1, 3, 1, 4)
-          ),
-          new Widget(2, "date", new Configuration(null, 3, 8, 1, 2)),
+          new Widget(1, "weather-forecast", new Configuration(null, 1, 3, 1, 4)),
+          new Widget(2, "date", new Configuration(null, 5, 8, 1, 2)),
           new Widget(3, "analog-clock", new Configuration(null, 8, 9, 1, 2)),
-          new Widget(4, "agenda", null),
-          new Widget(5, "news", new Configuration(null, 1, 11, 6, 7))
+          /*new Widget(4, "weather-weekend", new Configuration(null, 1, 3, 4, 5)),
+          new Widget(4, "note", new Configuration(null, 1, 3, 5, 7)),
+          new Widget(4, "agenda", new Configuration(null, 9, 11, 5, 7)),
+          new Widget(4, "mail", new Configuration(null, 9, 11, 1, 5)),*/
+          new Widget(5, "news", new Configuration(null, 3, 9, 6, 7))
         )
       )
     );
