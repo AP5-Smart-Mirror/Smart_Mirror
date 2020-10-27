@@ -10,14 +10,9 @@ import { Widget } from './models/widget';
 	styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
 	profiles: Array<Profile>;
 	currentProfile: Profile;
 	widgets: Array<Widget>;
-
-	htmlAnimated: HTMLElement;
 
 	constructor() {}
 
