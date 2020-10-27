@@ -14,13 +14,12 @@ export class WeatherForecastComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.filteredHourly = [];
-
     this.init();
     setInterval(() => this.init(), 600000);
   }
 
   init(): void {
+    this.filteredHourly = [];
     this.weatherService
       .getWeatherForecast()
       .then((weatherForecast) => {
