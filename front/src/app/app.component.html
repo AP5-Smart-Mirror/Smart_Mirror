@@ -10,6 +10,7 @@
   <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, 'analog-clock')"
     [ngStyle]="setPositionWidget('analog-clock')"></app-analog-clock>
   <app-news *ngIf="searchWidget(currentProfile.widgets, 'news')" [ngStyle]="setPositionWidget('news')"></app-news>
-  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
+  <!--app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>-->
+  <app-weather-weekend *ngIf="searchWidget(currentProfile.widgets, 'weather-weekend')" [ngStyle]="setPositionWidget('weather-weekend')"></app-weather-weekend>
   <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, 'agenda')" [ngStyle]="setPositionWidget('agenda')"></app-agenda>-->
 </div>

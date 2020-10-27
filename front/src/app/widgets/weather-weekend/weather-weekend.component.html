@@ -1,0 +1,12 @@
+<div class="content">
+    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <div *ngIf="!loading" >
+        <li *ngFor="let daily of filteredDaily; let isFirst = first;" >
+            <div class="horizontal">
+                <p [ngClass]="{'first' : isFirst}">{{ daily.dt | date:'EEEE'}} {{ daily.dt | date:'d'}} {{ daily.dt | date:'MMM' }}</p>
+                <img src="{{ daily.iconurl }}" alt="icone meteo " />
+                <p [ngClass]="{'first' : isFirst}">{{ daily.temp | number:'1.0-0' }}°C</p>
+            </div>  
+        </li>
+    </div>
+</div>

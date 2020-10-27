@@ -21,6 +21,7 @@ export class WeatherForecastComponent implements OnInit {
   }
 
   init(): void {
+    this.filteredHourly = [];
     this.weatherService
       .getWeatherForecast()
       .then((weatherForecast) => {

@@ -1,13 +1,13 @@
-import { HostListener, OnInit } from "@angular/core";
-import { Component } from "@angular/core";
-import { Configuration } from "./models/configuration";
-import { Profile } from "./models/profile";
-import { Widget } from "./models/widget";
+import { HostListener, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Configuration } from './models/configuration';
+import { Profile } from './models/profile';
+import { Widget } from './models/widget';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   profiles: Array<Profile>;
@@ -29,45 +29,46 @@ export class AppComponent implements OnInit {
     this.profiles.push(
       new Profile(
         null,
-        "default",
+        'default',
         new Array<Widget>(
           new Widget(
             1,
-            "weather-forecast",
+            'weather-forecast',
             new Configuration(null, 1, 3, 4, 6)
           ),
-          new Widget(2, "date", new Configuration(null, 3, 8, 1, 2)),
-          new Widget(3, "analog-clock", new Configuration(null, 8, 9, 1, 2)),
-          new Widget(4, "news", new Configuration(null, 2, 10, 6, 7))
+          new Widget(2, 'date', new Configuration(null, 3, 8, 1, 2)),
+          new Widget(3, 'analog-clock', new Configuration(null, 8, 9, 1, 2)),
+          new Widget(4, 'news', new Configuration(null, 2, 10, 6, 7))
         )
       )
     );
     this.profiles.push(
       new Profile(
         1,
-        "Claire",
+        'Claire',
         new Array<Widget>(
           new Widget(
             1,
-            "weather-forecast",
+            'weather-forecast',
             new Configuration(null, 1, 3, 1, 4)
           ),
-          new Widget(2, "date", new Configuration(null, 3, 8, 1, 2)),
-          new Widget(3, "analog-clock", new Configuration(null, 8, 9, 1, 2)),
-          new Widget(4, "agenda", null),
-          new Widget(5, "news", new Configuration(null, 1, 11, 6, 7))
+          new Widget(2, 'date', new Configuration(null, 3, 8, 1, 2)),
+          new Widget(3, 'analog-clock', new Configuration(null, 8, 9, 1, 2)),
+          new Widget(4, 'agenda', null),
+          new Widget(5, 'news', new Configuration(null, 1, 11, 6, 7)),
+          new Widget(6, 'weather-weekend', new Configuration(null, 9, 11, 1, 3))
         )
       )
     );
     this.profiles.push(
       new Profile(
         2,
-        "Stephan",
+        'Stephan',
         new Array<Widget>(
-          new Widget(1, "weather", new Configuration(null, 1, 3, 1, 2)),
-          new Widget(2, "date", new Configuration(null, 4, 7, 1, 2)),
-          new Widget(4, "digital-clock", new Configuration(null, 10, 11, 1, 2)),
-          new Widget(5, "news", new Configuration(null, 3, 9, 6, 7))
+          new Widget(1, 'weather', new Configuration(null, 1, 3, 1, 2)),
+          new Widget(2, 'date', new Configuration(null, 4, 7, 1, 2)),
+          new Widget(4, 'digital-clock', new Configuration(null, 10, 11, 1, 2)),
+          new Widget(5, 'news', new Configuration(null, 3, 9, 6, 7))
         )
       )
     );
@@ -81,19 +82,19 @@ export class AppComponent implements OnInit {
     const conf = this.currentProfile.widgets.find((n) => n.name === name)
       .config;
     return {
-      "grid-column-start": conf.posXStart,
-      "grid-column-end": conf.posXEnd,
-      "grid-row-start": conf.posYStart,
-      "grid-row-end": conf.posYEnd,
+      'grid-column-start': conf.posXStart,
+      'grid-column-end': conf.posXEnd,
+      'grid-row-start': conf.posYStart,
+      'grid-row-end': conf.posYEnd,
     };
   }
 
-  @HostListener("document:keyup", ["$event"])
+  @HostListener('document:keyup', ['$event'])
   /*When ArrowUp key is pressed, we browse the next profile.
   If we reach the end of the list, we display default profile again
   Loop*/
   public onKeyUp(eventData: KeyboardEvent): void {
-    if (eventData.key === "ArrowUp") {
+    if (eventData.key === 'ArrowUp') {
       const idxCurrentProfile = this.profiles.indexOf(this.currentProfile);
       // If we don't reach the end of the list
       if (idxCurrentProfile + 1 < this.profiles.length) {
@@ -107,17 +108,17 @@ export class AppComponent implements OnInit {
   }
 
   playAnimation(): void {
-    document.getElementById("animated").animate(
+    document.getElementById('animated').animate(
       [
         {
           // from
           opacity: 0,
-          fontSize: "x-large",
+          fontSize: 'x-large',
         },
         {
           // to
           opacity: 1,
-          fontSize: "xx-large",
+          fontSize: 'xx-large',
         },
       ],
       1500
