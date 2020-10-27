@@ -37,7 +37,6 @@ function jsonTreatment(json,geo){
         //if(date == "samedi" || date == "dimanche"){
             var daily = {};
             daily['dt'] = json["daily"][i]['dt'];
-            daily['dt'] = json["daily"][i]['dt'];
             daily['temp'] = json["daily"][i]['temp']['day'];
             daily['description'] = json["daily"][i]['weather'][0]['description'],  
             daily['iconurl'] = 'http://openweathermap.org/img/wn/'+ json["daily"][i]['weather'][0]['icon'] +'.png'
