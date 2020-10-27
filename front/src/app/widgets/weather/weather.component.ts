@@ -19,12 +19,12 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.weather = new Weather();
     this.init();
     setInterval(() => this.init(), 600000);
   }
 
   init(): void {
+    this.weather = new Weather();
     this.weatherService.getWeather().then(weather => {
       this.loading = true;
       this.weather.currenttemp = weather.currenttemp;

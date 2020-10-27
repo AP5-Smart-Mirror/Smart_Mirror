@@ -18,11 +18,11 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.news = [];
     this.init();
     setInterval(() => this.init(), 600000);
     setInterval(() => this.nextNews(), 10000);
   }
+
   nextNews(): void {
     const idxCurrentNews = this.news.indexOf(this.currentNews);
     if (idxCurrentNews + 1 < this.news.length){
@@ -32,7 +32,9 @@ export class NewsComponent implements OnInit {
       this.currentNews = this.news[0];
     }
   }
+  
   init(): void {
+    this.news = [];
     this.newsService.getNews().then(news => {
       this.loading = true;
       news.forEach(element => {
