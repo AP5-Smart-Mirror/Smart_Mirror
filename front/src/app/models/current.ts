@@ -1,5 +1,5 @@
-export class Current{
-    temp: number;
-    description: string;
-    iconurl: string;
+export class Current {
+	temp: number;
+	description: string;
+	iconurl: string;
 }

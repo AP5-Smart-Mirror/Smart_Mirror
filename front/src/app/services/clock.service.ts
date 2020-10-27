@@ -5,27 +5,29 @@ import { environment } from '../../environments/environment';
 import { Clock } from '../models/clock';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class ClockService {
-  private url: string = environment.server_base_url;
+	private url: string = environment.server_base_url;
 
-  constructor(private httpClient: HttpClient) { }
+	constructor(private httpClient: HttpClient) {}
 
-  getClock(): Observable<Clock> {
-
-    return new Observable(observer => {
-      this.httpClient.get<Clock>( this.url + '/clock',
-      {observe: 'response'}).subscribe(page => {
-        observer.next(page.body);
-      },
-      error => {
-        observer.error(error);
-        console.error('Get Clock Error', error.status, error.message);
-      },
-      () => {
-        observer.complete();
-      });
-    });
-  }
+	getClock(): Observable<Clock> {
+		return new Observable((observer) => {
+			this.httpClient
+				.get<Clock>(this.url + '/clock', { observe: 'response' })
+				.subscribe(
+					(page) => {
+						observer.next(page.body);
+					},
+					(error) => {
+						observer.error(error);
+						console.error('Get Clock Error', error.status, error.message);
+					},
+					() => {
+						observer.complete();
+					}
+				);
+		});
+	}
 }

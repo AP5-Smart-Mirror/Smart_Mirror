@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-date',
-  templateUrl: './date.component.html',
-  styleUrls: ['./date.component.css']
+	selector: 'app-date',
+	templateUrl: './date.component.html',
+	styleUrls: ['./date.component.css'],
 })
-
 export class DateComponent implements OnInit {
-  date: number;
+	date: number;
 
-  constructor() { }
+	constructor() {}
 
-  ngOnInit(): void {
-    this.date = Date.now();
-    setInterval(() => this.date = Date.now(), 5000);
-  }
+	ngOnInit(): void {
+		this.date = Date.now();
+		setInterval(() => (this.date = Date.now()), 5000);
+	}
 }

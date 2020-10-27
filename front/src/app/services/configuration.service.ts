@@ -5,25 +5,28 @@ import { Widget } from '../models/widget';
 import { Configuration } from '../models/configuration';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class ConfigurationService {
-  private url: string = environment.server_base_url;
+	private url: string = environment.server_base_url;
 
-  constructor(private httpClient: HttpClient) { }
+	constructor(private httpClient: HttpClient) {}
 
-  getConfiguration(id_widget: number): Promise<Configuration> {
-    return new Promise<Configuration>((resolve, reject) => {
-      this.httpClient.get<Configuration>(this.url + '/configuration/' + id_widget)
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
-  }
+	getConfiguration(id_widget: number): Promise<Configuration> {
+		return new Promise<Configuration>((resolve, reject) => {
+			this.httpClient
+				.get<Configuration>(this.url + '/configuration/' + id_widget)
+				.toPromise()
+				.then(
+					(res) => {
+						// Success
+						resolve(res);
+					},
+					(msg) => {
+						// Error
+						reject(msg);
+					}
+				);
+		});
+	}
 }

@@ -1,20 +1,20 @@
 .content {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height:100%;
-    list-style-type:none; 
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	list-style-type: none;
 }
 .horizontal {
-    display: inline-flex;
-    justify-content: center;
+	display: inline-flex;
+	justify-content: center;
 }
 
 .spinner {
-    stroke: white;
+	stroke: white;
 }
 
 .first {
-    font-size: x-large;
-    font-weight: bold;
+	font-size: x-large;
+	font-weight: bold;
 }

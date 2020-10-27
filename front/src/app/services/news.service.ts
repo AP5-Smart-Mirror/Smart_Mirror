@@ -4,25 +4,28 @@ import { environment } from '../../environments/environment';
 import { News } from '../models/news';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class NewsService {
-  private url: string = environment.server_base_url;
+	private url: string = environment.server_base_url;
 
-  constructor(private httpClient: HttpClient) { }
+	constructor(private httpClient: HttpClient) {}
 
-  getNews(): Promise<News[]> {
-    return new Promise<News[]>((resolve, reject) => {
-      this.httpClient.get<News[]>(this.url + '/news')
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
-  }
+	getNews(): Promise<News[]> {
+		return new Promise<News[]>((resolve, reject) => {
+			this.httpClient
+				.get<News[]>(this.url + '/news')
+				.toPromise()
+				.then(
+					(res) => {
+						// Success
+						resolve(res);
+					},
+					(msg) => {
+						// Error
+						reject(msg);
+					}
+				);
+		});
+	}
 }
