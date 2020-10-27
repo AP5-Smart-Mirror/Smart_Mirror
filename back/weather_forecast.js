@@ -31,15 +31,16 @@ function jsonTreatment(json,geo){
     var newDaily = [];
 
     for (var i = 0;  i < json["daily"].length; i ++){
-        date = moment.unix(json["daily"][i]['dt']).format('dddd');
-        if(date == "samedi" || date == "dimanche"){
+        //date = moment.unix(json["daily"][i]['dt']).format('dddd');
+        //if(date == "samedi" || date == "dimanche"){
             var daily = {};
+            daily['dt'] = json["daily"][i]['dt'];
             daily['dt'] = json["daily"][i]['dt'];
             daily['temp'] = json["daily"][i]['temp']['day'];
             daily['description'] = json["daily"][i]['weather'][0]['description'],  
             daily['iconurl'] = 'http://openweathermap.org/img/wn/'+ json["daily"][i]['weather'][0]['icon'] +'.png'
             newDaily.push(daily);
-        }
+        //}
         
 
     }
