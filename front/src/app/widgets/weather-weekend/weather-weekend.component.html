@@ -3,7 +3,7 @@
     <div *ngIf="!loading" >
         <li *ngFor="let daily of filteredDaily; let isFirst = first;" >
             <div class="horizontal">
-                <p>{{ daily.dt | date:'EEEE'}} {{ daily.dt | date:'d'}} {{ daily.dt | date:'MMM' }}</p>
+                <p>{{ daily.dt | date:'EEEE d MMM' }}</p>
                 <img src="{{ daily.iconurl }}" alt="icone meteo " />
                 <p>{{ daily.temp | number:'1.0-0' }}°C</p>
             </div>  
