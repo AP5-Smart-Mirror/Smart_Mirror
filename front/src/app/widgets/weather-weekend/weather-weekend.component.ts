@@ -15,7 +15,6 @@ export class WeatherWeekendComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.filteredDaily = [];
 
     this.init();
     setInterval(() => this.init(), 600000);
@@ -31,7 +30,7 @@ export class WeatherWeekendComponent implements OnInit {
           const dateTmp = new Date(daily.dt.valueOf() * 1000).getDay();
           const dayTmp = new Date(daily.dt.valueOf() * 1000).getDate();
           const actualDay = new Date().getDate();
-          if ((dateTmp == 2 || dateTmp == 3) && dayTmp != actualDay) {
+          if ((dateTmp == 0 || dateTmp == 6) && dayTmp != actualDay) {
             daily.dt = new Date(daily.dt.valueOf() * 1000);
             this.filteredDaily.push(daily);
           }
