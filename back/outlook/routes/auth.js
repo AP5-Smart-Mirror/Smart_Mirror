@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -30,13 +33,5 @@ router.post('/callback',
   }
 );
 
-router.get('/signout',
-  function(req, res) {
-    req.session.destroy(function(err) {
-      req.logout();
-      res.redirect('/');
-    });
-  }
-);
 
 module.exports = router;

@@ -1,12 +1,14 @@
-var graph = require('./graph');
-require('dotenv').config();
-var session = require('express-session');
-var flash = require('connect-flash');
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var flash = require('connect-flash');
+require('dotenv').config();
 
 var passport = require('passport');
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -30,6 +32,7 @@ passport.deserializeUser(function(id, done) {
   done(null, users[id]);
 });
 
+// <ConfigureOAuth2Snippet>
 // Configure simple-oauth2
 const oauth2 = require('simple-oauth2').create({
   client: {
@@ -42,9 +45,11 @@ const oauth2 = require('simple-oauth2').create({
     tokenPath: process.env.OAUTH_TOKEN_ENDPOINT
   }
 });
+// </ConfigureOAuth2Snippet>
 
 // Callback function called once the sign-in is complete
 // and an access token has been obtained
+// <SignInCompleteSnippet>
 async function signInComplete(iss, sub, profile, accessToken, refreshToken, params, done) {
   if (!profile.oid) {
     return done(new Error("No OID found in user profile."));
@@ -52,7 +57,6 @@ async function signInComplete(iss, sub, profile, accessToken, refreshToken, para
 
   try{
     const user = await graph.getUserDetails(accessToken);
-
     if (user) {
       // Add properties to profile
       profile['email'] = user.mail ? user.mail : user.userPrincipalName;
@@ -60,14 +64,13 @@ async function signInComplete(iss, sub, profile, accessToken, refreshToken, para
   } catch (err) {
     return done(err);
   }
-
   // Create a simple-oauth2 token from raw tokens
   let oauthToken = oauth2.accessToken.create(params);
-
   // Save the profile and tokens in user storage
   users[profile.oid] = { profile, oauthToken };
   return done(null, users[profile.oid]);
 }
+// </SignInCompleteSnippet>
 
 // Configure OIDC strategy
 passport.use(new OIDCStrategy(
@@ -85,12 +88,15 @@ passport.use(new OIDCStrategy(
   },
   signInComplete
 ));
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var authRouter = require('./routes/auth');
+var calendarRouter = require('./routes/calendar');
+var graph = require('./graph');
+
 var app = express();
-app.use('/auth', authRouter);
+
 // Session middleware
 // NOTE: Uses default in-memory session store, which is not
 // suitable for production
@@ -119,9 +125,17 @@ app.use(function(req, res, next) {
 
   next();
 });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+var hbs = require('hbs');
+var moment = require('moment');
+// Helper to format date/time sent by Graph
+hbs.registerHelper('eventDateTime', function(dateTime){
+  return moment(dateTime).format('M/D/YY h:mm A');
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -129,9 +143,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(function(req, res, next) {
   // Set the authenticated user in the
   // template locals
@@ -140,23 +154,15 @@ app.use(function(req, res, next) {
   }
   next();
 });
+
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
+app.use('/calendar', calendarRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
 });
 
 module.exports = app;
