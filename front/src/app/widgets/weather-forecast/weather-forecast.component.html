@@ -5,7 +5,7 @@
             <div class="horizontal">
                 <p [ngClass]="{'first' : isFirst}">{{ hourly.dt | date:'HH'}}h{{ hourly.dt | date:'mm' }}</p>
                 <img src="{{ hourly.iconurl }}" alt="icone meteo " />
-                <p [ngClass]="{'first' : isFirst}">{{ hourly.temp | number:'1.0-0' }}°C </p>
+                <p [ngClass]="{'first' : isFirst}">{{ hourly.temp | number:'1.0-0' }}°C</p>
             </div>  
         </li>
     </div>

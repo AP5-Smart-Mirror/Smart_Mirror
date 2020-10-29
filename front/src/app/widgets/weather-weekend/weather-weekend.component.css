@@ -1,3 +1,4 @@
+
 .content {
     display: flex;
     justify-content: space-evenly;
@@ -14,7 +15,3 @@
     stroke: white;
 }
 
-.first {
-    font-size: x-large;
-    font-weight: bold;
-}
