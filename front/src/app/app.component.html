@@ -1,16 +1,20 @@
 <div class="content">
   <div class="welcome">
-    <h1 id="animated">Bonjour <span *ngIf="currentProfile.name !== 'default'">{{ currentProfile.name }}, <br> Vous êtes rayonnant(e) aujourd'hui.</span></h1>
+    <h1 id="animated">Bonjour <span *ngIf="currentProfile.name !== 'default'">{{ currentProfile.name }}, <br> Vous êtes
+        rayonnant(e) aujourd'hui.</span></h1>
   </div>
   <app-date *ngIf="searchWidget(currentProfile.widgets, 'date')" [ngStyle]="setPositionWidget('date')"></app-date>
-  <app-weather *ngIf="searchWidget(currentProfile.widgets, 'weather')" [ngStyle]="setPositionWidget('weather')">
-  </app-weather>
+  <app-weather-current *ngIf="searchWidget(currentProfile.widgets, 'weather-current')"
+    [ngStyle]="setPositionWidget('weather-current')">
+  </app-weather-current>
   <app-digital-clock *ngIf="searchWidget(currentProfile.widgets, 'digital-clock')"
     [ngStyle]="setPositionWidget('digital-clock')"></app-digital-clock>
   <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, 'analog-clock')"
     [ngStyle]="setPositionWidget('analog-clock')"></app-analog-clock>
   <app-news *ngIf="searchWidget(currentProfile.widgets, 'news')" [ngStyle]="setPositionWidget('news')"></app-news>
-  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
-  <app-weather-weekend *ngIf="searchWidget(currentProfile.widgets, 'weather-weekend')" [ngStyle]="setPositionWidget('weather-weekend')"></app-weather-weekend>
+  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')"
+    [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
+  <app-weather-weekend *ngIf="searchWidget(currentProfile.widgets, 'weather-weekend')"
+    [ngStyle]="setPositionWidget('weather-weekend')"></app-weather-weekend>
   <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, 'agenda')" [ngStyle]="setPositionWidget('agenda')"></app-agenda>-->
 </div>

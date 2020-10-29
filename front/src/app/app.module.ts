@@ -4,7 +4,7 @@ import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './widgets/weather/weather.component';
+import { WeatherCurrentComponent } from './widgets/weather-current/weather-current.component';
 import { DateComponent } from './widgets/date/date.component';
 import { registerLocaleData } from '@angular/common';
 import { AnalogClockComponent } from './widgets/analog-clock/analog-clock.component';
@@ -19,25 +19,23 @@ import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weeke
 registerLocaleData(localeFr);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WeatherComponent,
-    DateComponent,
-    AnalogClockComponent,
-    DigitalClockComponent,
-    NewsComponent,
-    WeatherForecastComponent,
-    WeatherWeekendComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatProgressSpinnerModule,
-  ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR' },
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		WeatherCurrentComponent,
+		DateComponent,
+		AnalogClockComponent,
+		DigitalClockComponent,
+		NewsComponent,
+		WeatherForecastComponent,
+		WeatherWeekendComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		MatProgressSpinnerModule,
+	],
+	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
