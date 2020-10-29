@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 	profiles: Array<Profile>;
 	currentProfile: Profile;
 	widgets: Array<Widget>;
-	widgetName: WidgetName;
+	widgetName = WidgetName;
 
 	htmlAnimated: HTMLElement;
 
@@ -96,11 +96,11 @@ export class AppComponent implements OnInit {
 		);
 	}
 
-	searchWidget(widget: Array<Widget>, name: string): boolean {
+	searchWidget(widget: Array<Widget>, name: WidgetName): boolean {
 		return widget.findIndex((n) => n.name === name) !== -1 ? true : false;
 	}
 
-	setPositionWidget(name: string): object {
+	setPositionWidget(name: WidgetName): object {
 		const conf = this.currentProfile.widgets.find((n) => n.name === name)
 			.config;
 		return {
