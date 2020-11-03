@@ -1,15 +1,15 @@
 .content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height:100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
 }
 
 .horizontal {
-    display: inline-flex;
-    justify-content: center;
+	display: flex;
+	align-items: center;
 }
 
 .spinner {
-    stroke: white;
+	stroke: white;
 }
