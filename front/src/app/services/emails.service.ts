@@ -1,0 +1,28 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Emails } from '../models/emails';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EmailsService {
+  private url: string = environment.server_base_url;
+
+  constructor(private httpClient: HttpClient) { }
+
+  getNews(): Promise<Emails[]> {
+    return new Promise<Emails[]>((resolve, reject) => {
+      this.httpClient.get<Emails[]>(this.url + '/emails')
+        .toPromise()
+        .then(
+          res => { // Success
+          resolve(res);
+          },
+          msg => { // Error
+          reject(msg);
+          }
+        );
+    });
+  }
+}
