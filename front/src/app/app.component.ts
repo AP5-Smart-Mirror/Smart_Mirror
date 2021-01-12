@@ -64,7 +64,11 @@ export class AppComponent implements OnInit {
 						WidgetName.AnalogClock,
 						new Configuration(null, 8, 9, 1, 2)
 					),
-					new Widget(4, WidgetName.Agenda, null),
+					new Widget(
+						4,
+						WidgetName.Agenda,
+						new Configuration(null, 9, 11, 3, 6)
+					),
 					new Widget(5, WidgetName.News, new Configuration(null, 1, 11, 6, 7)),
 					new Widget(
 						6,

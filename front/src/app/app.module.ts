@@ -25,6 +25,7 @@ registerLocaleData(localeFr);
 		AppComponent,
 		WeatherCurrentComponent,
 		DateComponent,
+		AgendaComponent,
 		AnalogClockComponent,
 		DigitalClockComponent,
 		NewsComponent,

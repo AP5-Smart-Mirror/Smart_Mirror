@@ -1,6 +1,17 @@
 export class Agenda {
-    name: string;
-    start: Date;
-    end: Date;
-    location: string;
+	id: string;
+	subject: string;
+	start: DateMail;
+	end: DateMail;
+	organizer: Organizer;
+}
+
+class DateMail {
+	dateTime: string;
+	timeZone: string;
+}
+
+class Organizer {
+	name: string;
+	address: string;
 }

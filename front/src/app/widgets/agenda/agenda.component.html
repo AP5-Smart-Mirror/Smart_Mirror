@@ -2,8 +2,9 @@
     <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
     <div *ngIf="!loading">
         <h3>Votre prochain RDV :</h3>
-        <h3>{{ agenda.name | titlecase }}</h3>
+        <h3>{{ agenda.subject | titlecase }}</h3>
         <h5>Le {{ agenda.start | date:'EEEE d LLLL yyyy' }} à {{ agenda.start | date:'HH:mm' }}</h5>
         <h5>Au {{ agenda.end | date:'EEEE d LLLL yyyy' }} à {{ agenda.end | date:'HH:mm' }}</h5>
+        <h6>De {{ agenda.organizer.name }}</h6>
     </div>
 </div>
