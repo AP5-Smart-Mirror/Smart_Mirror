@@ -36,6 +36,17 @@ module.exports = {
      // .orderby('createdDateTime DESC')
       .get();
     return events;
+  },
+
+  getEmails: async function(accessToken) {
+    console.log("TATA");
+    const client = getAuthenticatedClient(accessToken);
+    console.log("TUTU");
+    const events = await client.api('/me/mailfolders/inbox/messages')
+      .get();
+    console.log("TETE");
+    console.log(events);
+    return events;
   }
 
   

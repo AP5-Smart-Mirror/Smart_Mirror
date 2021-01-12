@@ -87,6 +87,7 @@ var indexRouter = require('./outlook/routes/index');
 var usersRouter = require('./outlook/routes/users');
 var authRouter = require('./outlook/routes/auth');
 var calendarRouter = require('./outlook/routes/calendar');
+var emailRouter = require('./outlook/routes/email');
 var graph = require('./outlook/graph');
 
 app.use(session({
@@ -294,6 +295,8 @@ app.use('/outlook/auth', authRouter);
  */
 app.use('/outlook/calendar', calendarRouter);
 app.use('/outlook/users', usersRouter);
+
+app.use('/outlook/messages', emailRouter);
 
 app.get('/api/google_calendar', function(req,res){
   google_calendar.getCalendar().then(json => (res.send(json)));
