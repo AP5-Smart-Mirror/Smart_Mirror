@@ -14,6 +14,7 @@ import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.com
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NewsComponent } from './widgets/news/news.component';
 import { WeatherForecastComponent } from './widgets/weather-forecast/weather-forecast.component';
+import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
 
 registerLocaleData(localeFr);
@@ -28,6 +29,7 @@ registerLocaleData(localeFr);
 		NewsComponent,
 		WeatherForecastComponent,
 		WeatherWeekendComponent,
+    AlmanacComponent,
 	],
 	imports: [
 		BrowserModule,
