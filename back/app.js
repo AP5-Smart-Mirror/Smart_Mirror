@@ -141,6 +141,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/outlook', indexRouter);
+app.use('/outlook/auth', authRouter);
+app.use('/outlook/calendar', calendarRouter);
+app.use('/outlook/users', usersRouter);
+
+
+
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
     swaggerDefinition: {
@@ -253,48 +260,6 @@ app.get('/api/news', function(req,res){
   news.getNews().then(json => (res.send(json)));
 });
 
-/**
- * @swagger
- * /outlook:
- *  get:
- *    description: Use to connect on an outlook account
- *    responses:
- *      '200':
- *        description: a simple link is displayed to redirect on a microsoft connection page
- *      '400':
- *        description: "Invalid status value"
- */
-app.use('/outlook', indexRouter);
-
-/**
- * @swagger
- * /outlook/auth:
- *  get:
- *    description: Use to connect on an outlook account
- *    responses:
- *      '200':
- *        description: allow to avoid the step with the link and then redirect on /outlook
- *      '400':
- *        description: "Invalid status value"
- */
-app.use('/outlook/auth', authRouter);
-
-/**
- * @swagger
- * /outlook/calendar:
- *  get:
- *    description: Use to get the events on an outlook account
- *    responses:
- *      '200':
- *        description: a json is returned
- *        schema:
- *         $ref: '#/definitions/Outlook_calendar'
- *      '400':
- *        description: "Invalid status value"
- */
-app.use('/outlook/calendar', calendarRouter);
-app.use('/outlook/users', usersRouter);
-
 app.get('/api/google_calendar', function(req,res){
   google_calendar.getCalendar().then(json => (res.send(json)));
 });
@@ -399,29 +364,4 @@ app.listen(port, function(){
  *   NewsItem2:
  *    source: "L'equipe"
  *    title: "Équipe de France : Olivier Giroud titulaire contre l'Ukraine - Foot - Bleus - L'Équipe.fr"
- *   Outlook_calendar:
- *    type: array
- *    items:
- *      type: array
- *      items:
- *        type: object
- *        properties:
- *          "@odata.etag": 
- *              type: string
- *              example : "W/\"WlmYJULeyEiDlUMJkEu+vAAAA63umQ==\""
- *          "id": 
- *            type: string
- *            example: "AQMkADAwATY3ZmYAZS0xMGNiLWIxNjAtMDACLTAwCgBGAAADK92D3t4AbLZFmxY1izhjHhsHAFpZmCVC3shIg5VDCZBLvrwAAAIBDQAAAFpZmCVC3shIg5VDCZBLvrwAAAADrzeYAAAA"
- *          "subject": 
- *             type: string
- *             example: "coucou le mirroir"
- *          "start": 
- *             type: object
- *             example: {"dateTime": "2020-11-03T16:00:00.0000000","timeZone": "UTC"}
- *          "end":  
- *             type: object
- *             example: {"dateTime": "2020-11-03T16:30:00.0000000","timeZone": "UTC"}
- *          "organizer":  
- *             type: object
- *             example: {"emailAddress": {"name": "Adrien La Rafale","address": "Mirroir-Connecte@hotmail.com"}}
  */
