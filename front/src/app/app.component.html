@@ -1,16 +1,25 @@
 <div class="content">
   <div class="welcome">
-    <h1 id="animated">Bonjour <span *ngIf="currentProfile.name !== 'default'">{{ currentProfile.name }}, <br> Vous êtes rayonnant(e) aujourd'hui.</span></h1>
+    <h1 id="animated">Bonjour <span *ngIf="currentProfile.name !== 'default'">{{ currentProfile.name }}, <br> Vous êtes
+        rayonnant(e) aujourd'hui.</span></h1>
   </div>
-  <app-date *ngIf="searchWidget(currentProfile.widgets, 'date')" [ngStyle]="setPositionWidget('date')"></app-date>
-  <app-weather *ngIf="searchWidget(currentProfile.widgets, 'weather')" [ngStyle]="setPositionWidget('weather')">
-  </app-weather>
-  <app-digital-clock *ngIf="searchWidget(currentProfile.widgets, 'digital-clock')"
-    [ngStyle]="setPositionWidget('digital-clock')"></app-digital-clock>
-  <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, 'analog-clock')"
-    [ngStyle]="setPositionWidget('analog-clock')"></app-analog-clock>
-  <app-news *ngIf="searchWidget(currentProfile.widgets, 'news')" [ngStyle]="setPositionWidget('news')"></app-news>
-  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, 'weather-forecast')" [ngStyle]="setPositionWidget('weather-forecast')"></app-weather-forecast>
-  <app-almanac *ngIf="searchWidget(currentProfile.widgets, 'almanac')" [ngStyle]="setPositionWidget('almanac')"></app-almanac>
-  <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, 'agenda')" [ngStyle]="setPositionWidget('agenda')"></app-agenda>-->
+  <app-date *ngIf="searchWidget(currentProfile.widgets, widgetName.Date)"
+    [ngStyle]="setPositionWidget(widgetName.Date)">
+  </app-date>
+  <app-weather-current *ngIf="searchWidget(currentProfile.widgets, widgetName.WeatherCurrent)"
+    [ngStyle]="setPositionWidget(widgetName.WeatherCurrent)">
+  </app-weather-current>
+  <app-digital-clock *ngIf="searchWidget(currentProfile.widgets, widgetName.DigitalClock)"
+    [ngStyle]="setPositionWidget(widgetName.DigitalClock)"></app-digital-clock>
+  <app-analog-clock *ngIf="searchWidget(currentProfile.widgets, widgetName.AnalogClock)"
+    [ngStyle]="setPositionWidget(widgetName.AnalogClock)"></app-analog-clock>
+  <app-news *ngIf="searchWidget(currentProfile.widgets, widgetName.News)"
+    [ngStyle]="setPositionWidget(widgetName.News)"></app-news>
+  <app-weather-forecast *ngIf="searchWidget(currentProfile.widgets, widgetName.WeatherForecast)"
+    [ngStyle]="setPositionWidget(widgetName.WeatherForecast)"></app-weather-forecast>
+  <app-weather-weekend *ngIf="searchWidget(currentProfile.widgets, widgetName.WeatherWeekend)"
+    [ngStyle]="setPositionWidget(widgetName.WeatherWeekend)"></app-weather-weekend>
+  <app-almanac *ngIf="searchWidget(currentProfile.widgets, 'almanac')" 
+    [ngStyle]="setPositionWidget('almanac')"></app-almanac>
+  <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, widgetName.Agenda)" [ngStyle]="setPositionWidget(widgetName.Agenda)"></app-agenda>-->
 </div>

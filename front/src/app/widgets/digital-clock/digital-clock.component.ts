@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Clock } from 'src/app/models/clock';
-import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-digital-clock',
@@ -10,7 +8,7 @@ import { ClockService } from 'src/app/services/clock.service';
 export class DigitalClockComponent implements OnInit {
   date: number;
 
-  constructor(private clockService: ClockService) {
+  constructor() {
   }
 
   ngOnInit(): void {

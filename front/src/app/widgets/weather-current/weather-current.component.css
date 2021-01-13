@@ -1,9 +1,8 @@
 .content {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 	height: 100%;
-	list-style-type: none;
 }
 
 .horizontal {
@@ -13,9 +12,4 @@
 
 .spinner {
 	stroke: white;
-}
-
-.first {
-	font-size: xx-large;
-	font-weight: bold;
 }

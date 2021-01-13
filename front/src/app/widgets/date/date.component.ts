@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Clock } from '../../models/clock';
-import { map } from 'rxjs/operators';
-import { ClockService } from '../../services/clock.service';
 
 @Component({
   selector: 'app-date',

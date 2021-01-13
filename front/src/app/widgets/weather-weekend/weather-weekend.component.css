@@ -4,8 +4,8 @@
 	align-items: center;
 	height: 100%;
 	list-style-type: none;
+	font-size: large;
 }
-
 .horizontal {
 	display: flex;
 	align-items: center;
@@ -13,9 +13,4 @@
 
 .spinner {
 	stroke: white;
-}
-
-.first {
-	font-size: xx-large;
-	font-weight: bold;
 }
