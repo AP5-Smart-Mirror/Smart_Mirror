@@ -8,4 +8,5 @@ export enum WidgetName {
 	WeatherWeekend = 'weather-weekend',
 	Agenda = 'agenda',
 	Mail = 'mail',
+	Almanac = 'almanac',
 }

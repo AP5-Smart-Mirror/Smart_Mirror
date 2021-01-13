@@ -75,18 +75,18 @@ export class AppComponent implements OnInit {
 			)
 		);
 		this.profiles.push(
-      new Profile(
-        2,
-        "Stephan",
-        new Array<Widget>(
-          new Widget(1, "weather", new Configuration(null, 1, 3, 1, 2)),
-          new Widget(2, "date", new Configuration(null, 4, 7, 1, 2)),
-          new Widget(4, "digital-clock", new Configuration(null, 10, 11, 1, 2)),
-          new Widget(5, "news", new Configuration(null, 3, 9, 6, 7)),
-          new Widget(6, "almanac", new Configuration(null, 1, 3, 2, 3))
-        )
-      )
-    );
+			new Profile(
+				2,
+				'Stephan',
+				new Array<Widget>(
+					new Widget(1, WidgetName.WeatherCurrent, new Configuration(null, 1, 3, 1, 2)),
+					new Widget(2, WidgetName.Date, new Configuration(null, 4, 7, 1, 2)),
+					new Widget(4, WidgetName.DigitalClock, new Configuration(null, 10, 11, 1, 2)),
+					new Widget(5, WidgetName.News, new Configuration(null, 3, 9, 6, 7)),
+					new Widget(6, WidgetName.Almanac, new Configuration(null, 1, 3, 2, 3))
+				)
+			)
+		);
 	}
 
 	searchWidget(widget: Array<Widget>, name: WidgetName): boolean {

@@ -19,7 +19,7 @@
     [ngStyle]="setPositionWidget(widgetName.WeatherForecast)"></app-weather-forecast>
   <app-weather-weekend *ngIf="searchWidget(currentProfile.widgets, widgetName.WeatherWeekend)"
     [ngStyle]="setPositionWidget(widgetName.WeatherWeekend)"></app-weather-weekend>
-  <app-almanac *ngIf="searchWidget(currentProfile.widgets, 'almanac')" 
-    [ngStyle]="setPositionWidget('almanac')"></app-almanac>
+  <app-almanac *ngIf="searchWidget(currentProfile.widgets, widgetName.Almanac)" 
+    [ngStyle]="setPositionWidget(widgetName.Almanac)"></app-almanac>
   <!--<app-agenda *ngIf="searchWidget(currentProfile.widgets, widgetName.Agenda)" [ngStyle]="setPositionWidget(widgetName.Agenda)"></app-agenda>-->
 </div>
