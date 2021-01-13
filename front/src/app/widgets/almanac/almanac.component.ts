@@ -25,7 +25,7 @@ export class AlmanacComponent implements OnInit {
     this.weatherService
       .getWeatherForecast()
       .then((weatherForecast) => {
-        console.log(weatherForecast)
+        console.log(weatherForecast);
         this.loading = true;
         this.sunrise = new Date(weatherForecast.current.sunrise.valueOf() * 1000);
         this.sunset = new Date(weatherForecast.current.sunset.valueOf() * 1000);

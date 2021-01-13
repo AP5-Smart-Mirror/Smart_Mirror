@@ -11,9 +11,9 @@ export class WidgetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWidgets(id_profile: number): Promise<Widget[]> {
+  getWidgets(idProfile: number): Promise<Widget[]> {
     return new Promise<Widget[]>((resolve, reject) => {
-      this.httpClient.get<Widget[]>(this.url + '/widget/' + id_profile)
+      this.httpClient.get<Widget[]>(this.url + '/widget/' + idProfile)
         .toPromise()
         .then(
           res => { // Success
