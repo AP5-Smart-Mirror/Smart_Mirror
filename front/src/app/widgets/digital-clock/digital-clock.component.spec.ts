@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DigitalClockComponent } from './digital-clock.component';
 
@@ -6,7 +6,7 @@ describe('DigitalClockComponent', () => {
   let component: DigitalClockComponent;
   let fixture: ComponentFixture<DigitalClockComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DigitalClockComponent ]
     })
