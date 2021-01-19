@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export enum WidgetName {
 	date = 'date',
 	weatherCurrent = 'weather-current',

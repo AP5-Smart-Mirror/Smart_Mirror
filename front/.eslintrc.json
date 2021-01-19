@@ -42,12 +42,6 @@
           {
             "ignoreParameters": true
           }
-        ],
-        "@typescript-eslint/no-shadow": [
-          "off",
-          {
-            "ignoreParameters": true
-          }
         ]
       }
     },
