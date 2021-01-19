@@ -294,9 +294,22 @@ app.use('/outlook/auth', authRouter);
  *        description: "Invalid status value"
  */
 app.use('/outlook/calendar', calendarRouter);
-app.use('/outlook/users', usersRouter);
 
-app.use('/outlook/messages', emailRouter);
+/**
+ * @swagger
+ * /outlook/email:
+ *  get:
+ *    description: Use to get the events on an outlook account
+ *    responses:
+ *      '200':
+ *        description: a json is returned
+ *        schema:
+ *         $ref: '#/definitions/Outlook_email'
+ *      '400':
+ *        description: "Invalid status value"
+ */
+app.use('/outlook/email', emailRouter);
+app.use('/outlook/users', usersRouter);
 
 app.get('/api/google_calendar', function(req,res){
   google_calendar.getCalendar().then(json => (res.send(json)));

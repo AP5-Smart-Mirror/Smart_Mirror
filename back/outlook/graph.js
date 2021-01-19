@@ -14,19 +14,6 @@ module.exports = {
     return user;
   },
 
-  // <GetEventsSnippet>
-  getEvents: async function(accessToken,calendarsid) {
-    const client = getAuthenticatedClient(accessToken);
-    var startDate = moment().format("YYYY-MM-DDTHH:MM:SS");
-    var endDate = moment().add(7,'days').format("YYYY-MM-DDTHH:MM:SS");
-    const events = await client
-      .api(`/me/calendars/${calendarsid}/calendarview?startDateTime=${startDate}&endDateTime=${endDate}`)
-      .select('subject,organizer,start,end')
-     // .orderby('createdDateTime DESC')
-      .get();
-
-    return events;
-  },
   getCalendars: async function(accessToken) {
     const client = getAuthenticatedClient(accessToken);
  
@@ -37,17 +24,30 @@ module.exports = {
       .get();
     return events;
   },
+    // <GetEventsSnippet>
+    getEvents: async function(accessToken,calendarsid) {
+      const client = getAuthenticatedClient(accessToken);
+      var startDate = moment().format("YYYY-MM-DDTHH:MM:SS");
+      var endDate = moment().add(7,'days').format("YYYY-MM-DDTHH:MM:SS");
+      const events = await client
+        .api(`/me/calendars/${calendarsid}/calendarview?startDateTime=${startDate}&endDateTime=${endDate}`)
+        .select('subject,organizer,start,end')
+       // .orderby('createdDateTime DESC')
+        .get();
+  
+      return events;
+    },
 
   getEmails: async function(accessToken) {
-    console.log("TATA");
     const client = getAuthenticatedClient(accessToken);
-    console.log("TUTU");
-    const events = await client.api('/me/mailfolders/inbox/messages')
-      .get();
-    console.log("TETE");
-    console.log(events);
-    return events;
-  }
+    const messages = await client
+        .api('/me/mailfolders/inbox/messages')
+        .top(10)
+        .select('subject,from,receivedDateTime,isRead')
+        .orderby('receivedDateTime DESC')
+        .get();
+    return messages;
+  },
 
   
   // </GetEventsSnippet>

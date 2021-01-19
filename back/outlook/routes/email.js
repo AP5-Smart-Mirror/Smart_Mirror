@@ -5,15 +5,15 @@ var graph = require('../graph.js');
 
 /* GET /messages */
 // <GetRouteSnippet>
+
 router.get('/',
   async function(req, res) {
-      console.log("TOTO");
     if (!req.isAuthenticated()) {
       // Redirect unauthenticated requests to home page
       res.redirect('/')
     } else {
       let params = {
-        active: { calendar: true }
+        active: { inbox : true } 
       };
       // Get the access token
       var accessToken;
@@ -25,45 +25,27 @@ router.get('/',
           debug: JSON.stringify(err)
         });
       }
-
+     
       if (accessToken && accessToken.length > 0) {
-          
+        
           try {
             var emailList = await graph.getEmails(accessToken);
-            console.log("TITI");
-            console.log(emailList);
+            var messages = new Array();
+            messages.push(emailList.value);
+            params.emailList = messages.value;
+
           } catch (err) {
             req.flash('error_msg', {
-                message: 'Could not fetch events',
+                message: 'Could not fetch messages',
                 debug: JSON.stringify(err)
               });
           }
-        /*try {
-          // Get the events
-          var calendarList = await graph.getCalendars(accessToken)
-         var events = new Array();
-         for (const calendar of calendarList.value)
-         {
-          let eventValue;
-          eventValue = await graph.getEvents(accessToken,calendar.id);
-          events.push(eventValue.value);
-         }
-          params.events = events.value;
-         
-        } catch (err) {
-          req.flash('error_msg', {
-            message: 'Could not fetch events',
-            debug: JSON.stringify(err)
-          });
-        }*/
       } else {
         req.flash('error_msg', 'Could not get an access token');
       }
-      //res.send(events)
-      //res.render('calendar', params);
+      res.send(messages);
     }
   }
 );
-// </GetRouteSnippet>
 
 module.exports = router;

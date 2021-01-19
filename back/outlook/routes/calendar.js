@@ -40,6 +40,7 @@ router.get('/',
           events.push(eventValue.value);
          }
           params.events = events.value;
+          console.log(test);
          
         } catch (err) {
           req.flash('error_msg', {

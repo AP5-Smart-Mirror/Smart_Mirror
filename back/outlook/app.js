@@ -93,8 +93,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 var calendarRouter = require('./routes/calendar');
+var emailRouter = require('./routes/email');
 var graph = require('./graph');
-
 var app = express();
 
 // Session middleware
@@ -158,6 +158,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/calendar', calendarRouter);
+app.use('/email', emailRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
