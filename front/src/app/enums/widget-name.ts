@@ -1,11 +1,14 @@
+/* eslint-disable */
+
 export enum WidgetName {
-	Date = 'date',
-	WeatherCurrent = 'weather-current',
-	DigitalClock = 'digital-clock',
-	AnalogClock = 'analog-clock',
-	News = 'news',
-	WeatherForecast = 'weather-forecast',
-	WeatherWeekend = 'weather-weekend',
-	Agenda = 'agenda',
-	Mail = 'mail',
+	date = 'date',
+	weatherCurrent = 'weather-current',
+	digitalClock = 'digital-clock',
+	analogClock = 'analog-clock',
+	news = 'news',
+	weatherForecast = 'weather-forecast',
+	weatherWeekend = 'weather-weekend',
+	agenda = 'agenda',
+	mail = 'mail',
+	almanac = 'almanac',
 }

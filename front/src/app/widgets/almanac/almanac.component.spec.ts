@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { AnalogClockComponent } from './analog-clock.component';
+import { AlmanacComponent } from './almanac.component';
 
-describe('AnalogClockComponent', () => {
-  let component: AnalogClockComponent;
-  let fixture: ComponentFixture<AnalogClockComponent>;
+describe('AlmanacComponent', () => {
+  let component: AlmanacComponent;
+  let fixture: ComponentFixture<AlmanacComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnalogClockComponent ]
+      declarations: [ AlmanacComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnalogClockComponent);
+    fixture = TestBed.createComponent(AlmanacComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
