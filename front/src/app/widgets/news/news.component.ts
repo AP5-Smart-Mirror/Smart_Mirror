@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit {
       this.currentNews = this.news[0];
     }
   }
-  
+
   init(): void {
     this.news = [];
     this.newsService.getNews().then(news => {

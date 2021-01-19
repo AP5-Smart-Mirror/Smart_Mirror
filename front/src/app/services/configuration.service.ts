@@ -12,9 +12,9 @@ export class ConfigurationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getConfiguration(id_widget: number): Promise<Configuration> {
+  getConfiguration(idWidget: number): Promise<Configuration> {
     return new Promise<Configuration>((resolve, reject) => {
-      this.httpClient.get<Configuration>(this.url + '/configuration/' + id_widget)
+      this.httpClient.get<Configuration>(this.url + '/configuration/' + idWidget)
         .toPromise()
         .then(
           res => { // Success
