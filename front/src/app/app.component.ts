@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
 						WidgetName.analogClock,
 						new Configuration(null, 8, 9, 1, 2)
 					),
-					new Widget(4, WidgetName.agenda, null),
+					new Widget(4, WidgetName.agenda, new Configuration(null, 9, 11, 4, 7)),
 					new Widget(5, WidgetName.news, new Configuration(null, 1, 11, 6, 7)),
 					new Widget(
 						6,
