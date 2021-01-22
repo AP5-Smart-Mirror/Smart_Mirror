@@ -38,13 +38,24 @@ module.exports = {
       return events;
     },
 
-  getEmails: async function(accessToken) {
+  getMessages : async function(accessToken){
+    const client = getAuthenticatedClient(accessToken);
+ 
+    const messages = await client
+      .api(`/me/mailFolders`)
+      .select('id')
+     // .orderby('createdDateTime DESC')
+      .get();
+    return messages;
+  },
+
+  getEmails: async function(accessToken,emailsid) {
     const client = getAuthenticatedClient(accessToken);
     const messages = await client
-        .api('/me/mailfolders/inbox/messages')
-        .top(10)
+        .api(`/me/mailFolders/${emailsid}/messages`)
+        //.top(10)
         .select('subject,from,receivedDateTime,isRead')
-        .orderby('receivedDateTime DESC')
+        //.orderby('receivedDateTime DESC')
         .get();
     return messages;
   },

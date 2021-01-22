@@ -7,7 +7,7 @@ var router = express.Router();
 
 /* GET auth callback. */
 router.get('/signin',
-  function  (req, res, next) {
+  function  (req, res) {
     passport.authenticate('azuread-openidconnect',
       {
         response: res,
@@ -16,12 +16,12 @@ router.get('/signin',
         failureFlash: true,
         successRedirect: '/outlook'
       }
-    )(req,res,next);
+    )(req,res);
   }
 );
 
 router.post('/callback',
-  function(req, res, next) {
+  function(req, res) {
     passport.authenticate('azuread-openidconnect',
       {
         response: res,
@@ -29,7 +29,7 @@ router.post('/callback',
         failureFlash: true,
         successRedirect: '/outlook'
       }
-    )(req,res,next);
+    )(req,res);
   }
 );
 

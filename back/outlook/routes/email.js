@@ -8,7 +8,9 @@ var graph = require('../graph.js');
 
 router.get('/',
   async function(req, res) {
+    console.log("test")
     if (!req.isAuthenticated()) {
+      console.log("tata")
       // Redirect unauthenticated requests to home page
       res.redirect('/')
     } else {
@@ -25,13 +27,21 @@ router.get('/',
           debug: JSON.stringify(err)
         });
       }
-     
+      
       if (accessToken && accessToken.length > 0) {
-        
+        //ssconsole.log(TATO);
           try {
-            var emailList = await graph.getEmails(accessToken);
+            console.log("TATA");
+            var emailList = await graph.getMessages(accessToken);
             var messages = new Array();
-            messages.push(emailList.value);
+            for (const email of emailList.value)
+              {
+              let eventValue;
+              eventValue = await graph.getEmails(accessToken,email.id);
+              console.log(email.id);
+              messages.push(emailList.value);
+               }
+            
             params.emailList = messages.value;
 
           } catch (err) {
