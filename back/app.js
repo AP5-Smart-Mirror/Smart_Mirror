@@ -19,7 +19,7 @@ require('dotenv').config();
 var passport = require('passport');
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
- 
+
 var app = express();
 var users = {};
 var port = 3000;
@@ -157,10 +157,10 @@ const swaggerOptions = {
     // ['.routes/*.js']
     apis: ["app.js"]
   };
-  
+
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
- 
+
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -298,10 +298,26 @@ app.use('/outlook/users', usersRouter);
 app.get('/api/google_calendar', function(req,res){
   google_calendar.getCalendar().then(json => (res.send(json)));
 });
- 
+
 app.listen(port, function(){
   console.log('The API is listening on port ' + port);
 });
+
+
+
+/**
+ * @swagger
+ * /api/gmail:
+ *  get:
+ *    description: Use to get emails from Gmail account
+ *    responses:
+ *      '200':
+ *        description: a json is returned
+ *        schema:
+ *         $ref: '#/definitions/Gmail'
+ *      '400':
+ *        description: "Invalid status value"
+ */
 
 
 /**
@@ -353,17 +369,17 @@ app.listen(port, function(){
  *     current:
  *       temp:
  *        type: double
- *       sunrise: 
+ *       sunrise:
  *        type: integer
  *       sunset:
  *        type: integer
  *       example: {"temp":14.59,"sunrise": 1603347747,"sunset": 1603384896,"description":"légère pluie","iconurl":"http://openweathermap.org/img/wn/10d.png"}
  *     hourly:
- *      example: 
+ *      example:
  *       $ref: '#/definitions/ArrayOfHourly'
  *     daily:
  *      example:
- *       $ref: '#/definitions/ArrayOfDaily' 
+ *       $ref: '#/definitions/ArrayOfDaily'
  *   ArrayOfHourly:
  *    id:
  *      $ref: '#/definitions/Hourly'
@@ -380,11 +396,26 @@ app.listen(port, function(){
  *    temp: 14.46
  *    description: "légère pluie"
  *    iconurl: "http://openweathermap.org/img/wn/10d.png"
+ *   Gmail:
+ *    type: object
+ *    properties:
+ *     sender:
+ *      type: string
+ *      example: "francoishollande@gmail.com"
+ *     object:
+ *      type: string
+ *      example: "Wesh alors"
+ *     sendingTime:
+ *      type: string
+ *      example: "20/02/1998 - 23h13"
+ *     message:
+ *      type: string
+ *      example: "Bonjour, cordialement wesh ahah"
  *   News:
  *    type: object
  *    properties:
  *     news:
- *      example: 
+ *      example:
  *       $ref: '#/definitions/ArrayOfNews'
  *   ArrayOfNews:
  *    0:
@@ -406,22 +437,22 @@ app.listen(port, function(){
  *      items:
  *        type: object
  *        properties:
- *          "@odata.etag": 
+ *          "@odata.etag":
  *              type: string
  *              example : "W/\"WlmYJULeyEiDlUMJkEu+vAAAA63umQ==\""
- *          "id": 
+ *          "id":
  *            type: string
  *            example: "AQMkADAwATY3ZmYAZS0xMGNiLWIxNjAtMDACLTAwCgBGAAADK92D3t4AbLZFmxY1izhjHhsHAFpZmCVC3shIg5VDCZBLvrwAAAIBDQAAAFpZmCVC3shIg5VDCZBLvrwAAAADrzeYAAAA"
- *          "subject": 
+ *          "subject":
  *             type: string
  *             example: "coucou le mirroir"
- *          "start": 
+ *          "start":
  *             type: object
  *             example: {"dateTime": "2020-11-03T16:00:00.0000000","timeZone": "UTC"}
- *          "end":  
+ *          "end":
  *             type: object
  *             example: {"dateTime": "2020-11-03T16:30:00.0000000","timeZone": "UTC"}
- *          "organizer":  
+ *          "organizer":
  *             type: object
  *             example: {"emailAddress": {"name": "Adrien La Rafale","address": "Mirroir-Connecte@hotmail.com"}}
  */
