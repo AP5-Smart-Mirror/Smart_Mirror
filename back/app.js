@@ -278,6 +278,14 @@ app.use('/outlook', indexRouter);
  *        description: "Invalid status value"
  */
 app.use('/outlook/auth', authRouter);
+app.use('/api/outlook_calendar', function(req,res){
+  if (!req.isAuthenticated()) {
+    // Redirect unauthenticated requests to home page
+    res.redirect('/outlook/auth/signin')
+  } else {
+    res.redirect('/outlook/calendar');
+  }
+});
 
 /**
  * @swagger
