@@ -21,7 +21,7 @@ export class AgendaComponent implements OnInit {
 	}
 
 	init(): void {
-		this.agendaService
+		/*this.agendaService
 			.getAuth()
 			.then(() => {
 				console.log('auth');
@@ -39,5 +39,24 @@ export class AgendaComponent implements OnInit {
 				this.agenda.end = agenda.end;
 			})
 			.then(() => (this.loading = false));
+			*/
+
+		// Données en dur à supprimer
+		this.agenda.id = '1';
+		this.agenda.subject = 'Sujet de test';
+		this.agenda.start = {
+			dateTime: Date.now(),
+			timeZone: "FR-fr"
+		}
+		this.agenda.end = {
+			dateTime: Date.now(),
+			timeZone: "FR-fr"
+		}
+		this.agenda.organizer = {
+			name: "Philippe",
+			address: "philippe.poutou@gmail.com"
+		}
+
+		this.loading = false;
 	}
 }

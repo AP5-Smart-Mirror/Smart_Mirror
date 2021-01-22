@@ -7,7 +7,7 @@ import { Agenda } from '../models/agenda';
 	providedIn: 'root',
 })
 export class AgendaService {
-	private url: string = environment.server_base_url;
+	private url: string = environment.serverBaseUrl;
 
 	constructor(private httpClient: HttpClient) {}
 

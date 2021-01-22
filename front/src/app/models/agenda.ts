@@ -7,7 +7,7 @@ export class Agenda {
 }
 
 class DateMail {
-	dateTime: string;
+	dateTime: number;
 	timeZone: string;
 }
 
