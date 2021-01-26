@@ -1,4 +1,3 @@
-var fetch = require('node-fetch');
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -14,10 +13,10 @@ const TOKEN_PATH = 'token.json';
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Gmail API.
-  authorize(JSON.parse(content), listLabels);
+  authorize(JSON.parse(content), listUnreadMails);
 }); */
 
-let messages_list = {};
+let messages_list = [];
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -26,6 +25,7 @@ let messages_list = {};
  * @param {function} callback The callback to call with the authorized client.
  */
 async function authorize(credentials, callback) {
+  messages_list = [];
   const {client_secret, client_id, redirect_uris} = credentials.web;
   const oAuth2Client = await new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);
@@ -74,26 +74,24 @@ async function getNewToken(oAuth2Client, callback) {
  *
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-async function listLabels(auth) {
+async function listUnreadMails(auth) {
   const gmail = google.gmail({version: 'v1', auth});
   await gmail.users.messages.list({
     userId: 'me',
-  }, (err, res) => {
+    labelIds: [
+      "UNREAD",
+      "INBOX",
+      "CATEGORY_PERSONAL"
+    ],
+    "maxResult" : 5
+  }, async (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const messages = res.data.messages;
     if (messages.length) {
-      console.log('Labels:');
-      //console.log(messages);
-
-
-      /*messages.forEach((message) => {
-        console.log(`- ${message.name}`);
-      });*/
-
-      
-
-      messages.forEach((message) => {
-        console.log(jsonTreatment(getMailProm('me', message.id)));
+      let cpt = 0;
+      messages.forEach(async (message) => {
+        await getMailProm(auth, message.id);
+        cpt += 1;
       });
     } else {
       console.log('No messages found.');
@@ -101,61 +99,76 @@ async function listLabels(auth) {
   });
 }
 
-function getMailProm(userId, id){
-  const url = `https://gmail.googleapis.com/gmail/v1/users/${userId}/messages/${id}`;
-  console.log(id);
-  return new Promise((success, failure) => {
-    fetch(url, 
-      {
-        snippet : "message",
-        payload : {
-          headers : [
-            {
-              "name" : "From"
-            },
-            {
-              "name" : "Subject"
-            },
-            {
-              "name" : "Date"
-            }
-          ]
+async function listStarredMails(auth) {
+  const gmail = google.gmail({version: 'v1', auth});
+  await gmail.users.messages.list({
+    userId: 'me',
+    labelIds: [
+      "STARRED"
+    ],
+    "maxResult" : 5
+  }, async (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const messages = res.data.messages;
+    if (messages.length) {
+      let cpt = 0;
+      messages.forEach(async (message) => {
+        await getMailProm(auth, message.id);
+        cpt += 1;
+      });
+    } else {
+      console.log('No messages found.');
+    }
+  });
+}
+
+async function getMailProm(auth, id){
+  var newMessage = {};
+  const gmail = google.gmail({version: 'v1', auth});
+  await gmail.users.messages.get({
+    "userId": "me",
+    "id": id,
+  }, (err, res) => {
+  if (err) return console.log('The API returned an error: ' + err);
+  const message = res.data.payload.headers;
+  if (res.data.labelIds.includes('UNREAD')){
+    newMessage["unread"] = "true";
+  } else {
+    newMessage["unread"] = "false";
+  }
+  if (res.data.labelIds.includes('STARRED')){
+    newMessage["starred"] = "true";
+  } else {
+    newMessage["starred"] = "false";
+  }
+  //newMessage["labels"] = res.data.labelIds;
+  newMessage["message"] = res.data.snippet;
+      message.forEach(async header => {
+        switch (header.name){
+          case 'From' : 
+            newMessage["sender"] = header.value;
+          break;
+          case 'Date' :
+            newMessage["date"] = header.value;
+          break;
+          case 'Subject' :
+            newMessage["object"] = header.value;
+          break;
         }
       })
-      .then(response => {
-        success(response.json());
-      })
-      .catch(err => console.error(err));
+      messages_list.push(newMessage);
+      
+      
   })
 }
-
-function jsonTreatment(json){
-  var messages = {};
-  console.log(json);
-  for (var i = 0; i < json.length; i++){
-    var message = {};
-    /*message["snippet"] = json[i].snippet;
-    message["date"] = json[i].internalDate;
-    message["message"] = json[i].raw;
-    messages.push(message);*/
-
-    message["expeditor"] = json[i].From;
-    message["subject"] = json[i].Subject
-    message["sentDate"] = json[i].Date;
-    message["message"] = json[i].Message;
-    messages.push(message);
-  }
-
-  return messages;
-}
-
 
 
 async function getMail(){
   await fs.readFile('credentials.json', async (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Gmail API.
-    await authorize(JSON.parse(content), await listLabels);
+    await authorize(JSON.parse(content), await listUnreadMails);
+    await authorize(JSON.parse(content), await listStarredMails);
   });
   console.log(messages_list);
   return messages_list;
