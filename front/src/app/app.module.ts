@@ -17,6 +17,9 @@ import { NewsComponent } from './widgets/news/news.component';
 import { WeatherForecastComponent } from './widgets/weather-forecast/weather-forecast.component';
 import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
+import { RouterModule } from '@angular/router';
+import { MirrorComponent } from './mirror/mirror.component';
+import { WebsiteComponent } from './website/website.component';
 
 registerLocaleData(localeFr);
 
@@ -32,12 +35,19 @@ registerLocaleData(localeFr);
 		WeatherForecastComponent,
 		WeatherWeekendComponent,
     	AlmanacComponent,
+    	MirrorComponent,
+    	WebsiteComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		MatProgressSpinnerModule,
+		RouterModule.forRoot([
+			{path: 'mirror', component: MirrorComponent},
+			{path: 'welcome', component: WebsiteComponent},
+			{path: '', redirectTo: 'mirror', pathMatch: 'full'}
+		  ]),
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],
