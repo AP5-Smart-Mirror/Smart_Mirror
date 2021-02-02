@@ -1,8 +1,27 @@
-<mat-form-field class="osef">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
+<mat-form-field class="authentication-form">
+    <mat-label>Username</mat-label>
+    <input matInput type="text" [formControl]="username">
+    <mat-error *ngIf="username.hasError('required')">
+        Please enter your username.
+    </mat-error>
+    <mat-error *ngIf="username.hasError('minlength')">
+        Your username must be greater than 4 characters.
+    </mat-error>
+    <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username.setValue('')">
+        <mat-icon>close</mat-icon>
     </button>
-  </mat-form-field>
-  
+</mat-form-field>
+
+<mat-form-field class="authentication-form">
+    <mat-label>Password</mat-label>
+    <input matInput type="text" [formControl]="password">
+    <mat-error *ngIf="password.hasError('required')">
+        Please enter a password.
+    </mat-error>
+    <mat-error *ngIf="password.hasError('minlength')">
+        Your password must be greater than 8 characters.
+    </mat-error>
+    <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password.setValue('')">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>

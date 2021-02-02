@@ -17,18 +17,17 @@ import { NewsComponent } from './widgets/news/news.component';
 import { WeatherForecastComponent } from './widgets/weather-forecast/weather-forecast.component';
 import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
-import { RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
 import { WebsiteComponent } from './website/website.component';
 import { AuthenticationComponent } from './website/authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
-
-
+import {ReactiveFormsModule} from '@angular/forms';
 
 registerLocaleData(localeFr);
 
@@ -57,7 +56,9 @@ registerLocaleData(localeFr);
 		MatInputModule,
 		MatFormFieldModule,
 		MatIconModule,
-		FormsModule
+		FormsModule,
+		ReactiveFormsModule,
+		MatButtonModule,
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],
