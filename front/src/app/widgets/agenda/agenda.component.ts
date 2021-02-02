@@ -46,16 +46,16 @@ export class AgendaComponent implements OnInit {
 		this.agenda.subject = 'Sujet de test';
 		this.agenda.start = {
 			dateTime: Date.now(),
-			timeZone: "FR-fr"
-		}
+			timeZone: 'FR-fr'
+		};
 		this.agenda.end = {
 			dateTime: Date.now(),
-			timeZone: "FR-fr"
-		}
+			timeZone: 'FR-fr'
+		};
 		this.agenda.organizer = {
-			name: "Philippe",
-			address: "philippe.poutou@gmail.com"
-		}
+			name: 'Philippe',
+			address: 'philippe.poutou@gmail.com'
+		};
 
 		this.loading = false;
 	}
