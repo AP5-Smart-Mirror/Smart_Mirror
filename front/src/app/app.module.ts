@@ -20,6 +20,15 @@ import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weeke
 import { RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
 import { WebsiteComponent } from './website/website.component';
+import { AuthenticationComponent } from './website/authentication/authentication.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {FormsModule} from '@angular/forms';
+
+
 
 registerLocaleData(localeFr);
 
@@ -37,17 +46,18 @@ registerLocaleData(localeFr);
     	AlmanacComponent,
     	MirrorComponent,
     	WebsiteComponent,
+		AuthenticationComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		MatProgressSpinnerModule,
-		RouterModule.forRoot([
-			{path: 'mirror', component: MirrorComponent},
-			{path: 'welcome', component: WebsiteComponent},
-			{path: '', redirectTo: 'mirror', pathMatch: 'full'}
-		  ]),
+		BrowserAnimationsModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatIconModule,
+		FormsModule
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],
