@@ -19,12 +19,12 @@ Please keep the following in mind:
 1.  clone the repo
 
 2. go in both Back and front directory and execute this command
-
-   ```bash
-   npm install   
-   ```
+```bash
+npm install   
+ ```
 
 3.   in the back directory execute this command to launch a development server using **nodemon**.
+
    ```bash
    npm run dev   
    ```
@@ -37,15 +37,16 @@ Please keep the following in mind:
    
 4. in the front directory execute this command to launch a development server.
 
-   ```bash
-   npm run start
-   ```
+```bash
+npm run start
+```
 
    to build the angular project use the command.
 
-   ```bash
-   npm run build
-   ```
+```bash
+npm run build
+```
+   
 # Questions
 
 For questions and support please use  [github project issues](https://github.com/AP5-Smart-Mirror/Smart_Mirror/issues)
