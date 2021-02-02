@@ -1,7 +1,7 @@
 # Smart_Mirror
 
-##Please read this carefully
-##Before developping a new feature do this :
+##  Please read this carefully
+##  Before developping a new feature do this :
 
 git checkout master
 git pull
