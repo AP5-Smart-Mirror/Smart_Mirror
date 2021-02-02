@@ -12,16 +12,25 @@
     </button>
 </mat-form-field>
 
-<mat-form-field class="authentication-form">
+<mat-form-field>
     <mat-label>Password</mat-label>
-    <input matInput type="text" [formControl]="password">
+    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
     <mat-error *ngIf="password.hasError('required')">
         Please enter a password.
     </mat-error>
     <mat-error *ngIf="password.hasError('minlength')">
         Your password must be greater than 8 characters.
     </mat-error>
-    <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password.setValue('')">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
+        (click)="password.get('password').setValue('')">
         <mat-icon>close</mat-icon>
     </button>
 </mat-form-field>
+
+<button mat-raised-button color="primary" [disabled]="!password.valid || !username.valid" (click)="onSubmit()">Log
+    in</button>
+<button mat-raised-button color="accent">Sign Up</button>

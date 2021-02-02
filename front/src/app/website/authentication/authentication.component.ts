@@ -7,17 +7,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./authentication.component.css'],
 })
 export class AuthenticationComponent implements OnInit {
-	username: FormControl = new FormControl(null, [
-		Validators.required,
-		Validators.minLength(4),
-	]);
 
-	password: FormControl = new FormControl(null, [
-		Validators.required,
-		Validators.minLength(8),
-	]);
+  hide: boolean;
+  
+		username = new FormControl(null, [
+			Validators.required,
+			Validators.minLength(4),
+    ])
+    
+		password = new FormControl(null, [
+			Validators.required,
+			Validators.minLength(8),
+		])
 
 	constructor() {}
 
-	ngOnInit(): void {}
+  ngOnInit(): void {
+    this.hide = true;
+  }
+  
+  onSubmit(): void {
+
+  }
 }
