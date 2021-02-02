@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "projet-AP5"
+    }
+  },
+  "defaultProject": "projet-AP5",
+  "cli": {
+    "analytics": "cb7b8b95-af24-44eb-bd25-560a483328dc"
+  }
 }

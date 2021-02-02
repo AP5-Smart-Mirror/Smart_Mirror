@@ -79,22 +79,23 @@ async function listUnreadMails(auth) {
   await gmail.users.messages.list({
     userId: 'me',
     labelIds: [
-      "UNREAD",
-      "INBOX",
-      "CATEGORY_PERSONAL"
+      "UNREAD"
     ],
     "maxResult" : 5
   }, async (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const messages = res.data.messages;
-    if (messages.length) {
-      let cpt = 0;
-      messages.forEach(async (message) => {
-        await getMailProm(auth, message.id);
-        cpt += 1;
-      });
+    console.log(typeof messages);
+    if(typeof messages != 'undefined'){
+      if (messages.length) {
+        let cpt = 0;
+        messages.forEach(async (message) => {
+          await getMailProm(auth, message.id);
+          cpt += 1;
+        });
+      } 
     } else {
-      console.log('No messages found.');
+      console.log('No unread messages found.');
     }
   });
 }
@@ -110,14 +111,16 @@ async function listStarredMails(auth) {
   }, async (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const messages = res.data.messages;
-    if (messages.length) {
-      let cpt = 0;
-      messages.forEach(async (message) => {
-        await getMailProm(auth, message.id);
-        cpt += 1;
-      });
+    if(typeof messages != 'undefined'){
+      if (messages.length) {
+        let cpt = 0;
+        messages.forEach(async (message) => {
+          await getMailProm(auth, message.id);
+          cpt += 1;
+        });
+      } 
     } else {
-      console.log('No messages found.');
+      console.log('No starred messages found.');
     }
   });
 }
@@ -170,7 +173,7 @@ async function getMail(){
     await authorize(JSON.parse(content), await listUnreadMails);
     await authorize(JSON.parse(content), await listStarredMails);
   });
-  console.log(messages_list);
+  //console.log(messages_list);
   return messages_list;
   //return jsonTreatment(messages_list);
 }
