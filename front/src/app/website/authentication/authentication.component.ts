@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-authentication',
@@ -7,26 +7,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./authentication.component.css'],
 })
 export class AuthenticationComponent implements OnInit {
+	hide: boolean;
 
-  hide: boolean;
-  
-		username = new FormControl(null, [
-			Validators.required,
-			Validators.minLength(4),
-    ])
-    
-		password = new FormControl(null, [
-			Validators.required,
-			Validators.minLength(8),
-		])
+	username = new FormControl(null, [
+		Validators.required,
+		Validators.minLength(4),
+	]);
+
+	password = new FormControl(null, [
+		Validators.required,
+		Validators.minLength(8),
+	]);
 
 	constructor() {}
 
-  ngOnInit(): void {
-    this.hide = true;
-  }
-  
-  onSubmit(): void {
+	ngOnInit(): void {
+		this.hide = true;
+	}
 
-  }
+	onSubmit(): void {
+		alert("You're connected");
+	}
 }
