@@ -1,0 +1,31 @@
+.content {
+	height: 100vh;
+	background-color: black;
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+}
+/*We use the CSS grid property to display the component on the mirror
+The grid is 10 units (1 to 11) long and 6 units large (1 to 7)*/
+
+.welcome {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	grid-column-start: 3;
+	grid-column-end: 9;
+	grid-row-start: 2;
+	grid-row-end: 6;
+	/*border: dotted 1px white;*/
+}
+
+#animated {
+	opacity: 0;
+	animation: 2s slidein ease-in-out;
+}
+
+* {
+	color: white;
+  }
