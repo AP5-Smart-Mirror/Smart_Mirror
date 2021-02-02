@@ -21,26 +21,21 @@ export class EmailsComponent implements OnInit {
     this.mailGoogle = [];
     this.init();
     setInterval(() => this.init(), 600000);
-    setInterval(() => this.nextMailGoogle(), 10000);
+    //setInterval(() => this.nextMailGoogle(), 10000);
   }
 
-  nextMailGoogle(): void{
-    const idxCurrentMailGoogle = this.mailGoogle.indexOf(this.currentMailGoogle);
-    if (idxCurrentMailGoogle + 1 < this.mailGoogle.length){
-      this.currentMailGoogle = this.mailGoogle[idxCurrentMailGoogle + 1 ];
-    }
-    else{
-      this.currentMailGoogle = this.mailGoogle[0];
-    }
-  }
 
   init(): void {
-    this.mailGoogleService.getNews().then(mailGoogle => {
+    this.mailGoogleService.getMail().then(mailGoogle => {
       this.loading = true;
+      let cpt = 0;
       mailGoogle.forEach(element => {
         this.mailGoogle.push(element);
-        
+        this.mailGoogle[cpt].date = this.mailGoogle[cpt].date.substring(0, this.mailGoogle[cpt].date.length - 5);
+        this.mailGoogle[cpt].sender = this.mailGoogle[cpt].sender.split('<')[0];
+        cpt = cpt + 1;
       });
+      cpt = 0;
       console.log(this.mailGoogle);
      // this.currentMailGoogle = this.mailGoogle[0];
     }).then(() => this.loading = false);

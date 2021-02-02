@@ -11,7 +11,7 @@ export class EmailsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getNews(): Promise<Emails[]> {
+  getMail(): Promise<Emails[]> {
     return new Promise<Emails[]>((resolve, reject) => {
       this.httpClient.get<Emails[]>(this.url + '/google_mail')
         .toPromise()

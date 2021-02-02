@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
           new Widget(2, "date", new Configuration(null, 3, 8, 1, 2)),
           new Widget(3, "analog-clock", new Configuration(null, 8, 9, 1, 2)),
           new Widget(4, "news", new Configuration(null, 2, 10, 6, 7)),
-          new Widget(5, "emails", new Configuration(null, 8, 11, 3, 5))
         )
       )
     );
@@ -57,7 +56,7 @@ export class AppComponent implements OnInit {
           new Widget(3, "analog-clock", new Configuration(null, 8, 9, 1, 2)),
           new Widget(4, "agenda", null),
           new Widget(5, "news", new Configuration(null, 1, 11, 6, 7)),
-          new Widget(6, "emails", new Configuration(null, 9, 11, 4, 5))
+          new Widget(6, "emails", new Configuration(null, 9, 11, 2, 5))
 
         )
       )

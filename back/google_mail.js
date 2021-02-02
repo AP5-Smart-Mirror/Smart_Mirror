@@ -135,15 +135,11 @@ async function getMailProm(auth, id){
   if (err) return console.log('The API returned an error: ' + err);
   const message = res.data.payload.headers;
   if (res.data.labelIds.includes('UNREAD')){
-    newMessage["unread"] = "true";
-  } else {
-    newMessage["unread"] = "false";
+    newMessage["label"] = "Non Lu : ";
   }
   if (res.data.labelIds.includes('STARRED')){
-    newMessage["starred"] = "true";
-  } else {
-    newMessage["starred"] = "false";
-  }
+    newMessage["label"] = "Suivi : ";
+  } 
   //newMessage["labels"] = res.data.labelIds;
   newMessage["message"] = res.data.snippet;
       message.forEach(async header => {
