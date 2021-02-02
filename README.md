@@ -26,27 +26,27 @@ Please keep the following in mind:
 
 3.   in the back directory execute this command to launch a development server using **nodemon**.
 
-    ```bash
-   npm run dev
-   ```
+    ````bash
+   npm install   
+   ````
    
    if you want to launch a production server execute this command
    
-   ```bash
+   ````bash
    npm run start
-   ```
+   ````
    
 4. in the front directory execute this command to launch a development server.
 
-   ```bash
+   ````bash
    npm run start
    ```
 
    to build the angular project use the command.
 
-   ```bash
+   ````bash
    npm run build
-   ```
+   ````
 # Questions
 
 For questions and support please use  [github project issues](https://github.com/AP5-Smart-Mirror/Smart_Mirror/issues)
