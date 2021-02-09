@@ -28,6 +28,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { WebsiteBarComponent } from './website/website-bar/website-bar.component';
 
 registerLocaleData(localeFr);
 
@@ -46,6 +48,7 @@ registerLocaleData(localeFr);
     	MirrorComponent,
     	WebsiteComponent,
 		AuthenticationComponent,
+		WebsiteBarComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -59,6 +62,7 @@ registerLocaleData(localeFr);
 		FormsModule,
 		ReactiveFormsModule,
 		MatButtonModule,
+		MatToolbarModule,
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],

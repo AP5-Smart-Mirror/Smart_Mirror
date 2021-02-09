@@ -18,7 +18,7 @@ export class AuthenticationComponent implements OnInit {
 	password = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(8),
-	]); 
+	]);
 
 	constructor() {}
 
@@ -27,6 +27,6 @@ export class AuthenticationComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		alert("You're connected");
+		alert('You\'re connected');
 	}
 }
