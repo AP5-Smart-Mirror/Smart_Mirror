@@ -1,42 +1,46 @@
 <div class="content">
-    <h1>Connexion à votre compte personnel</h1>
-    <div class="form-part">
-        <mat-form-field class="authentication-form">
-            <mat-label>Username</mat-label>
-            <input matInput type="text" [formControl]="username">
-            <mat-error *ngIf="username.hasError('required')">
-                Please enter your username.
-            </mat-error>
-            <mat-error *ngIf="username.hasError('minlength')">
-                Your username must be greater than 4 characters.
-            </mat-error>
-            <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username.setValue('')">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-        
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-            <mat-error *ngIf="password.hasError('required')">
-                Please enter a password.
-            </mat-error>
-            <mat-error *ngIf="password.hasError('minlength')">
-                Your password must be greater than 8 characters.
-            </mat-error>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
-                (click)="password.setValue('')">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-    </div>
-    <div class="button-part">
-        <button mat-raised-button color="primary" [disabled]="!password.valid || !username.valid" (click)="onSubmit()">Log
-            in</button>
-        <button mat-raised-button color="accent">Sign Up</button>
+    <div class="form">
+        <h1>Connexion à votre compte personnel</h1>
+        <div class="form-part">
+            <mat-form-field class="authentication-form">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" [formControl]="username">
+                <mat-error *ngIf="username.hasError('required')">
+                    Please enter your username.
+                </mat-error>
+                <mat-error *ngIf="username.hasError('minlength')">
+                    Your username must be greater than 4 characters.
+                </mat-error>
+                <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="username.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                <mat-error *ngIf="password.hasError('required')">
+                    Please enter a password.
+                </mat-error>
+                <mat-error *ngIf="password.hasError('minlength')">
+                    Your password must be greater than 8 characters.
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="password.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="button-part">
+            <button mat-raised-button color="primary" [disabled]="!password.valid || !username.valid"
+                (click)="onSubmit()">Log
+                in</button>
+            <button mat-raised-button color="accent">Sign Up</button>
+        </div>
     </div>
 </div>

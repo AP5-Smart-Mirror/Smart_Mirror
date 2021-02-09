@@ -6,6 +6,7 @@ import { FormControl, Validators } from '@angular/forms';
 	templateUrl: './authentication.component.html',
 	styleUrls: ['./authentication.component.css'],
 })
+
 export class AuthenticationComponent implements OnInit {
 	hide: boolean;
 
@@ -17,7 +18,7 @@ export class AuthenticationComponent implements OnInit {
 	password = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(8),
-	]);
+	]); 
 
 	constructor() {}
 
