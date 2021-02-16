@@ -12,6 +12,8 @@ var graph = require('./src/Outlook/graph');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
+var loginRouter = require('./bdd/src/login/routes/loginRouter');
+var registerRouter = require('./bdd/src/register/routes/registerRouter');
 var port = 3000;
 
 app.use('/api/clock', clockRouter);
@@ -150,6 +152,8 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   next();
 });
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 app.listen(port, function () {
   console.log('The API is listening on port ' + port);
