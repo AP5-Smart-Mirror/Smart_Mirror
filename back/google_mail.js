@@ -7,7 +7,7 @@ const TOKEN_PATH = 'token.json';
 
 let messages_list = [];
 
-async function authorize(credentials, callback) {
+async function authorize(credentials, labelId, listeMails) {
   messages_list = [];
   const {client_secret, client_id, redirect_uris} = credentials.web;
   const oAuth2Client = await new google.auth.OAuth2(
@@ -19,10 +19,10 @@ async function authorize(credentials, callback) {
   // Check if we have previously stored a token.
   await fs.readFile(TOKEN_PATH, async (err, token) => {
     if (err) {
-      return await getNewToken(oAuth2Client, callback);
+      return await getNewToken(oAuth2Client, listMails);
     }
     await oAuth2Client.setCredentials(JSON.parse(token));
-    await callback(oAuth2Client);             // changer le nom de la fonction
+    await listeMails(oAuth2Client, labelId);
   });
 }
 
@@ -55,14 +55,14 @@ async function getNewToken(oAuth2Client, callback) {
   });
 }
 
-async function listUnreadMails(auth,) {
+async function listeMails(auth, labelId) {
   const gmail = google.gmail({version: 'v1', auth});
   await gmail.users.messages.list({
     userId: 'me',
     labelIds: [
-      "UNREAD"                    // creer une variable labelIds pour supprimer fct listStarredMails
+      labelId
     ],
-    "maxResult" : 5
+    "maxResult" : 10
   }, async (err, res) => {
     if (err) {
       return console.error('The API returned an error: ' + err);
@@ -71,42 +71,18 @@ async function listUnreadMails(auth,) {
     if(typeof messages != 'undefined'){
       if (messages.length) {
         messages.forEach(async (message) => {
-          await getMailProm(auth, message.id);
+          await getMailInformations(auth, message.id);
         });
       } 
     } else {
-      console.log('No unread messages found.'); // return an error message in the json
-
+      let errorMessage = {};
+      errorMessage["Error Message"] = 'NO ' + labelId + ' MESSAGES FOUND';
+      messages_list.push(errorMessage);
     }
   });
 }
 
-async function listStarredMails(auth) {
-  const gmail = google.gmail({version: 'v1', auth});
-  await gmail.users.messages.list({
-    userId: 'me',
-    labelIds: [
-      "STARRED"
-    ],
-    "maxResult" : 5
-  }, async (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    const messages = res.data.messages;
-    if(typeof messages != 'undefined'){
-      if (messages.length) {
-        let cpt = 0;
-        messages.forEach(async (message) => {
-          await getMailProm(auth, message.id);
-          cpt += 1;
-        });
-      }
-    } else {
-      console.log('No starred messages found.');
-    }
-  });
-}
-
-async function getMailProm(auth, id){ // nom de fonction à changer
+async function getMailInformations(auth, id){
   let newMessage = {};
   const gmail = google.gmail({version: 'v1', auth});
   await gmail.users.messages.get({
@@ -117,12 +93,18 @@ async function getMailProm(auth, id){ // nom de fonction à changer
     return console.log('The API returned an error: ' + err);
   }
   const message = res.data.payload.headers;
-  if (res.data.labelIds.includes('UNREAD')){ // a revoir pour simplifier ex parametre de la fonction pour le labelids
+
+  newMessage["id"] = id;
+
+  if (res.data.labelIds.includes('UNREAD')){
     newMessage["label"] = "Non Lu : ";
   }
   if (res.data.labelIds.includes('STARRED')){
     newMessage["label"] = "Suivi : ";
-  } 
+  }
+  if (res.data.labelIds.includes('UNREAD') && res.data.labelIds.includes('STARRED')){
+    newMessage["label"] = "Non lu et Suivi : "
+  }
   newMessage["message"] = res.data.snippet;
       message.forEach(async header => {
         switch (header.name){
@@ -137,7 +119,18 @@ async function getMailProm(auth, id){ // nom de fonction à changer
           break;
         }
       })
-      messages_list.push(newMessage);
+
+      let alreadyPush = 0;
+
+      messages_list.forEach(async message =>{
+        if(message["id"] === newMessage["id"]){
+          alreadyPush = 1;
+        }
+      })
+      if(alreadyPush === 0){
+        messages_list.push(newMessage);
+      }
+      
   })
 }
 
@@ -147,8 +140,8 @@ async function getMail(){
       return console.error('Error loading client secret file:', err);
     }
     // Authorize a client with credentials, then call the Gmail API.
-    await authorize(JSON.parse(content), await listUnreadMails);
-    await authorize(JSON.parse(content), await listStarredMails);
+    await authorize(JSON.parse(content), "UNREAD", await listeMails);
+    await authorize(JSON.parse(content), "STARRED", await listeMails);
   });
   return messages_list;
 }
