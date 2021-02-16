@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
-import { HomeComponent } from './home/home.component';
-import { AuthenticationComponent } from './home/authentication/authentication.component';
+import { WebsiteComponent } from './website/website.component';
+import { AuthenticationComponent } from './website/authentication/authentication.component';
+import { HomeComponent } from './website/home/home.component';
 
 const routes: Routes = [
   {path: '', component: MirrorComponent},
