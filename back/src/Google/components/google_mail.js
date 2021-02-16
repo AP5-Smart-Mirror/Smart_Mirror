@@ -7,7 +7,7 @@ const TOKEN_PATH = 'token.json';
 
 let messages_list = [];
 
-async function authorize(credentials, labelId, listeMails) {
+async function authorize(credentials, labelId) {
   messages_list = [];
   const { client_secret, client_id, redirect_uris } = credentials.web;
   const oAuth2Client = await new google.auth.OAuth2(
@@ -126,14 +126,15 @@ async function getMailInformations(auth, id) {
         }
       });
 
-      let alreadyPush = 0;
+      let alreadyPush = false;
 
       messages_list.forEach(async (message) => {
         if (message['id'] === newMessage['id']) {
-          alreadyPush = 1;
+          alreadyPush = true;
         }
       });
-      if (alreadyPush === 0) {
+
+      if (alreadyPush === false) {
         messages_list.push(newMessage);
       }
     }
@@ -146,8 +147,8 @@ async function getMail() {
       return console.error('Error loading client secret file:', err);
     }
     // Authorize a client with credentials, then call the Gmail API.
-    await authorize(JSON.parse(content), 'UNREAD', await listeMails);
-    await authorize(JSON.parse(content), 'STARRED', await listeMails);
+    await authorize(JSON.parse(content), 'UNREAD');
+    await authorize(JSON.parse(content), 'STARRED');
   });
   return messages_list;
 }
