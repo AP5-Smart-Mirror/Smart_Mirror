@@ -21,7 +21,6 @@ import { MirrorComponent } from './mirror/mirror.component';
 import { HomeComponent } from './website/home/home.component';
 import { AuthenticationComponent } from './website/authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WebsiteComponent } from './website/website.component';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -51,7 +50,6 @@ registerLocaleData(localeFr);
     	HomeComponent,
 		AuthenticationComponent,
 		HomeBarComponent,
-		WebsiteComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -65,7 +63,7 @@ registerLocaleData(localeFr);
 		FormsModule,
 		ReactiveFormsModule,
 		MatButtonModule,
-		MatToolbarModule,
+		MatToolbarModule
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],
