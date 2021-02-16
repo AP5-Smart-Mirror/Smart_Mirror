@@ -18,8 +18,8 @@ import { WeatherForecastComponent } from './widgets/weather-forecast/weather-for
 import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
 import { MirrorComponent } from './mirror/mirror.component';
-import { WebsiteComponent } from './website/website.component';
-import { AuthenticationComponent } from './website/authentication/authentication.component';
+import { HomeComponent } from './home/home.component';
+import { AuthenticationComponent } from './home/authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
@@ -29,7 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { WebsiteBarComponent } from './website/website-bar/website-bar.component';
+import {HomeBarComponent} from './home/home-bar/home-bar.component';
 
 registerLocaleData(localeFr);
 
@@ -46,9 +46,9 @@ registerLocaleData(localeFr);
 		WeatherWeekendComponent,
     	AlmanacComponent,
     	MirrorComponent,
-    	WebsiteComponent,
+    	HomeComponent,
 		AuthenticationComponent,
-		WebsiteBarComponent,
+		HomeBarComponent,
 	],
 	imports: [
 		BrowserModule,
