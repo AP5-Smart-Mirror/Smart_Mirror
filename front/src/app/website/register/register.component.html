@@ -1,33 +1,77 @@
 <app-website-bar></app-website-bar>
 <div class="content">
-    <form class="form   " name="registerForm">
+    <form class="form" name="registerForm">
         <h1>Page d'inscription</h1>
         <div class="form-part">
-            <mat-form-field class="authentication-form">
+            <mat-form-field >
                 <mat-label>Username</mat-label>
-                <input matInput type="text">
+                <input matInput type="text" [formControl]="username">
+                <mat-error *ngIf="username.hasError('required')">
+                    Please enter your username.
+                </mat-error>
+                <mat-error *ngIf="username.hasError('minlength')">
+                    Your username must be greater than 4 characters.
+                </mat-error>
+                <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="username.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
         </div>
         <div class="form-part">
-            <mat-form-field class="authentication-form">
+            <mat-form-field >
                 <mat-label>Email</mat-label>
-                <input matInput type="email">
+                <input matInput type="email" [formControl]="email">
+                <mat-error *ngIf="email.hasError('required')">
+                    Please enter an email.
+                </mat-error>  
+                <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="email.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
         </div>
         <div class="form-part">
-            <mat-form-field class="authentication-form">
+            <mat-form-field >
                 <mat-label>Password</mat-label>
-                <input matInput type="password">
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" type="password">
+                <mat-error *ngIf="password.hasError('required')">
+                    Please enter a password.
+                </mat-error>
+                <mat-error *ngIf="password.hasError('minlength')">
+                    Your password must be greater than 8 characters.
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="password.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
         </div>
         <div class="form-part">
-            <mat-form-field class="authentication-form">
-                <mat-label>Confirm password</mat-label>
-                <input matInput type="password">
+            <mat-form-field >
+                <mat-label>Confirm password</mat-label> 
+                <input matInput [type]="hide ? 'confirmPassword' : 'text'" [formControl]="confirmPassword" type="password">
+                <mat-error *ngIf="confirmPassword !== password">
+                    Your confirmed password must match your password.
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <button mat-button *ngIf="confirmPassword" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="confirmPassword.setValue('')">
+                    <mat-icon>close</mat-icon>
+
+                </button>
             </mat-form-field>
         </div>
         <div class="form-part">
-            <button mat-raised-button color="primary" type="submit">Sign Up</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!password.valid || !username.valid || !confirmPassword.valid || password === confirmPassword" 
+            (click)="onSubmit()">Sign Up</button>
         </div>
     </form>
  </div>
