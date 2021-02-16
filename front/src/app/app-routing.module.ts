@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
-import { WebsiteComponent } from './website/website.component';
+import { HomeComponent } from './home/home.component';
+import { AuthenticationComponent } from './home/authentication/authentication.component';
 
 const routes: Routes = [
-  {path: 'mirror', component: MirrorComponent},
-  {path: 'welcome', component: WebsiteComponent},
-  {path: '', redirectTo: 'mirror', pathMatch: 'full'},
-  {path: '**', redirectTo: 'mirror'}
+  {path: '', component: MirrorComponent},
+  {path: 'home', component: HomeComponent,
+  children: [
+    {path: '', component: HomeComponent},
+    {path: 'login', component: AuthenticationComponent},
+    {path: '**', redirectTo: ''},
+  ]},
+  {path: '**', redirectTo: ''}
   ];
 
 @NgModule({
