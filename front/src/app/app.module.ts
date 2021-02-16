@@ -18,7 +18,7 @@ import { WeatherForecastComponent } from './widgets/weather-forecast/weather-for
 import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
 import { MirrorComponent } from './mirror/mirror.component';
-import { HomeComponent } from './website/home/home.component';
+import { HomeComponent } from './website/home.component';
 import { AuthenticationComponent } from './website/authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

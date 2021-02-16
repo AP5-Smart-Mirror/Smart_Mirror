@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
 import { AuthenticationComponent } from './website/authentication/authentication.component';
-import { HomeComponent } from './website/home/home.component';
+import { HomeComponent } from './website/home.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'mirror', pathMatch: 'full' },
