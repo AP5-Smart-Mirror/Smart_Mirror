@@ -1,24 +1,4 @@
 var express = require('express');
-var app = express();
-var clockRouter = require('./src/Clock/routes/clockRouter');
-var googleRouter = require('./src/Google/routes/googleRouter');
-var newsRouter = require('./src/News/routes/newsRouter');
-var weatherRouter = require('./src/Weather/routes/weatherRouter');
-var indexRouter = require('./src/Outlook/routes/index');
-var usersRouter = require('./src/Outlook/routes/users');
-var authRouter = require('./src/Outlook/routes/auth');
-var calendarRouter = require('./src/Outlook/routes/calendar');
-var graph = require('./src/Outlook/graph');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
-var port = 3000;
-
-app.use('/api/clock', clockRouter);
-app.use('/api/google', googleRouter);
-app.use('/api/news', newsRouter);
-app.use('/api/weather', weatherRouter);
-app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 var createError = require('http-errors');
 var path = require('path');
@@ -31,7 +11,9 @@ require('dotenv').config();
 var passport = require('passport');
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
+var app = express();
 var users = {};
+var port = 3000;
 
 passport.serializeUser(function (user, done) {
   // Use the OID property of the user as a key
@@ -102,6 +84,12 @@ passport.use(
   )
 );
 
+var indexRouter = require('./outlook/routes/index');
+var usersRouter = require('./outlook/routes/users');
+var authRouter = require('./outlook/routes/auth');
+var calendarRouter = require('./outlook/routes/calendar');
+var graph = require('./outlook/graph');
+
 app.use(
   session({
     secret: 'your_secret_value_here',
@@ -114,12 +102,28 @@ app.use(
 app.use(flash());
 
 app.use(function (req, res, next) {
+  // Read any flashed errors and save
+  // in the response locals
   res.locals.error = req.flash('error_msg');
+
+  // Check for simple error string and
+  // convert to layout's expected format
   var errs = req.flash('error');
   for (var i in errs) {
     res.locals.error.push({ message: 'An error occurred', debug: errs[i] });
   }
+
   next();
+});
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+var hbs = require('hbs');
+var moment = require('moment');
+// Helper to format date/time sent by Graph
+hbs.registerHelper('eventDateTime', function (dateTime) {
+  return moment(dateTime).format('M/D/YY h:mm A');
 });
 
 app.use(logger('dev'));
@@ -132,25 +136,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function (req, res, next) {
+  // Set the authenticated user in the
+  // template locals
   if (req.user) {
     res.locals.user = req.user.profile;
   }
   next();
 });
 
-app.use('/api/outlook', indexRouter);
+app.use('/outlook', indexRouter);
 
-app.use('/api/outlook/auth', authRouter);
+app.use('/outlook/auth', authRouter);
 
-app.use('/api/outlook/calendar', calendarRouter);
-app.use('/api/outlook/users', usersRouter);
-
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Methods', 'GET');
-  next();
-});
-
-app.listen(port, function () {
-  console.log('The API is listening on port ' + port);
-});
+app.use('/outlook/calendar', calendarRouter);
+app.use('/outlook/users', usersRouter);
