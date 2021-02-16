@@ -41,7 +41,7 @@
             <button mat-raised-button color="primary" [disabled]="!password.valid || !username.valid"
                 (click)="onSubmit()">Log
                 in</button>
-            <button mat-raised-button color="accent">Sign Up</button>
+            <button mat-raised-button color="accent" [routerLink]="['/register']">Sign Up</button>
         </div>
     </div>
 </div>
