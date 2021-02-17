@@ -8,6 +8,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Vali
 })
 export class RegisterComponent implements OnInit {
 
+  hide: boolean;
+
   public frmSignup: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -36,9 +38,6 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
-
-  hide: boolean;
 
 	ngOnInit(): void {
 		this.hide = true;
