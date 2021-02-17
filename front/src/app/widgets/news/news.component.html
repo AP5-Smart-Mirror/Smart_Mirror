@@ -1,8 +1,8 @@
 <div class="content">
     <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
-    <marquee truespeed scrollamount="1" scrolldelay="5" *ngIf="!loading">
+    <marquee truespeed scrollamount="1" scrolldelay="10" *ngIf="!loading">
         <h2>
-            {{ currentNews.title }}
+            {{ newsText }}
         </h2>
     </marquee>
 </div>
