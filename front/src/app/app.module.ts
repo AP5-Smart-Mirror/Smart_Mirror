@@ -31,6 +31,8 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeBarComponent} from './website/home-bar/home-bar.component';
+import {RegisterComponent} from './website/register/register.component';
+
 
 registerLocaleData(localeFr);
 
@@ -50,6 +52,7 @@ registerLocaleData(localeFr);
     	HomeComponent,
 		AuthenticationComponent,
 		HomeBarComponent,
+		RegisterComponent,
 	],
 	imports: [
 		BrowserModule,
