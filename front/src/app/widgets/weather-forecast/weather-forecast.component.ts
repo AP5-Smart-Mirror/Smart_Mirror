@@ -15,7 +15,7 @@ export class WeatherForecastComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.init();
-    setInterval(() => this.init(), 600000);
+    setInterval(() => this.init(), 60000);
   }
 
   init(): void {
