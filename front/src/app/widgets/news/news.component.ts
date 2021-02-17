@@ -12,7 +12,6 @@ export class NewsComponent implements OnInit {
   news: News[];
   currentNews: News;
   newsText : String = "";
-
   constructor(
     private newsService: NewsService
   ) { }
@@ -21,7 +20,6 @@ export class NewsComponent implements OnInit {
     this.loading = true;
     this.init();
     setInterval(() => this.init(), 600000);
-    // setInterval(() => this.nextNews(), 10000);
   }
 
   nextNews(): void {
@@ -39,12 +37,10 @@ export class NewsComponent implements OnInit {
     this.newsService.getNews().then(news => {
       this.loading = true;
       news.forEach(element => {
-        //this.news.push(element);
         this.newsText+=element.title;
         this.newsText += " - ";
       });
       this.currentNews = this.news[0];
     }).then(() => this.loading = false);
-
   }
 }
