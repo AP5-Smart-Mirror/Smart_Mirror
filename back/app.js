@@ -1,18 +1,18 @@
-var express = require('express');
-var app = express();
-var clockRouter = require('./src/Clock/routes/clockRouter');
-var googleRouter = require('./src/Google/routes/googleRouter');
-var newsRouter = require('./src/News/routes/newsRouter');
-var weatherRouter = require('./src/Weather/routes/weatherRouter');
-var indexRouter = require('./src/Outlook/routes/index');
-var usersRouter = require('./src/Outlook/routes/users');
-var authRouter = require('./src/Outlook/routes/auth');
-var calendarRouter = require('./src/Outlook/routes/calendar');
-var graph = require('./src/Outlook/graph');
+const express = require('express');
+const app = express();
+const clockRouter = require('./src/Clock/routes/clockRouter');
+const googleRouter = require('./src/Google/routes/googleRouter');
+const newsRouter = require('./src/News/routes/newsRouter');
+const weatherRouter = require('./src/Weather/routes/weatherRouter');
+const indexRouter = require('./src/Outlook/routes/index');
+const usersRouter = require('./src/Outlook/routes/users');
+const authRouter = require('./src/Outlook/routes/auth');
+const calendarRouter = require('./src/Outlook/routes/calendar');
+const graph = require('./src/Outlook/graph');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
-var port = 3000;
+const port = 3000;
 
 app.use('/api/clock', clockRouter);
 app.use('/api/google', googleRouter);
@@ -20,18 +20,17 @@ app.use('/api/news', newsRouter);
 app.use('/api/weather', weatherRouter);
 app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-var createError = require('http-errors');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
-var flash = require('connect-flash');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const flash = require('connect-flash');
 require('dotenv').config();
 
-var passport = require('passport');
-var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
+const passport = require('passport');
+const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-var users = {};
+const users = {};
 
 passport.serializeUser(function (user, done) {
   // Use the OID property of the user as a key
