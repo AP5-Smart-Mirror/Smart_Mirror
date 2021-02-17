@@ -70,7 +70,7 @@
             </mat-form-field>
         </div>
         <div class="form-part">
-            <button mat-raised-button color="primary" type="submit" [disabled]="!password.valid || !username.valid || !confirmPassword.valid || password === confirmPassword" 
+            <button mat-raised-button color="primary" type="submit" [disabled]="!password.valid || !username.valid || !confirmPassword.valid || !(password === confirmPassword)" 
             (click)="onSubmit()">Sign Up</button>
         </div>
     </form>

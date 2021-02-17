@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
+import { RegisterComponent } from './website/register/register.component';
 import { WebsiteComponent } from './website/website.component';
 
 const routes: Routes = [
