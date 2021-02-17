@@ -1,32 +1,38 @@
 <app-website-bar></app-website-bar>
 <div class="content">
-    <form class="form" name="registerForm">
+    <form class="form" name="registerForm"  [formGroup]="frmSignup">
         <h1>Page d'inscription</h1>
         <div class="form-part">
             <mat-form-field >
                 <mat-label>Username</mat-label>
-                <input matInput type="text" [formControl]="username">
-                <mat-error *ngIf="username.hasError('required')">
+                <input matInput type="text" 
+                    formControlName="username" 
+                    class="form-control"
+                    [ngClass]="frmSignup.controls['username'].invalid ? 'is-invalid' : ''">
+                <mat-error *ngIf="frmSignup.controls['username'].hasError('required')">
                     Please enter your username.
                 </mat-error>
-                <mat-error *ngIf="username.hasError('minlength')">
+                <mat-error *ngIf="frmSignup.controls['username'].hasError('minlength')">
                     Your username must be greater than 4 characters.
                 </mat-error>
-                <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear"
-                    (click)="username.setValue('')">
+                <button mat-button *ngIf="frmSignup.controls['username']" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="frmSignup.controls['username'].setValue('')">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
         </div>
-        <div class="form-part">
+        <div class="form-group">
             <mat-form-field >
-                <mat-label>Email</mat-label>
-                <input matInput type="email" [formControl]="email">
-                <mat-error *ngIf="email.hasError('required')">
+                <mat-label for="email" [ngClass]="frmSignup.controls['email'].invalid ? 'text-danger' : ''">Email</mat-label>
+                <input matInput type="email" formControlName="email" class="form-control">
+                <mat-error *ngIf="frmSignup.controls['email'].hasError('required')">
                     Please enter an email.
+                </mat-error> 
+                <mat-error *ngIf="frmSignup.controls['email'].hasError('email')">
+                    Your email is not valid.
                 </mat-error>  
-                <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear"
-                    (click)="email.setValue('')">
+                <button mat-button *ngIf="frmSignup.controls['email']" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="frmSignup.controls['email'].setValue('')">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
@@ -34,19 +40,19 @@
         <div class="form-part">
             <mat-form-field >
                 <mat-label>Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" type="password">
-                <mat-error *ngIf="password.hasError('required')">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" type="password">
+                <mat-error *ngIf="frmSignup.controls['password'].hasError('required')">
                     Please enter a password.
                 </mat-error>
-                <mat-error *ngIf="password.hasError('minlength')">
+                <mat-error *ngIf="frmSignup.controls['password'].hasError('minlength')">
                     Your password must be greater than 8 characters.
                 </mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
-                    (click)="password.setValue('')">
+                <button mat-button *ngIf="frmSignup.controls['password']" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="frmSignup.controls['password'].setValue('')">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
@@ -54,23 +60,23 @@
         <div class="form-part">
             <mat-form-field >
                 <mat-label>Confirm password</mat-label> 
-                <input matInput [type]="hide ? 'confirmPassword' : 'text'" [formControl]="confirmPassword" type="password">
-                <mat-error *ngIf="confirmPassword !== password">
+                <input matInput [type]="hide ? 'confirmPassword' : 'text'" formControlName="confirmPassword" type="password">
+                <mat-error *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
                     Your confirmed password must match your password.
                 </mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <button mat-button *ngIf="confirmPassword" matSuffix mat-icon-button aria-label="Clear"
-                    (click)="confirmPassword.setValue('')">
+                <button mat-button *ngIf="frmSignup.controls['confirmPassword']" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="frmSignup.controls['confirmPassword'].setValue('')">
                     <mat-icon>close</mat-icon>
 
                 </button>
             </mat-form-field>
         </div>
         <div class="form-part">
-            <button mat-raised-button color="primary" type="submit" [disabled]="!password.valid || !username.valid || !confirmPassword.valid || !(password === confirmPassword)" 
+            <button mat-raised-button color="primary" type="submit" [disabled]="!frmSignup.controls['password'].valid || !frmSignup.controls['username'].valid || !frmSignup.controls['confirmPassword'].valid" 
             (click)="onSubmit()">Sign Up</button>
         </div>
     </form>
