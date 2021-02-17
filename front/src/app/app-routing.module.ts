@@ -8,6 +8,7 @@ const routes: Routes = [
 	{ path: '', redirectTo: 'mirror', pathMatch: 'full' },
 	{ path: 'mirror', component: MirrorComponent },
 	{ path: 'home', component: HomeComponent },
+	// { path: 'register', component: HomeComponent },
 	{ path: 'login', component: AuthenticationComponent },
 	{ path: '**', redirectTo: '' }
 ];
