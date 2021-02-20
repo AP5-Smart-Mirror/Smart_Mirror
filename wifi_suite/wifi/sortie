@@ -1,0 +1,27 @@
+network={   
+ssid=salut
+   scan_ssid=1
+   psk=bebehdkkhvhk
+   key_mgmt=WPA-PSK
+}
+
+network={
+   ssid=salut
+   psk=bebehdkkhvhk
+   key_mgmt=WPA-PSK
+}
+network={
+   ssid=ssid
+   psk=passwd
+   key_mgmt=WPA-PSK
+}
+network={
+   ssid=ssid
+   psk=passwd2
+   key_mgmt=WPA-PSK
+}
+network={
+   ssid=ssid1
+   psk=passwd2
+   key_mgmt=WPA-PSK
+}
