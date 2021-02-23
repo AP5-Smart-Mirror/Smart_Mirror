@@ -13,7 +13,7 @@ export class ProfileService {
 
   getProfileList(): Promise<Profile[]> {
     return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profile')
+      this.httpClient.get<Profile[]>(this.url + '/profiles')
         .toPromise()
         .then(
           res => { // Success
@@ -26,9 +26,9 @@ export class ProfileService {
     });
   }
 
-  getProfileById(id: number): Promise<Profile> {
-    return new Promise<Profile>((resolve, reject) => {
-      this.httpClient.get<Profile>(this.url + '/profile/' + id)
+  /*getProfilesByUsername(account: Account): Promise<Profile[]> {
+    return new Promise<Profile[]>((resolve, reject) => {
+      this.httpClient.get<Profile[]>(this.url + '/profiles/' + username, {'password': password});
         .toPromise()
         .then(
           res => { // Success
@@ -39,5 +39,5 @@ export class ProfileService {
           }
         );
     });
-  }
+  }*/
 }

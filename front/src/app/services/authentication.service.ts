@@ -8,10 +8,11 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-	private url: string = environment.serverBaseUrl;
 
-    private currentUserSubject: BehaviorSubject<Account>;
     public currentUser: Observable<Account>;
+
+	private url: string = environment.serverBaseUrl;
+    private currentUserSubject: BehaviorSubject<Account>;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('currentUser')));
