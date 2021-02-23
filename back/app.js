@@ -16,6 +16,13 @@ var loginRouter = require('./bdd/src/login/routes/loginRouter');
 var registerRouter = require('./bdd/src/register/routes/registerRouter');
 var port = 3000;
 
+
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+  next();
+});
 app.use('/api/clock', clockRouter);
 app.use('/api/google', googleRouter);
 app.use('/api/news', newsRouter);
@@ -147,11 +154,7 @@ app.use('/api/outlook/auth', authRouter);
 app.use('/api/outlook/calendar', calendarRouter);
 app.use('/api/outlook/users', usersRouter);
 
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Methods', 'GET');
-  next();
-});
+
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 
