@@ -18,11 +18,11 @@ USE `smart_mirror_db`;
 
 -- Listage de la structure de la table smart_mirror_db. accounts
 CREATE TABLE IF NOT EXISTS `accounts` (
-  `id_account` int(11) NOT NULL AUTO_INCREMENT,
-  `username_account` varchar(50) NOT NULL,
-  `password_account` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.accounts : ~0 rows (environ)
 DELETE FROM `accounts`;
@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS `associative` (
   `id_widget` int(11) DEFAULT NULL,
   KEY `FK_id_profile` (`id_profile`),
   KEY `FK_id_widget` (`id_widget`),
-  CONSTRAINT `FK_id_profile` FOREIGN KEY (`id_profile`) REFERENCES `profiles` (`id_profile`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_id_widget` FOREIGN KEY (`id_widget`) REFERENCES `widgets` (`id_widget`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_id_profile` FOREIGN KEY (`id_profile`) REFERENCES `profiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_id_widget` FOREIGN KEY (`id_widget`) REFERENCES `widgets` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.associative : ~0 rows (environ)
@@ -46,13 +46,13 @@ DELETE FROM `associative`;
 
 -- Listage de la structure de la table smart_mirror_db. profiles
 CREATE TABLE IF NOT EXISTS `profiles` (
-  `id_profile` int(11) NOT NULL AUTO_INCREMENT,
-  `username_profile` varchar(50) NOT NULL,
-  `password_profile` varchar(250) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `id_account` int(11) NOT NULL,
-  PRIMARY KEY (`id_profile`),
+  PRIMARY KEY (`id`),
   KEY `id_account` (`id_account`),
-  CONSTRAINT `FK_Account_Profiles` FOREIGN KEY (`id_account`) REFERENCES `accounts` (`id_account`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_Account_Profiles` FOREIGN KEY (`id_account`) REFERENCES `accounts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.profiles : ~0 rows (environ)
@@ -62,9 +62,9 @@ DELETE FROM `profiles`;
 
 -- Listage de la structure de la table smart_mirror_db. widgets
 CREATE TABLE IF NOT EXISTS `widgets` (
-  `id_widget` int(11) NOT NULL AUTO_INCREMENT,
-  `name_widget` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_widget`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `widget` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.widgets : ~0 rows (environ)

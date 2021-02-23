@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 async function getLogin(body) {
   var id = {};
-  let name = body.username_account;
-  let password = body.password_account;
+  let name = body.username;
+  let password = body.password;
   var data = await db
     .select('id', 'username')
     .from('accounts')
