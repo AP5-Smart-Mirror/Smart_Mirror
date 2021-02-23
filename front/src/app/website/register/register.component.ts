@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         console.log(error);
         this.password.setValue('');
         this.username.setValue('');
-        alert("Username déjà utilisé")
+        alert("Nom d'utilisateur déjà utilisé")
       })
 	}
   
