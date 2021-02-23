@@ -50,7 +50,7 @@ export class AccountService {
 	register(account: Account) {
 		return new Promise<any>((resolve, reject) => {
 			this.httpClient
-				.post<any>(this.url + '/register', account)
+				.post<Account>(this.url + '/register', account)
 				.toPromise()
 				.then(
 					(res) => {

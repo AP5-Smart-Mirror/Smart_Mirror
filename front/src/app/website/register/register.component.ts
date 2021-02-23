@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
 
   hide: boolean;
 
-  private account: Account;
-
 	username = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(3),
@@ -33,6 +31,8 @@ export class RegisterComponent implements OnInit {
 		Validators.minLength(8),
 	]);
 
+  private account: Account;
+
 	ngOnInit(): void {
 		this.hide = true;
     this.account = new Account();
@@ -44,16 +44,15 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(this.account)
       .then((res) => {
         console.log(res);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user']);
       })
       .then((error) => {
         console.log(error);
         this.password.setValue('');
         this.username.setValue('');
-        alert("Username déjà utilisé")
-      })
+        alert('Nom d\'utilisateur déjà utilisé');
+      });
 	}
-  
 }
 
 
