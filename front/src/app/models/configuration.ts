@@ -4,7 +4,6 @@ export class Configuration {
     posXEnd: number;
     posYStart: number;
     posYEnd: number;
-    size: number;
 
     constructor(id: number, posXStart: number, posXEnd: number, posYStart: number, posYEnd: number){
         this.id = id;

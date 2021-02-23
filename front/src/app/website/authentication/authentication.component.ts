@@ -14,7 +14,7 @@ export class AuthenticationComponent implements OnInit {
 
 	username = new FormControl(null, [
 		Validators.required,
-		Validators.minLength(4),
+		Validators.minLength(3),
 	]);
 
 	password = new FormControl(null, [
