@@ -12,8 +12,6 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private accountService: AccountService, private router: Router){}
-
   hide: boolean;
 
 	username = new FormControl(null, [
@@ -24,7 +22,7 @@ export class RegisterComponent implements OnInit {
   email = new FormControl(null, [
     Validators.required,
     Validators.email,
-  ]); 
+  ]);
 
 	password = new FormControl(null, [
 		Validators.required,
@@ -32,6 +30,8 @@ export class RegisterComponent implements OnInit {
 	]);
 
   private account: Account;
+
+  constructor(private accountService: AccountService, private router: Router){}
 
 	ngOnInit(): void {
 		this.hide = true;
