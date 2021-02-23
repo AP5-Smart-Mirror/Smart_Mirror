@@ -33,6 +33,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeBarComponent} from './website/home-bar/home-bar.component';
 import {RegisterComponent} from './website/register/register.component';
 import { UserComponent } from './website/user/user.component';
+import { WifiSettingsComponent } from './website/wifi-settings/wifi-settings.component';
 
 
 registerLocaleData(localeFr);
@@ -55,6 +56,7 @@ registerLocaleData(localeFr);
 		HomeBarComponent,
 		RegisterComponent,
 		UserComponent,
+		WifiSettingsComponent,
 	],
 	imports: [
 		BrowserModule,
