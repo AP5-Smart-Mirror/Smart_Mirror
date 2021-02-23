@@ -1,0 +1,44 @@
+mat-form-field {
+	width: 200px;
+	margin: 5px;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 10% 0;
+}
+
+h1, h3{
+    font-size: xx-large;
+}
+
+.welcome {
+    border: 1px solid blue;
+}
+
+.container-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid green;
+}
+
+.create-profile {
+    border: 1px solid red;
+}
+
+.create-profile {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus {
+    font-size: 5em;
+}

@@ -117,11 +117,11 @@ export class MirrorComponent implements OnInit {
 	}
 
 	searchWidget(widget: Array<Widget>, name: WidgetName): boolean {
-		return widget.findIndex((n) => n.name === name) !== -1 ? true : false;
+		return widget.findIndex((n) => n.widget === name) !== -1 ? true : false;
 	}
 
 	setPositionWidget(name: WidgetName): any {
-		const conf = this.currentProfile.widgets.find((n) => n.name === name)
+		const conf = this.currentProfile.widgets.find((n) => n.widget === name)
 			.config;
 		return {
 			'grid-column-start': conf.posXStart,
