@@ -3,16 +3,19 @@ const bcrypt = require('bcryptjs');
 
 function getLogin(body) {
   var id = {};
-  let nom = body.nom;
-  let motWEB = body.motWEB;
+  let name = body.username_account;
+  let password = body.password_account;
   connection.getConnection(function (err) {
     if (err) throw err;
     console.log('Connected!');
-    var sql = "SELECT idProfil,nom,motWEB from profil where nom='" + nom + "'";
+    var sql =
+      "SELECT id_account,username_account,password_account from accounts where username_account='" +
+      name +
+      "'";
     connection.query(sql, function (err, result) {
       if (err) throw err;
       console.log(result[0]);
-      let isEqual = bcrypt.compareSync(motWEB, result[0].motWEB);
+      let isEqual = bcrypt.compareSync(password, result[0].password);
       if (isEqual === true) {
         id['id'] = result[0].idProfil;
       }
