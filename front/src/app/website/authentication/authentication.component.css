@@ -1,22 +1,43 @@
-mat-form-field {
-  width: 200px;
-  margin: 5px;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
 }
 
 button {
   margin: 5px;
 }
 
-.content {
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+.form-part {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 10% 0;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.button-part {
+  display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 .form {
-  box-shadow: 0px 0px 20px 1px black;
-  border-radius: 10px;
-  padding: 30px 20px;
+  display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  height: 50%;
+  box-shadow: 0px 0px 8px 0px black;
+  padding: 30px;
 }
