@@ -5,13 +5,13 @@
         
         <div class="form-part">
             <mat-form-field>
-                <mat-label>Username</mat-label>
+                <mat-label>Nom d'utilisateur</mat-label>
                 <input matInput type="text" [formControl]="username">
                 <mat-error *ngIf="username.hasError('required')">
-                    Please enter your username.
+                    Entrez votre nom d'utilisateur.
                 </mat-error>
                 <mat-error *ngIf="username.hasError('minlength')">
-                    Your username must be greater than 3 characters.
+                    Votre nom d'utilisateur doit faire au moins 3 caractères.
                 </mat-error>
                 <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear"
                     (click)="username.setValue('')">
@@ -25,10 +25,10 @@
                 <mat-label>Email</mat-label>
                 <input matInput type="text" [formControl]="email">
                 <mat-error *ngIf="email.hasError('required')">
-                    Please enter your email.
+                   Entrez votre email.
                 </mat-error>
                 <mat-error *ngIf="email.hasError('email')">
-                    Please enter a valid email.
+                    Rentrez un email valide.
                 </mat-error>
                 <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear"
                     (click)="email.setValue('')">
@@ -39,13 +39,13 @@
 
         <div class="form-part">
             <mat-form-field>
-                <mat-label>Password</mat-label>
+                <mat-label>Mot de passe</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
                 <mat-error *ngIf="password.hasError('required')">
-                    Please enter a password.
+                    Entrez un mot de passe.
                 </mat-error>
                 <mat-error *ngIf="password.hasError('minlength')">
-                    Your password must be greater than 8 characters.
+                    Votre mot de passe doit faire au moins 8 caractères.
                 </mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
@@ -59,7 +59,7 @@
         </div>
         <div class="button-part">
             <button mat-raised-button color="primary" [disabled]="!password.valid || !username.valid || !email.valid"
-                (click)="onSubmit()">Sign up
+                (click)="onSubmit()">S'inscrire
             </button>
         </div>
     </form>

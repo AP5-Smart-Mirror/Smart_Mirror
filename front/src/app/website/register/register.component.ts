@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   hide: boolean;
 
-	username = new FormControl(null, [
+  username = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(3),
 	]);
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(this.account)
       .then((res) => {
         console.log(res);
-        this.router.navigate(['/user']);
+        this.router.navigate(['/login']);
       })
       .then((error) => {
         console.log(error);
@@ -54,9 +54,3 @@ export class RegisterComponent implements OnInit {
       });
 	}
 }
-
-
-
-
-
-
