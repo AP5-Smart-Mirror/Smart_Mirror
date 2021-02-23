@@ -18,9 +18,10 @@ import { WeatherForecastComponent } from './widgets/weather-forecast/weather-for
 import { AlmanacComponent } from './widgets/almanac/almanac.component';
 import { WeatherWeekendComponent } from './widgets/weather-weekend/weather-weekend.component';
 import { MirrorComponent } from './mirror/mirror.component';
-import { WebsiteComponent } from './website/website.component';
+import { HomeComponent } from './website/home.component';
 import { AuthenticationComponent } from './website/authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -29,8 +30,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { WebsiteBarComponent } from './website/website-bar/website-bar.component';
-import { RegisterComponent } from './website/register/register.component';
+import {HomeBarComponent} from './website/home-bar/home-bar.component';
+import {RegisterComponent} from './website/register/register.component';
+
 
 registerLocaleData(localeFr);
 
@@ -47,9 +49,9 @@ registerLocaleData(localeFr);
 		WeatherWeekendComponent,
     	AlmanacComponent,
     	MirrorComponent,
-    	WebsiteComponent,
+    	HomeComponent,
 		AuthenticationComponent,
-		WebsiteBarComponent,
+		HomeBarComponent,
 		RegisterComponent,
 	],
 	imports: [
@@ -64,7 +66,7 @@ registerLocaleData(localeFr);
 		FormsModule,
 		ReactiveFormsModule,
 		MatButtonModule,
-		MatToolbarModule,
+		MatToolbarModule
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 	bootstrap: [AppComponent],

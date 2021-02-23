@@ -8,7 +8,7 @@ import { Configuration } from '../models/configuration';
   providedIn: 'root'
 })
 export class ConfigurationService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 

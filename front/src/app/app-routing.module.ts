@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MirrorComponent } from './mirror/mirror.component';
+import { AuthenticationComponent } from './website/authentication/authentication.component';
+import { HomeComponent } from './website/home.component';
 import { RegisterComponent } from './website/register/register.component';
-import { WebsiteComponent } from './website/website.component';
 
 const routes: Routes = [
-  {path: 'mirror', component: MirrorComponent},
-  {path: 'welcome', component: WebsiteComponent},
-  {path: '', redirectTo: 'mirror', pathMatch: 'full'},
-  {path: '**', redirectTo: 'mirror'}
-  ];
+	{ path: '', redirectTo: 'mirror', pathMatch: 'full' },
+	{ path: 'mirror', component: MirrorComponent },
+	{ path: 'home', component: HomeComponent },
+	{ path: 'register', component: RegisterComponent },
+	{ path: 'login', component: AuthenticationComponent },
+	{ path: '**', redirectTo: '' }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

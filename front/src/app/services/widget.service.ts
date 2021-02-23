@@ -7,13 +7,13 @@ import { Widget } from '../models/widget';
   providedIn: 'root'
 })
 export class WidgetService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 
   getWidgets(idProfile: number): Promise<Widget[]> {
     return new Promise<Widget[]>((resolve, reject) => {
-      this.httpClient.get<Widget[]>(this.url + '/widget/' + idProfile)
+      this.httpClient.get<Widget[]>(this.url + '/widgets/' + idProfile)
         .toPromise()
         .then(
           res => { // Success
