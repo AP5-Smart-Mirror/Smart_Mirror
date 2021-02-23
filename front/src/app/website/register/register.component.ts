@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Account } from 'src/app/models/account';
+import { AccountService } from 'src/app/services/account.service';
+
 
 @Component({
   selector: 'app-register',
@@ -8,7 +11,11 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  constructor(private accountService: AccountService){}
+
   hide: boolean;
+
+  private account: Account;
 
 	username = new FormControl(null, [
 		Validators.required,
@@ -27,10 +34,13 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.hide = true;
+    this.account = new Account();
 	}
 
 	onSubmit(): void {
-		alert('You\'re registered');
+		this.account.username = this.username.value;
+    this.account.password = this.password.value;
+    this.accountService.register(this.account);
 	}
   
 }

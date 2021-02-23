@@ -118,5 +118,8 @@
       }
     }
   },
-  "defaultProject": "projet-AP5"
+  "defaultProject": "projet-AP5",
+  "cli": {
+    "analytics": false
+  }
 }
