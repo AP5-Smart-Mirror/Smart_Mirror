@@ -20,6 +20,13 @@ export class UserComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+    if(this.currentAccount) {
+      console.log(this.currentAccount);
+    } else {
+      this.currentAccount = new Account();
+      this.currentAccount.username = 'UNKNOWN';
+      console.log(this.currentAccount);
+    }
     this.profiles = new Array();
     this.loadProfiles();
   }
