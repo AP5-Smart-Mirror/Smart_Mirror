@@ -1,0 +1,10 @@
+<div class="content">
+    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+        <h6 *ngFor="let mail of mailGoogle; let i = index">
+            {{mailGoogle[i].label}}
+            {{mailGoogle[i].sender}} <br>
+            [ {{mailGoogle[i].object}} ]<br>
+            {{mailGoogle[i].date}} <br>
+        </h6>
+
+</div>

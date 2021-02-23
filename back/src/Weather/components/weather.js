@@ -31,4 +31,4 @@ async function getWeather() {
     return jsonTreatment(await getWeatherProm());   //return value of jsonTreatment which use the returned value of getWeatherProm
 }
 
-exports.getWeather = getWeather;             //export function getWeather
+exports.getWeather = getWeather;               //export function getWeather

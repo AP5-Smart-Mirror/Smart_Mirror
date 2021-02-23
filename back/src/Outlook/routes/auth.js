@@ -27,7 +27,7 @@ router.post('/callback',
         response: res,
         failureRedirect: '/outlook',
         failureFlash: true,
-        successRedirect: '/outlook'
+        successRedirect: '/outlook/calendar'
       }
     )(req,res,next);
   }
