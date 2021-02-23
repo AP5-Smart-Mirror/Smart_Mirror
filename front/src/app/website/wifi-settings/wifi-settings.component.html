@@ -6,18 +6,18 @@
         <div class="form-part">
             <mat-form-field>
                 <mat-label>SSID du réseau</mat-label>
-                <input matInput type="text" [formControl]="SSID">
-                <mat-error *ngIf="SSID.hasError('required')">
+                <input matInput type="text" [formControl]="ssid">
+                <mat-error *ngIf="ssid.hasError('required')">
                     Entrez le SSID de votre réseau Wifi.
                 </mat-error>
-                <mat-error *ngIf="SSID.hasError('minlength')">
+                <mat-error *ngIf="ssid.hasError('minlength')">
                     Votre SSID doit faire au moins 3 caractères.
                 </mat-error>
-                <mat-error *ngIf="SSID.hasError('maxlength')">
+                <mat-error *ngIf="ssid.hasError('maxlength')">
                     Votre SSID doit faire moins de 32 caractères.
                 </mat-error>
-                <button mat-button *ngIf="SSID" matSuffix mat-icon-button aria-label="Clear"
-                    (click)="SSID.setValue('')">
+                <button mat-button *ngIf="ssid" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="ssid.setValue('')">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
@@ -25,7 +25,7 @@
 
         <div class="form-part">
             <mat-form-field>
-                <mat-label>Mot de passe</mat-label>
+                <mat-label>Mot de passe :</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
                 <mat-error *ngIf="password.hasError('required')">
                     Entrez le mot de passe du réseau Wifi.
@@ -44,7 +44,7 @@
             </mat-form-field>
         </div>
         <div class="button-part">
-            <button mat-raised-button color="primary" [disabled]="!password.valid || !SSID.valid "
+            <button mat-raised-button color="primary" [disabled]="!password.valid || !ssid.valid "
                 (click)="onSubmit()">Enregistrer le réseau Wifi
             </button>
         </div>
