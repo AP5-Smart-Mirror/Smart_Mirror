@@ -48,6 +48,20 @@ export class AccountService {
 	}
 
 	register(account: Account) {
-		return this.httpClient.post(this.url + '/register', account);
+		return new Promise<any>((resolve, reject) => {
+			this.httpClient
+				.post<any>(this.url + '/register', account)
+				.toPromise()
+				.then(
+					(res) => {
+						// Success
+						resolve(res);
+					},
+					(msg) => {
+						// Error
+						reject(msg);
+					}
+				);
+		});
 	}
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -11,7 +12,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private accountService: AccountService){}
+  constructor(private accountService: AccountService, private router: Router){}
 
   hide: boolean;
 
@@ -40,7 +41,17 @@ export class RegisterComponent implements OnInit {
 	onSubmit(): void {
 		this.account.username = this.username.value;
     this.account.password = this.password.value;
-    this.accountService.register(this.account);
+    this.accountService.register(this.account)
+      .then((res) => {
+        console.log(res);
+        this.router.navigate(['/home']);
+      })
+      .then((error) => {
+        console.log(error);
+        this.password.setValue('');
+        this.username.setValue('');
+        alert("Username déjà utilisé")
+      })
 	}
   
 }
