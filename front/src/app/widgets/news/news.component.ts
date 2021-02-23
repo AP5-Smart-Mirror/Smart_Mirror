@@ -11,7 +11,7 @@ export class NewsComponent implements OnInit {
   loading: boolean;
   news: News[];
   currentNews: News;
-  newsText : String = "";
+  newsText: string = '';
   constructor(
     private newsService: NewsService
   ) { }
@@ -31,14 +31,14 @@ export class NewsComponent implements OnInit {
       this.currentNews = this.news[0];
     }
   }
-  
+
   init(): void {
     this.news = [];
     this.newsService.getNews().then(news => {
       this.loading = true;
       news.forEach(element => {
         this.newsText+=element.title;
-        this.newsText += " - ";
+        this.newsText += ' - ';
       });
       this.currentNews = this.news[0];
     }).then(() => this.loading = false);

@@ -12,13 +12,9 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private accountService: AccountService, private router: Router){}
-
   hide: boolean;
 
-  private account: Account;
-
-	username = new FormControl(null, [
+  username = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(3),
 	]);
@@ -26,12 +22,16 @@ export class RegisterComponent implements OnInit {
   email = new FormControl(null, [
     Validators.required,
     Validators.email,
-  ]); 
+  ]);
 
 	password = new FormControl(null, [
 		Validators.required,
 		Validators.minLength(8),
 	]);
+
+  private account: Account;
+
+  constructor(private accountService: AccountService, private router: Router){}
 
 	ngOnInit(): void {
 		this.hide = true;
@@ -44,20 +44,13 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(this.account)
       .then((res) => {
         console.log(res);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       })
       .then((error) => {
         console.log(error);
         this.password.setValue('');
         this.username.setValue('');
-        alert("Nom d'utilisateur déjà utilisé")
-      })
+        alert('Nom d\'utilisateur déjà utilisé');
+      });
 	}
-  
 }
-
-
-
-
-
-
