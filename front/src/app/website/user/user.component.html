@@ -4,8 +4,8 @@
         <h1>Bienvenue !</h1>
         <h3>Choisissez votre profil</h3>
     </div>
-    <div class="container-profile" *ngFor="let profile of profiles;">
-            <p>{{ profile.name }}</p>
+    <div class="container-profile">
+            <div class="app-profile" *ngFor="let profile of profiles;">{{ profile.name }}</div>
     </div>
     <div class="create-profile">
         <p class="plus">+</p>

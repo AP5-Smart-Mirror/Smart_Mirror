@@ -37,5 +37,6 @@ export class UserComponent implements OnInit {
     this.profiles.push(new Profile(null, 'Roger', null));
     this.profiles.push(new Profile(null, 'Florian', null));
     this.profiles.push(new Profile(null, 'Manuelle', null));
+    this.profiles.push(new Profile(null, 'Invité', null));
   }
 }
