@@ -8,20 +8,20 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-	public currentUser: Observable<Account>;
+	public currentAccount: Observable<Account>;
 
 	private url: string = environment.serverBaseUrl;
-	private currentUserSubject: BehaviorSubject<Account>;
+	private currentAccountSubject: BehaviorSubject<Account>;
 
 	constructor(private httpClient: HttpClient) {
-		this.currentUserSubject = new BehaviorSubject<Account>(
-			JSON.parse(localStorage.getItem('currentUser'))
+		this.currentAccountSubject = new BehaviorSubject<Account>(
+			JSON.parse(localStorage.getItem('currentAccount'))
 		);
-		this.currentUser = this.currentUserSubject.asObservable();
+		this.currentAccount = this.currentAccountSubject.asObservable();
 	}
 
-	public get currentUserValue(): Account {
-		return this.currentUserSubject.value;
+	public get currentAccountValue(): Account {
+		return this.currentAccountSubject.value;
 	}
 
 	login(account: Account) {
@@ -31,8 +31,8 @@ export class AuthenticationService {
 				.then(
 					(user) => {
 						// store user details and jwt token in local storage to keep user logged in between page refreshes
-						localStorage.setItem('currentUser', JSON.stringify(user));
-						this.currentUserSubject.next(user);
+						localStorage.setItem('currentAccount', JSON.stringify(user));
+						this.currentAccountSubject.next(user);
 						// Success
 						resolve(user);
 					},
@@ -46,7 +46,7 @@ export class AuthenticationService {
 
 	logout() {
 		// remove user from local storage and set current user to null
-		localStorage.removeItem('currentUser');
-		this.currentUserSubject.next(null);
+		localStorage.removeItem('currentAccount');
+		this.currentAccountSubject.next(null);
 	}
 }

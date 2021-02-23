@@ -1,0 +1,39 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+    align-items: center;
+	height: 50%;
+    width: 100%;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-size: xx-large;
+}
+
+.button-part {
+    display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+    width: 100%;
+}
+
+button {
+    font-size: large;
+    width: 15%;
+	margin: 5px;
+    transition: width 0.3s, margin 0.3s, font-size 0.3s;
+}
+
+button:hover {
+    font-size: x-large;
+    width: 18%;
+}

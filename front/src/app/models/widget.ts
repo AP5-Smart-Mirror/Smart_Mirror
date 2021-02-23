@@ -3,12 +3,12 @@ import { WidgetName } from '../enums/widget-name';
 
 export class Widget {
 	id: number;
-	name: WidgetName;
+	widget: WidgetName;
 	config: Configuration;
 
-	constructor(id: number, name: WidgetName, config: Configuration) {
+	constructor(id: number, widget: WidgetName, config: Configuration) {
 		this.id = id;
-		this.name = name;
+		this.widget = widget;
 		this.config = config;
 	}
 }

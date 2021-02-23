@@ -11,9 +11,9 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfileList(): Promise<Profile[]> {
+  getProfilesById(idAccount: number): Promise<Profile[]> {
     return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profiles')
+      this.httpClient.get<Profile[]>(this.url + '/profiles/' + idAccount)
         .toPromise()
         .then(
           res => { // Success

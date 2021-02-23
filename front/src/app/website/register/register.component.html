@@ -1,8 +1,10 @@
 <app-home-bar></app-home-bar>
 <div class="content">
     <form class="form" name="registerForm">
-        <h1>Page d'inscription</h1>
-        
+        <div class="title">
+            <h1>Espace de création de </h1>
+            <h1>votre compte personnel</h1>
+        </div>
         <div class="form-part">
             <mat-form-field>
                 <mat-label>Nom d'utilisateur</mat-label>
@@ -18,9 +20,7 @@
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
-        </div>
 
-        <div class="form-part">
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput type="text" [formControl]="email">
@@ -35,9 +35,7 @@
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
-        </div>
-
-        <div class="form-part">
+            
             <mat-form-field>
                 <mat-label>Mot de passe</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
