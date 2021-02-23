@@ -13,7 +13,11 @@ const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
 const port = 3000;
-
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+    next();
+});
 app.use('/api/clock', clockRouter);
 app.use('/api/google', googleRouter);
 app.use('/api/news', newsRouter);
@@ -144,11 +148,7 @@ app.use('/api/outlook/auth', authRouter);
 app.use('/api/outlook/calendar', calendarRouter);
 app.use('/api/outlook/users', usersRouter);
 
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Methods', 'GET');
-  next();
-});
+
 
 app.listen(port, function () {
   console.log('The API is listening on port ' + port);
