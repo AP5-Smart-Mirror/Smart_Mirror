@@ -1,0 +1,52 @@
+<app-home-bar></app-home-bar>
+<div class="content">
+    <form class="form" name="registerForm">
+        <h1>Configuration Wifi du miroir</h1>
+        
+        <div class="form-part">
+            <mat-form-field>
+                <mat-label>SSID du réseau</mat-label>
+                <input matInput type="text" [formControl]="ssid">
+                <mat-error *ngIf="ssid.hasError('required')">
+                    Entrez le SSID de votre réseau Wifi.
+                </mat-error>
+                <mat-error *ngIf="ssid.hasError('minlength')">
+                    Votre SSID doit faire au moins 3 caractères.
+                </mat-error>
+                <mat-error *ngIf="ssid.hasError('maxlength')">
+                    Votre SSID doit faire moins de 32 caractères.
+                </mat-error>
+                <button mat-button *ngIf="ssid" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="ssid.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="form-part">
+            <mat-form-field>
+                <mat-label>Mot de passe :</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                <mat-error *ngIf="password.hasError('required')">
+                    Entrez le mot de passe du réseau Wifi.
+                </mat-error>
+                <mat-error *ngIf="password.hasError('minlength')">
+                    Votre mot de passe doit faire au moins 8 caractères.
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="password.setValue('')">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="button-part">
+            <button mat-raised-button color="primary" [disabled]="!password.valid || !ssid.valid "
+                (click)="onSubmit()">Enregistrer le réseau Wifi
+            </button>
+        </div>
+    </form>
+</div>
