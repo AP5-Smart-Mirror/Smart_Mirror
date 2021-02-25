@@ -6,17 +6,19 @@ async function getLogin(body) {
   let name = body.username;
   let password = body.password;
   var data = await db
-    .select('id', 'username')
+    .select('id', 'username', 'password')
     .from('accounts')
     .where('username', name);
-  result['id'] = data[0].id;
 
-  var listProfiles = await db
-    .select('id', 'username')
-    .from('profiles')
-    .where('id_account', data[0].id);
-
-  result['profiles'] = listProfiles;
+  if (bcrypt.compareSync(password, data[0].password)) {
+    result['id'] = data[0].id;
+    result['profiles'] = await db
+      .select('id', 'username')
+      .from('profiles')
+      .where('id_account', data[0].id);
+  } else {
+    result['error'] = 'the password does not match';
+  }
 
   return result;
 }
