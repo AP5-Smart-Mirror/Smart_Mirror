@@ -1,0 +1,17 @@
+<app-home-bar></app-home-bar>
+<div class="content">
+   <form class="form">
+      <div class="title">
+         <h1>Bienvenue !</h1>
+         <h3>Choisissez les widgets que vous voulez afficher</h3>
+      </div>
+      <div class="form-part">
+            <ng-container class="form-part" *ngFor="let widget of widgetName | keyvalue">
+               <ul>
+                  <input type="checkbox" id="id" unchecked>
+                  <label for="id">{{ widget.value }}</label>
+               </ul>
+            </ng-container>
+      </div>
+   </form>
+</div>
