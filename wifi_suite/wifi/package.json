@@ -1,0 +1,16 @@
+{
+  "name": "wifi",
+  "version": "1.0.0",
+  "description": "Cette appli permet d'exposer une petite appli sur une url précise permettant de recuper les infos d'authentification wifi. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sagee Mcdel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "md5-file": "^5.0.0",
+    "sha1-file": "^2.0.0"
+  }
+}
