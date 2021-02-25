@@ -1,4 +1,5 @@
 
 back/token.json
 back/credentials.json
+.idea/
 node_modules
