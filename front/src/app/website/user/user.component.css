@@ -33,7 +33,7 @@ h3 {
 	height: 50%;
 }
 
-.app-profile {
+app-profile {
 	height: 90%;
 	width: 18%;
 	display: flex;
@@ -44,17 +44,12 @@ h3 {
 	transition: width 0.3s, height 0.5s, box-shadow 0.3s;
 }
 
-.app-profile:hover {
+app-profile:hover {
 	height: 100%;
 	width: 20%;
     box-shadow: 0px 0px 20px 5px black;
 	cursor: pointer;
 }
-
-/*.app-profile: {
-	animation: 1s zoomin;
-	cursor: pointer;
-}*/
 
 .create-profile {
 	height: 150px;
