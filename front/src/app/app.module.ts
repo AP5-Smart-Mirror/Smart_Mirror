@@ -34,7 +34,7 @@ import {HomeBarComponent} from './website/home-bar/home-bar.component';
 import {RegisterComponent} from './website/register/register.component';
 import { UserComponent } from './website/user/user.component';
 import { WifiSettingsComponent } from './website/wifi-settings/wifi-settings.component';
-
+import { ProfileComponent } from './website/user/profile/profile.component';
 
 registerLocaleData(localeFr);
 
@@ -57,6 +57,7 @@ registerLocaleData(localeFr);
 		RegisterComponent,
 		UserComponent,
 		WifiSettingsComponent,
+		ProfileComponent,
 	],
 	imports: [
 		BrowserModule,
