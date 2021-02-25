@@ -22,11 +22,13 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `username` varchar(50) NOT NULL,
   `password` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.accounts : ~0 rows (environ)
 DELETE FROM `accounts`;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
+INSERT INTO `accounts` (`id`, `username`, `password`) VALUES
+	(1, 'Claire', '$2a$10$BvCNdNllCLP8mEUpGHaRmeUVIbTiuJpi2gx8fGnlzB482BtkyhYw.');
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 
 -- Listage de la structure de la table smart_mirror_db. associative
