@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Profile } from 'src/app/models/profile';
 
 @Component({
@@ -8,12 +8,13 @@ import { Profile } from 'src/app/models/profile';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: Profile;
+  @Input() profileName: string;
+  @Input() profileImg: string;
+
 
   constructor() { }
 
   ngOnInit(): void {
-    this.profile = new Profile(1, 'Test', null, '../../../assets/icons/pdpTest2.png');
   }
 
 }
