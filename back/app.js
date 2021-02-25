@@ -12,11 +12,13 @@ const graph = require('./src/Outlook/graph');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
-const port = 3000;
+var databaseRouter = require('./src/bdd/routes/databaseRouter');
+var port = 3000;
+
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+  next();
 });
 app.use('/api/clock', clockRouter);
 app.use('/api/google', googleRouter);
@@ -148,6 +150,7 @@ app.use('/api/outlook/auth', authRouter);
 app.use('/api/outlook/calendar', calendarRouter);
 app.use('/api/outlook/users', usersRouter);
 
+app.use('/api/bdd', databaseRouter);
 
 
 app.listen(port, function () {

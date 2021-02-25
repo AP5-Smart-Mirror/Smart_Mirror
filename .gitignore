@@ -3,3 +3,5 @@ back/token.json
 back/credentials.json
 .idea/
 node_modules
+.idea
+back/package-lock.json
