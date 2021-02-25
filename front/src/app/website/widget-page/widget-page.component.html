@@ -8,10 +8,15 @@
       <div class="form-part">
             <ng-container class="form-part" *ngFor="let widget of widgetName | keyvalue">
                <ul>
-                  <input type="checkbox" id="id" unchecked>
-                  <label for="id">{{ widget.value }}</label>
+                  <input type="checkbox" id="nameCheck" [FormControl]="checked"/>
+                  <label for="nameCheck">{{ widget.value }}</label>
                </ul>
             </ng-container>
       </div>
+      <div class="button-part">
+         <button mat-raised-button color="primary"(click)="onSubmit()">
+            Valider
+         </button>
+     </div>
    </form>
 </div>

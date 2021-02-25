@@ -31,3 +31,9 @@ h3 {
 	flex-direction: column;
 	justify-content: space-between;
 }
+
+.button-part {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
