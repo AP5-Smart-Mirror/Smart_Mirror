@@ -26,7 +26,7 @@ export class AuthenticationService {
 
 	login(account: Account) {
 		return new Promise<any>((resolve, reject) => {
-			this.httpClient.post<Account>(this.url + '/authenticate', account)
+			this.httpClient.post<Account>(this.url + '/login', account)
 		.toPromise()
 				.then(
 					(user) => {
