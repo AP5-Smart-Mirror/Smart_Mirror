@@ -50,7 +50,6 @@ DELETE FROM `associative`;
 CREATE TABLE IF NOT EXISTS `profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `password` varchar(250) NOT NULL,
   `id_account` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_account` (`id_account`),
@@ -67,11 +66,19 @@ CREATE TABLE IF NOT EXISTS `widgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `widget` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table smart_mirror_db.widgets : ~0 rows (environ)
 DELETE FROM `widgets`;
 /*!40000 ALTER TABLE `widgets` DISABLE KEYS */;
+INSERT INTO `widgets` (`id`, `widget`) VALUES
+	(1, 'news'),
+	(2, 'weather'),
+	(3, 'weather_forecast'),
+	(4, 'google_mail'),
+	(5, 'google_calendar'),
+	(6, 'analogue_clock'),
+	(7, 'digital_clock');
 /*!40000 ALTER TABLE `widgets` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
