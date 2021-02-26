@@ -47,21 +47,10 @@ export class AccountService {
 		});
 	}
 
-	register(account: Account) {
-		return new Promise<any>((resolve, reject) => {
-			this.httpClient
-				.post<Account>(this.url + '/register', account)
-				.toPromise()
-				.then(
-					(res) => {
-						// Success
-						resolve(res);
-					},
-					(msg) => {
-						// Error
-						reject(msg);
-					}
-				);
-		});
+	register(account: Account): Promise<number> {
+		/*return this.httpClient
+				.post<Account>(this.url + '/bdd/account/register', account)
+				.toPromise();*/
+		return Promise.resolve(1);
 	}
 }

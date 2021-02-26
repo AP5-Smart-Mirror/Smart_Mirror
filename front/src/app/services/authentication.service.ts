@@ -24,24 +24,10 @@ export class AuthenticationService {
 		return this.currentAccountSubject.value;
 	}
 
-	login(account: Account) {
-		return new Promise<any>((resolve, reject) => {
-			this.httpClient.post<Account>(this.url + '/authenticate', account)
-		.toPromise()
-				.then(
-					(user) => {
-						// store user details and jwt token in local storage to keep user logged in between page refreshes
-						localStorage.setItem('currentAccount', JSON.stringify(user));
-						this.currentAccountSubject.next(user);
-						// Success
-						resolve(user);
-					},
-					(msg) => {
-						// Error
-						reject(msg);
-					}
-				);
-		});
+	login(account: Account): Promise<Account> {
+		//return this.httpClient.post<Account>(this.url + '/login', account).toPromise();
+		localStorage.setItem('currentAccount', account.username);
+		return Promise.resolve(account);
 	}
 
 	logout() {

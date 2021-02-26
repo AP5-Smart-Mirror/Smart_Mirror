@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Profile } from 'src/app/models/profile';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -17,11 +18,15 @@ export class UserComponent implements OnInit {
   profiles: Array<Profile>;
 
 	constructor(private authenticationService: AuthenticationService,
-    private profileService: ProfileService, private router: Router) {
+    private profileService: ProfileService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+    //this.currentAccount = this.activatedRoute.queryParams.subscribe(params =>params.get('account'));
 		this.currentAccount = this.authenticationService.currentAccountValue;
 	}
 
 	ngOnInit(): void {
+    console.log(this.currentAccount);
     if(this.currentAccount) {
       console.log(this.currentAccount);
     } else {

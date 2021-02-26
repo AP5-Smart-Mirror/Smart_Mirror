@@ -43,11 +43,15 @@ export class AuthenticationComponent implements OnInit {
 			.then((res) => {
 				console.log(res);
 				alert('You\'re connected');*/
-				this.router.navigate(['/user']);
+				//this.router.navigate(['/user']);
 			/*})
 			.then((error) => {
 				console.log(error);
 				this.username.setValue('');
 			});*/
+		this.authenticationService.login(this.account).then((res) => {
+			console.log('res', res);
+			this.router.navigate(['/user', { account: res }]);
+		});
 	}
 }
