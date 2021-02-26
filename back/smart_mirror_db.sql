@@ -50,7 +50,6 @@ DELETE FROM `associative`;
 CREATE TABLE IF NOT EXISTS `profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `password` varchar(250) NOT NULL,
   `id_account` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_account` (`id_account`),
