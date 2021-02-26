@@ -7,6 +7,8 @@ import { WifiSettingsComponent } from './website/wifi-settings/wifi-settings.com
 import { HomeComponent } from './website/home/home.component';
 import { RegisterComponent } from './website/register/register.component';
 import { UserComponent } from './website/user/user.component';
+import { WidgetPageComponent } from './website/widget-page/widget-page.component';
+
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'mirror', pathMatch: 'full' },
@@ -16,6 +18,7 @@ const routes: Routes = [
 	{ path: 'login', component: AuthenticationComponent },
 	{ path: 'settings', component: WifiSettingsComponent },
 	{ path: 'user', component: UserComponent/*, canActivate: [AuthGuard]*/},
+	{ path: 'widget-page', component: WidgetPageComponent},
 	{ path: '**', redirectTo: '' }
 ];
 
