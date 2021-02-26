@@ -7,7 +7,7 @@ import { Emails } from '../models/emails';
   providedIn: 'root'
 })
 export class EmailsService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 

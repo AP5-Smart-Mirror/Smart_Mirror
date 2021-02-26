@@ -6,6 +6,10 @@
 	width: 100%;
 }
 
+.content:hover {
+	cursor: pointer;
+}
+
 .container-image {
 	width: 100%;
 	height: 80%;

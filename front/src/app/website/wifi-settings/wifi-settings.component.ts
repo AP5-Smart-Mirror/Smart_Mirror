@@ -14,6 +14,7 @@ import { Account } from '../../models/account';
 export class WifiSettingsComponent implements OnInit {
 
   hide: boolean;
+  currentAccount: Account;
 
   ssid = new FormControl(null, [
     Validators.required,
@@ -27,7 +28,6 @@ export class WifiSettingsComponent implements OnInit {
 	]);
 
   private wifiNetork: WifiNetwork;
-  currentAccount: Account;
 
   constructor(private authenticationService: AuthenticationService,
     private profileService: ProfileService, private router: Router) {

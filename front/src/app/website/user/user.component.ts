@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
     this.profiles.push(new Profile(null, 'Invité', null, 'https://images.unsplash.com/photo-1614089119016-7a5ca1baa982?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80'));
   }
 
-  choseProfile() {
-    this.router.navigate(['/widget-page']);  
+  choseProfile(id: number) {
+    this.router.navigate(['/widget-page']);
   }
 }
