@@ -1,5 +1,4 @@
 var db = require('../../Database/database');
-const bcrypt = require('bcryptjs');
 
 async function getAccounts(body) {
   var data = await db

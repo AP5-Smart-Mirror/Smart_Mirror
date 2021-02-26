@@ -97,7 +97,7 @@ paths:
         '400':
           description: 'Invalid status value'
   
-  /api/bdd/account/:
+  /api/bdd/account:
     get:
       description: Use to get all accounts from BDD
       responses:
@@ -108,31 +108,20 @@ paths:
         '400':
           description: 'Invalid status value'
 
-  /api/bdd/account/{id}:
+  /api/bdd/profile:
     get:
       description: Use to get list of profiles for a specific account from BDD
       responses:
         '200':
           description: a json is returned
           schema:
-            $ref: '#/definitions/Accounts'
+            $ref: '#/definitions/Profiles'
         '400':
           description: 'Invalid status value'
 
   /api/bdd/widget:
     get:
       description: Use to get all widgets from BDD
-      responses:
-        '200':
-          description: a json is returned
-          schema:
-            $ref: '#/definitions/Widget'
-        '400':
-          description: 'Invalid status value'
-
-  /api/bdd/widget/{id}:
-    get:
-      description: Use to get all widgets for a profil from BDD
       responses:
         '200':
           description: a json is returned
@@ -199,13 +188,13 @@ paths:
           schema:
             type: object
             required:
-              - name
-              - password
+              - username
+              - id_account
             properties:
-              name:
+              username:
                 type: string
-              password:
-                type: string
+              id_account:
+                type: integer
       responses:
         201:
           description: Profile was created successfully
@@ -223,11 +212,8 @@ paths:
             type: object
             required:
               - username
-              - password
             properties:
               username:
-                type: string
-              password:
                 type: string
       responses:
         201:
@@ -384,37 +370,33 @@ definitions:
   Accounts:
     type: object
     properties:
-      name:
+      username:
         type: string
         example: Didier
       password:
         type: string
         example: 'azerty123'
   Accounts_list:
-      type: array
-      items:
-        type: array
-        items:
-          type: object
-          properties:
-            'id':
-              type: integer
-              example: '1'
-            'username':
-              type: string
-              example: 'Claire'
-            'password':
-              type: string
-              example: 'azerty'
+      type: object
+      properties:
+        'id':
+          type: integer
+          example: '1'
+        'username':
+          type: string
+          example: 'Claire'
+        'password':
+          type: string
+          example: 'azerty'
   Profiles:
     type: object
     properties:
-      name:
+      username:
         type: string
         example: Didier
-      password:
-        type: string
-        example: 'azerty123'
+      id_account:
+        type: integer
+        example: 1
   Widget:
     type: object
     properties:
@@ -424,21 +406,3 @@ definitions:
       profil_idProfil:
         type: integer
         example: 2
-  Register:
-    type: object
-    properties:
-      name:
-        type: string
-        example: Didier
-      password:
-        type: string
-        example: 'azerty123'
-  Login:
-    type: object
-    properties:
-      name:
-        type: string
-        example: Didier
-      password:
-        type: string
-        example: 'azerty123'
