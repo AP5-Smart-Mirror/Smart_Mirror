@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { WidgetName } from 'src/app/enums/widget-name';
 import { Profile } from 'src/app/models/profile';
 import { Widget } from 'src/app/models/widget';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'app-widget-page',
@@ -13,11 +17,15 @@ import { Widget } from 'src/app/models/widget';
 export class WidgetPageComponent implements OnInit {
   widgetName = WidgetName;
   profile: Profile;
+  currentAccount: Account;
 
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService,
+    private profileService: ProfileService, private router: Router) {
+		this.currentAccount = this.authenticationService.currentAccountValue;
+	}
 
   ngOnInit(): void {
-    this.profile = new Profile(null, null, [new Widget(null, WidgetName.date, null), new Widget(null, WidgetName.almanac, null)])
+    this.profile = new Profile(null, null, [new Widget(null, WidgetName.date, null), new Widget(null, WidgetName.almanac, null)], null)
   }
 
   onSubmit(): void{
@@ -30,6 +38,8 @@ export class WidgetPageComponent implements OnInit {
     }
     
     console.log(this.profile);
+    this.router.navigate(['/user']);
   }
+  
 
 }

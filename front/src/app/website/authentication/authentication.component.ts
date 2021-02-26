@@ -35,19 +35,19 @@ export class AuthenticationComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		this.account.username = this.username.value;
+		/*this.account.username = this.username.value;
 		this.account.password = this.password.value;
 
 		this.authenticationService
 			.login(this.account)
 			.then((res) => {
 				console.log(res);
-				alert('You\'re connected');
+				alert('You\'re connected');*/
 				this.router.navigate(['/user']);
-			})
+			/*})
 			.then((error) => {
 				console.log(error);
 				this.username.setValue('');
-			});
+			});*/
 	}
 }

@@ -6,7 +6,7 @@
     </div>
     <div class="container-profile">
         <ng-container *ngFor="let profile of profiles;">
-            <app-profile profileName='{{profile.name}}' profileImg='{{profile.img}}'></app-profile>
+            <app-profile profileName='{{profile.name}}' profileImg='{{profile.img}}' (click)="choseProfile()"></app-profile>
         </ng-container>
     </div>
     <div class="create-profile">

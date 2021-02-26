@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { WifiNetwork } from 'src/app/models/wifiNetwork';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'app-wifi-settings',
@@ -23,8 +27,12 @@ export class WifiSettingsComponent implements OnInit {
 	]);
 
   private wifiNetork: WifiNetwork;
+  currentAccount: Account;
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService,
+    private profileService: ProfileService, private router: Router) {
+		this.currentAccount = this.authenticationService.currentAccountValue;
+	}
 
   ngOnInit(): void {
     this.hide = true;
@@ -33,6 +41,7 @@ export class WifiSettingsComponent implements OnInit {
   onSubmit(): void {
     this.wifiNetork.ssid = this.ssid.value;
     this.wifiNetork.password = this.password.value;
+    this.router.navigate(['/home']);
   }
 
 }
