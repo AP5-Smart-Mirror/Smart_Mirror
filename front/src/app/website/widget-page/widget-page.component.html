@@ -8,8 +8,8 @@
       <div class="form-part">
             <ng-container class="form-part" *ngFor="let widget of widgetName | keyvalue">
                <ul>
-                  <input type="checkbox" id="nameCheck" [FormControl]="checked"/>
-                  <label for="nameCheck">{{ widget.value }}</label>
+                  <input type="checkbox" id="{{ widget.value }}">
+                  <label for="{{ widget.value }}">{{ widget.value }}</label>
                </ul>
             </ng-container>
       </div>
