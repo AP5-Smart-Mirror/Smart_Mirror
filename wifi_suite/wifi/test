@@ -1,0 +1,10 @@
+network={
+   ssid=aqfaaaaaaaaaaaaaaaaaaaaaaaaaafzertyssid1proutelola
+   psk=
+   key_mgmt=WPA-PSK
+}
+network={
+   ssid=ab
+   psk=cd
+   key_mgmt=WPA-PSK
+}

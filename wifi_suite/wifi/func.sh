@@ -10,15 +10,15 @@ do
 
    cp file1 file2
    ssid=""
-   pswd=""
+   p=""
    input="./file2"
    ssid=`cat './file2' | cut -d " " -f1`
-   pswd=`cat './file2' | cut -d " " -f2`
+   p=`cat './file2' | cut -d " " -f2`
 
-   echo "Changement de wifi $ssid"
+   echo "Changement de wifi $ssid et $p"
 
-   echo -e "network={\n   ssid=$ssid\n   psk=$pswd\n   key_mgmt=WPA-PSK\n}" >> sortie
-
+   echo -e "network={\n   ssid=$ssid\n   psk=$p\n   key_mgmt=WPA-PSK\n}" >>/etc/wpa_supplicant/wpa_supplicant.conf
+   sudo reboot
   fi
 
 done

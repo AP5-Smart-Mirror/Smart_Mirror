@@ -5,7 +5,7 @@ const os = require('os');
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const port = 3000;
+const port = 30001;
 const sha1File = require('sha1-file'); 
 const bodyParser = require("body-parser");
 
@@ -33,15 +33,15 @@ app.get('/', (req, res) => {
 //console.log(os.networkInterfaces)
 
 // ----------------------------------------
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(port,address, () => {
+  console.log(`Example app listening at http://${address}:${port}`);
 })
 app.post('/html', (req, res,) => {
   console.log(req.body);
   console.log(`SSID : ${req.body.ssid} <----> PASSWORD : ${req.body.password}`)
   ssid = String(req.body.ssid), //automatic filling of current user
 	password = String(req.body.password),
-    ecriture(ssid,password,'wifi_info_tmp.txt');
+    ecriture(ssid,password,'file1');
     res.send("Merci c'est enregistré !!")
   })
 
