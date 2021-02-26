@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { WidgetName } from 'src/app/enums/widget-name';
 import { Profile } from 'src/app/models/profile';
@@ -7,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Account } from '../../models/account';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-widget-page',
