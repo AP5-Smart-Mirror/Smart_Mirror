@@ -96,7 +96,143 @@ paths:
             $ref: '#/definitions/Gmail'
         '400':
           description: 'Invalid status value'
+  
+  /api/bdd/account/:
+    get:
+      description: Use to get all accounts from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Accounts_list'
+        '400':
+          description: 'Invalid status value'
 
+  /api/bdd/account/{id}:
+    get:
+      description: Use to get list of profiles for a specific account from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Accounts'
+        '400':
+          description: 'Invalid status value'
+
+  /api/bdd/widget:
+    get:
+      description: Use to get all widgets from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Widget'
+        '400':
+          description: 'Invalid status value'
+
+  /api/bdd/widget/{id}:
+    get:
+      description: Use to get all widgets for a profil from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Widget'
+        '400':
+          description: 'Invalid status value'
+
+  /api/bdd/account/register:
+    post:
+      summary: Creates a new account.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The account to create.
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        201:
+          description: Accuont was created successfully
+  
+  /api/bdd/account/login:
+    post:
+      summary: Connect to account.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The account to connect.
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: Account connected
+
+  /api/bdd/profile/register:
+    post:
+      summary: Creates a new profile.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The profile to create.
+          schema:
+            type: object
+            required:
+              - name
+              - password
+            properties:
+              name:
+                type: string
+              password:
+                type: string
+      responses:
+        201:
+          description: Profile was created successfully
+  
+  /api/bdd/profile/login:
+    post:
+      summary: Connect to profil.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The profile to connect.
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        201:
+          description: Profile connected
+  
 definitions:
   Clock:
     type: object
@@ -245,3 +381,64 @@ definitions:
                     'address': 'Mirroir-Connecte@hotmail.com',
                   },
               }
+  Accounts:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Didier
+      password:
+        type: string
+        example: 'azerty123'
+  Accounts_list:
+      type: array
+      items:
+        type: array
+        items:
+          type: object
+          properties:
+            'id':
+              type: integer
+              example: '1'
+            'username':
+              type: string
+              example: 'Claire'
+            'password':
+              type: string
+              example: 'azerty'
+  Profiles:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Didier
+      password:
+        type: string
+        example: 'azerty123'
+  Widget:
+    type: object
+    properties:
+      param:
+        type: string
+        example: Clock
+      profil_idProfil:
+        type: integer
+        example: 2
+  Register:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Didier
+      password:
+        type: string
+        example: 'azerty123'
+  Login:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Didier
+      password:
+        type: string
+        example: 'azerty123'

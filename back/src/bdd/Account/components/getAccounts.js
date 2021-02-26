@@ -1,20 +1,16 @@
 var db = require('../../Database/database');
 const bcrypt = require('bcryptjs');
 
-async function getLogin(body) {
-  var id = {};
-  let name = body.username;
-  let password = body.password;
+async function getAccounts(body) {
   var data = await db
-    .select('id', 'username')
+    .select('id', 'username', 'password')
     .from('accounts')
-    .where('username', name)
     .then((data) => {
       return data;
     });
   return data;
 }
 
-exports.getLogin = getLogin;
+exports.getAccounts = getAccounts;
  
 
