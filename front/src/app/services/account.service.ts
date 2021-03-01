@@ -11,7 +11,7 @@ export class AccountService {
 
 	constructor(private httpClient: HttpClient) {}
 
-	getAccount(id: number): Promise<Account> {
+	/*getAccount(id: number): Promise<Account> {
 		return new Promise<Account>((resolve, reject) => {
 			this.httpClient
 				.get<Account>(this.url + '/account/' + id)
@@ -45,23 +45,29 @@ export class AccountService {
 					}
 				);
 		});
-	}
+	}*/
 
-	register(account: Account) {
-		return new Promise<any>((resolve, reject) => {
+	register(account: Account): Promise<any> {
+		//return this.httpClient.post<Account>(this.url + '/bdd/account/register', account);
+		return Promise.resolve(1);
+		/*return new Promise<any>((resolve, reject) => {
 			this.httpClient
-				.post<Account>(this.url + '/register', account)
+				.post<any>(this.url + '/bdd/account/register', account)
 				.toPromise()
 				.then(
-					(res) => {
+					(response) => {
 						// Success
-						resolve(res);
+						resolve(response);
 					},
 					(msg) => {
 						// Error
 						reject(msg);
 					}
-				);
-		});
+				).then((body) => {
+					console.log(body);
+				}).catch((err) => {
+					console.log(err);
+				});
+		});*/
 	}
 }

@@ -5,7 +5,7 @@ const knex = require('knex')({
     user: 'root',
     password: '',
     database: 'smart_mirror_db',
-    port: '3308',
+    port: '3306',
   },
 });
 module.exports = knex;
