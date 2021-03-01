@@ -24,10 +24,7 @@ export class AuthenticationComponent implements OnInit {
 
 	private account: Account;
 
-	constructor(
-		private router: Router,
-		private authenticationService: AuthenticationService
-	) {}
+	constructor(private router: Router) {}
 
 	ngOnInit(): void {
 		this.hide = true;
@@ -49,9 +46,9 @@ export class AuthenticationComponent implements OnInit {
 				console.log(error);
 				this.username.setValue('');
 			});*/
-		this.authenticationService.login(this.account).then((res) => {
+		/*this.authenticationService.login(this.account).then((res) => {
 			console.log('res', res);
 			this.router.navigate(['/user', { account: res }]);
-		});
+		});*/
 	}
 }

@@ -29,10 +29,7 @@ export class WifiSettingsComponent implements OnInit {
 
   private wifiNetork: WifiNetwork;
 
-  constructor(private authenticationService: AuthenticationService,
-    private profileService: ProfileService, private router: Router) {
-		this.currentAccount = this.authenticationService.currentAccountValue;
-	}
+  constructor(private router: Router) {	}
 
   ngOnInit(): void {
     this.hide = true;

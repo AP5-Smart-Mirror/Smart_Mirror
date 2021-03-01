@@ -31,11 +31,15 @@ export class RegisterComponent implements OnInit {
 
   private account: Account;
 
-  constructor(private accountService: AccountService, private router: Router){}
+  constructor(private accountService: AccountService,
+    private router: Router){}
 
 	ngOnInit(): void {
 		this.hide = true;
     this.account = new Account();
+    this.account.id = 100;
+    this.account.username = 'Gaspard';
+    this.account.password = 'gaspardgaspard';
 	}
 
 	onSubmit(): void {
@@ -44,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(this.account)
       .then((res) => {
         console.log(res);*/
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
       /*})
       .then((error) => {
         console.log(error);
@@ -52,5 +56,10 @@ export class RegisterComponent implements OnInit {
         this.username.setValue('');
         alert('Nom d\'utilisateur déjà utilisé');
       });*/
+      this.accountService.register(this.account)
+      .then((res) => {
+        console.log('res', res);
+        this.router.navigate(['/login', {account: res}]);
+      });
 	}
 }

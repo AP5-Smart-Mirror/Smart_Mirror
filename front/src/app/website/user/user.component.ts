@@ -17,12 +17,9 @@ export class UserComponent implements OnInit {
 	currentAccount: Account;
   profiles: Array<Profile>;
 
-	constructor(private authenticationService: AuthenticationService,
-    private profileService: ProfileService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) {
+	constructor(private router: Router) {
     //this.currentAccount = this.activatedRoute.queryParams.subscribe(params =>params.get('account'));
-		this.currentAccount = this.authenticationService.currentAccountValue;
+		//this.currentAccount = this.authenticationService.currentAccountValue;
 	}
 
 	ngOnInit(): void {
