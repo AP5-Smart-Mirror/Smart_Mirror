@@ -1,22 +1,24 @@
-const express = require('express');
-const app = express();
-const clockRouter = require('./src/Clock/routes/clockRouter');
-const googleRouter = require('./src/Google/routes/googleRouter');
-const newsRouter = require('./src/News/routes/newsRouter');
-const weatherRouter = require('./src/Weather/routes/weatherRouter');
-const indexRouter = require('./src/Outlook/routes/index');
-const usersRouter = require('./src/Outlook/routes/users');
-const authRouter = require('./src/Outlook/routes/auth');
-const calendarRouter = require('./src/Outlook/routes/calendar');
-const graph = require('./src/Outlook/graph');
+var express = require('express');
+var app = express();
+var clockRouter = require('./src/Clock/routes/clockRouter');
+var googleRouter = require('./src/Google/routes/googleRouter');
+var newsRouter = require('./src/News/routes/newsRouter');
+var weatherRouter = require('./src/Weather/routes/weatherRouter');
+var indexRouter = require('./src/Outlook/routes/index');
+var usersRouter = require('./src/Outlook/routes/users');
+var authRouter = require('./src/Outlook/routes/auth');
+var calendarRouter = require('./src/Outlook/routes/calendar');
+var graph = require('./src/Outlook/graph');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml');
-const port = 3000;
+var databaseRouter = require('./src/bdd/routes/databaseRouter');
+var port = 3000;
+
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+  next();
 });
 app.use('/api/clock', clockRouter);
 app.use('/api/google', googleRouter);
@@ -24,17 +26,18 @@ app.use('/api/news', newsRouter);
 app.use('/api/weather', weatherRouter);
 app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const session = require('express-session');
-const flash = require('connect-flash');
+var createError = require('http-errors');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var session = require('express-session');
+var flash = require('connect-flash');
 require('dotenv').config();
 
-const passport = require('passport');
-const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
+var passport = require('passport');
+var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-const users = {};
+var users = {};
 
 passport.serializeUser(function (user, done) {
   // Use the OID property of the user as a key
@@ -148,7 +151,7 @@ app.use('/api/outlook/auth', authRouter);
 app.use('/api/outlook/calendar', calendarRouter);
 app.use('/api/outlook/users', usersRouter);
 
-
+app.use('/api/bdd', databaseRouter);
 
 app.listen(port, function () {
   console.log('The API is listening on port ' + port);
