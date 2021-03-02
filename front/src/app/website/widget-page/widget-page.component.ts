@@ -34,17 +34,28 @@ export class WidgetPageComponent implements OnInit {
 	}
 
   ngOnInit(): void {
-    //this.loadProfile(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.loadProfile(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadWidgets(this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
   loadProfile(id: string) {
+    this.profileService.getProfile(id)
+    .then(profile => {
+      this.currentprofile = profile;
+      console.log('PROFILE', profile);
+    });
   }
 
   loadWidgets(idProfile: string) {
+    this.currentprofile.widgets = [];
+
     this.widgetService.getWidgetsById(idProfile)
-    .then(profile => {
-      console.log('PROFILE', profile);
+    .then(widgets => {
+      console.log('WIDGETS', widgets.widgets);
+      widgets.widgets.forEach(widget => {
+        console.log('WIDGET', widget);
+        this.currentprofile.widgets.push(widget);
+      });
     });
   }
 

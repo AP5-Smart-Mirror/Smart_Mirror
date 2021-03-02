@@ -1,3 +1,6 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable quote-props */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -17,7 +20,7 @@ export class ProfileService {
   }
 
   getProfile(id: string): Promise<Profile> {
-    return this.httpClient.post<Profile>(this.url + '/bdd/profile/get_profile', {'id_account': idAccount})
+    return this.httpClient.post<Profile>(this.url + '/bdd/profile/get_profile', {'id': id})
         .toPromise();
   }
 
