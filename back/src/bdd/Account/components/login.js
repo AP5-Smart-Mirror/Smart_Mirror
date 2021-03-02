@@ -17,7 +17,7 @@ async function getLogin(body) {
       .from('profiles')
       .where('id_account', data[0].id);
   } else {
-    result['error'] = 'the password does not match';
+    result['id'] = -1;
   }
 
   return result;
