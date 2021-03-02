@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Account } from '../../models/account';
+import { WidgetService } from 'src/app/services/widget.service';
+import { Configuration } from 'src/app/models/configuration';
 
 @Component({
   selector: 'app-widget-page',
@@ -15,31 +17,48 @@ import { Account } from '../../models/account';
 
 export class WidgetPageComponent implements OnInit {
   widgetName = WidgetName;
-  profile: Profile;
-  currentAccount: Account;
+  currentprofile: Profile = new Profile(
+    1,
+    'Claire',
+    [
+      new Widget(1, WidgetName.agenda, new Configuration(null, 1, 1, 1, 1)),
+      new Widget(2, WidgetName.almanac, new Configuration(null, 1, 1, 1, 1)),
+      new Widget(3, WidgetName.digitalClock, new Configuration(null, 1, 1, 1, 1))
+    ], null);
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(
+    private widgetService: WidgetService,
     private profileService: ProfileService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
-		this.currentAccount = this.authenticationService.currentAccountValue;
+    private activatedRoute: ActivatedRoute,
+		private router: Router) {
 	}
 
   ngOnInit(): void {
-    this.profile = new Profile(null, null, [new Widget(null, WidgetName.date, null), new Widget(null, WidgetName.almanac, null)], null);
+    //this.loadProfile(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.loadWidgets(this.activatedRoute.snapshot.paramMap.get('id'));
+  }
+
+  loadProfile(id: string) {
+  }
+
+  loadWidgets(idProfile: string) {
+    this.widgetService.getWidgetsById(idProfile)
+    .then(profile => {
+      console.log('PROFILE', profile);
+    });
   }
 
   onSubmit(): void{
-    this.profile.widgets = [];
+    this.currentprofile.widgets = [];
     // eslint-disable-next-line guard-for-in
     for(const widget in WidgetName){
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const checkboxValue = (<HTMLInputElement>document.getElementById(WidgetName[widget])).checked;
       if (checkboxValue ===  true){
-        this.profile.widgets.push(new Widget(null, WidgetName[widget], null));
+        this.currentprofile.widgets.push(new Widget(null, WidgetName[widget], null));
       }
     }
-    console.log(this.profile);
-    this.router.navigate(['/user']);
+    console.log(this.currentprofile);
+    this.router.navigate(['/home']);
   }
 }

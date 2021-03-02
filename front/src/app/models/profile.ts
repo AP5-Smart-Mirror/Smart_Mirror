@@ -8,7 +8,7 @@ export class Profile {
 
     constructor(id: number, username: string, widgets: Array<Widget>, img: string){
         this.id = id;
-        this.username = name;
+        this.username = username;
         this.widgets = widgets;
         this.img = img;
     }

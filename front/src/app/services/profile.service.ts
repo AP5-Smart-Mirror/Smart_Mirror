@@ -15,4 +15,9 @@ export class ProfileService {
     return this.httpClient.post<Array<any>>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
         .toPromise();
   }
+
+  getProfile(id: string): Promise<Profile> {
+    return this.httpClient.post<Profile>(this.url + '/bdd/profile/get_profile', {'id_account': idAccount})
+        .toPromise();
+  }
 }

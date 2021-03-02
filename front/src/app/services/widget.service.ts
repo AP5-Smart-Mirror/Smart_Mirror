@@ -11,18 +11,8 @@ export class WidgetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWidgets(idProfile: number): Promise<Widget[]> {
-    return new Promise<Widget[]>((resolve, reject) => {
-      this.httpClient.get<Widget[]>(this.url + '/widgets/' + idProfile)
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
+  getWidgetsById(idProfile: string): Promise<Widget[]> {
+    return this.httpClient.post<Widget[]>(this.url + '/bdd/widget/get_user_widgets', {'id_profile': idProfile})
+        .toPromise();
   }
 }

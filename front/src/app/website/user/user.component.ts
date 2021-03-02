@@ -25,7 +25,7 @@ export class UserComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.currentAccount = new Account();
-    this.profiles = [];
+    	this.profiles = [];
 		this.loadAccount(this.activatedRoute.snapshot.paramMap.get('id'));
 		this.loadProfiles(this.activatedRoute.snapshot.paramMap.get('id'));
 	}
