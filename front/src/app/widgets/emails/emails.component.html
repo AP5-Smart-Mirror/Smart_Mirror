@@ -1,5 +1,6 @@
 <div class="content">
-    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <div>
+        <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
         <img src="..\assets\gmail.png" class="logo">
         <h4> Messages non lus : {{nbUnread}} </h4>
         <h4 *ngFor="let mail of mailGoogle; let i = index">
@@ -8,4 +9,5 @@
                 <pre class="object">[{{mailGoogle[i].object}}]</pre>
             </div>
         </h4>
+    </div>
 </div>

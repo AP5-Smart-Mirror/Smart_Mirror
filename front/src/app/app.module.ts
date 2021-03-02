@@ -10,6 +10,7 @@ import { registerLocaleData } from '@angular/common';
 import { AnalogClockComponent } from './widgets/analog-clock/analog-clock.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DigitalClockComponent } from './widgets/digital-clock/digital-clock.component';
+import { EmailsComponent } from './widgets/emails/emails.component';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AgendaComponent } from './widgets/agenda/agenda.component';
@@ -37,6 +38,7 @@ import { WifiSettingsComponent } from './website/wifi-settings/wifi-settings.com
 import { ProfileComponent } from './website/user/profile/profile.component';
 import { WidgetPageComponent } from './website/widget-page/widget-page.component';
 
+
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -47,6 +49,7 @@ registerLocaleData(localeFr);
 		AgendaComponent,
 		AnalogClockComponent,
 		DigitalClockComponent,
+		EmailsComponent,
 		NewsComponent,
 		WeatherForecastComponent,
 		WeatherWeekendComponent,
