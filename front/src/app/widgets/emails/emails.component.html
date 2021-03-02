@@ -1,10 +1,13 @@
 <div class="content">
-    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
-        <h6 *ngFor="let mail of mailGoogle; let i = index">
-            {{mailGoogle[i].label}}
-            {{mailGoogle[i].sender}} <br>
-            [ {{mailGoogle[i].object}} ]<br>
-            {{mailGoogle[i].date}} <br>
-        </h6>
-
+    <div>
+        <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+        <img src="..\assets\gmail.png" class="logo">
+        <h4> Messages non lus : {{nbUnread}} </h4>
+        <h4 *ngFor="let mail of mailGoogle; let i = index">
+            <div *ngIf="i<3" >
+                <pre class="sender">{{mailGoogle[i].sender}}</pre>
+                <pre class="object">[{{mailGoogle[i].object}}]</pre>
+            </div>
+        </h4>
+    </div>
 </div>

@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable quote-props */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Widget } from '../models/widget';
+import { Profile } from '../models/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +14,17 @@ export class WidgetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWidgets(idProfile: number): Promise<Widget[]> {
-    return new Promise<Widget[]>((resolve, reject) => {
-      this.httpClient.get<Widget[]>(this.url + '/widgets/' + idProfile)
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
+  getWidgetsById(idProfile: string): Promise<Widget[]> {
+    return this.httpClient.post<Widget[]>(this.url + '/bdd/widget/get_user_widgets', {'id_profile': idProfile})
+        .toPromise();
+  }
+
+  setWidgetsById(profile: Profile): Promise<Widget[]> {
+    return this.httpClient.post<Widget[]>(this.url + '/bdd/widget/setProfileWidgets',
+    {
+      'id_profile': profile.id,
+      'widgets': profile.widgets
+    })
+        .toPromise();
   }
 }

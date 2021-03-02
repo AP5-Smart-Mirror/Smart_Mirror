@@ -7,10 +7,12 @@ import { Emails } from '../../models/emails';
   templateUrl: './emails.component.html',
   styleUrls: ['./emails.component.css']
 })
+
 export class EmailsComponent implements OnInit {
   loading: boolean;
   mailGoogle: Emails[];
   currentMailGoogle: Emails;
+  nbUnread: number;
 
   constructor(
     private mailGoogleService: EmailsService
@@ -19,25 +21,21 @@ export class EmailsComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.mailGoogle = [];
-    this.init();
-    setInterval(() => this.init(), 600000);
-    //setInterval(() => this.nextMailGoogle(), 10000);
+    this.fetchMails();
+    setInterval(() => this.fetchMails(), 3600000);
   }
 
 
-  init(): void {
+  fetchMails(): void {
     this.mailGoogleService.getMail().then(mailGoogle => {
       this.loading = true;
-      let cpt = 0;
+      this.nbUnread = 0;
       mailGoogle.forEach(element => {
+        element.sender = element.sender.split('<')[0];
         this.mailGoogle.push(element);
-        this.mailGoogle[cpt].date = this.mailGoogle[cpt].date.substring(0, this.mailGoogle[cpt].date.length - 5);
-        this.mailGoogle[cpt].sender = this.mailGoogle[cpt].sender.split('<')[0];
-        cpt = cpt + 1;
+        this.nbUnread++;
       });
-      cpt = 0;
       console.log(this.mailGoogle);
-     // this.currentMailGoogle = this.mailGoogle[0];
     }).then(() => this.loading = false);
   }
 

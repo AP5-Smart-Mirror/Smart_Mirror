@@ -2,12 +2,12 @@
 
 export enum WidgetName {
 	date = 'date',
-	weatherCurrent = 'weather-current',
-	digitalClock = 'digital-clock',
-	analogClock = 'analog-clock',
+	weatherCurrent = 'weather_current',
+	digitalClock = 'digital_clock',
+	analogClock = 'analog_clock',
 	news = 'news',
-	weatherForecast = 'weather-forecast',
-	weatherWeekend = 'weather-weekend',
+	weatherForecast = 'weather_forecast',
+	weatherWeekend = 'weather_weekend',
 	agenda = 'agenda',
 	mail = 'mail',
 	almanac = 'almanac',

@@ -33,7 +33,7 @@ h1 {
 button {
 	font-size: large;
 	color :white;
-    width: 15%;
+  width: 15%;
 	margin: 5px;
 	transition: width 0.3s, margin 0.3s, font-size 0.3s;
 	background-color: #996d0d;
