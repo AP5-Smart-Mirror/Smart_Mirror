@@ -4,6 +4,8 @@ import { Configuration } from '../models/configuration';
 import { Profile } from '../models/profile';
 import { Widget } from '../models/widget';
 import { WidgetName } from '../enums/widget-name';
+import { WidgetService } from '../services/widget.service';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-mirror',
@@ -19,7 +21,9 @@ export class MirrorComponent implements OnInit {
 
 	htmlAnimated: HTMLElement;
 
-	constructor() {}
+	constructor(
+		private profileService: ProfileService,
+		private widgetService: WidgetService) {}
 
 	@HostListener('document:keyup', ['$event'])
 	/*When ArrowUp key is pressed, we browse the next profile.
@@ -47,7 +51,7 @@ export class MirrorComponent implements OnInit {
 	}
 
 	init(): void {
-		this.profiles.push(
+		/*this.profiles.push(
 			new Profile(
 				null,
 				'default',
@@ -116,7 +120,14 @@ export class MirrorComponent implements OnInit {
 				),
 				null
 			)
-		);
+		);*/
+		this.profileService.getAll()
+		.then(profiles => {
+			console.log('ALL PROFILES', profiles);
+			profiles.forEach(profile => {
+				//this.profiles.push(new Profile());
+			});
+		});
 	}
 
 	searchWidget(widget: Array<Widget>, name: WidgetName): boolean {

@@ -28,7 +28,7 @@ h1 {
 
 button {
     font-size: large;
-    width: 15%;
+    width: 200px;
 	margin: 5px;
     transition: width 0.3s, margin 0.3s, font-size 0.3s;
 }

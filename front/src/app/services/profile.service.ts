@@ -1,3 +1,6 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable quote-props */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -11,33 +14,25 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfilesById(idAccount: number): Promise<Profile[]> {
-    return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profiles/' + idAccount)
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
+  getProfilesById(idAccount: string): Promise<Array<any>> {
+    return this.httpClient.post<Array<any>>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
+        .toPromise();
   }
 
-  /*getProfilesByUsername(account: Account): Promise<Profile[]> {
-    return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profiles/' + username, {'password': password});
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
-  }*/
+  getProfile(id: string): Promise<Profile> {
+    return this.httpClient.post<Profile>(this.url + '/bdd/profile/get_profile', {'id': id})
+        .toPromise();
+  }
+
+  getAll(): Promise<Profile[]> {
+    return this.httpClient.get<Profile[]>(this.url + '/bdd/profile/get_all').toPromise();
+  }
+
+  addProfile(idAccount: string, username: string): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/profile/register',
+    {
+      'id_account': idAccount,
+      'username': username
+    }).toPromise();
+  }
 }

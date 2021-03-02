@@ -45,7 +45,7 @@ export class AuthenticationComponent implements OnInit {
 			.then(body => {
 				if(body && body.id > 0){
 					console.log('Connection fulfilled');
-					this.router.navigate(['/user']);
+					this.router.navigate(['/user', body.id]);
 				} else {
 					console.log('Connection failed');
 					alert('Wrong password or username');
