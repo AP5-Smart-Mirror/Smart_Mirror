@@ -25,23 +25,8 @@ export class AuthenticationService {
 	}
 
 	login(account: Account) {
-		return new Promise<any>((resolve, reject) => {
-			this.httpClient.post<Account>(this.url + '/authenticate', account)
-		.toPromise()
-				.then(
-					(user) => {
-						// store user details and jwt token in local storage to keep user logged in between page refreshes
-						localStorage.setItem('currentAccount', JSON.stringify(user));
-						this.currentAccountSubject.next(user);
-						// Success
-						resolve(user);
-					},
-					(msg) => {
-						// Error
-						reject(msg);
-					}
-				);
-		});
+		return this.httpClient.post<Account>(this.url + '/bdd/account/login', account)
+		.toPromise();
 	}
 
 	logout() {

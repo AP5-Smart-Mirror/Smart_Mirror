@@ -35,19 +35,30 @@ export class AuthenticationComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		/*this.account.username = this.username.value;
+		this.account.username = this.username.value;
 		this.account.password = this.password.value;
+
+		console.log('SERVICE', this.authenticationService.login(this.account));
 
 		this.authenticationService
 			.login(this.account)
-			.then((res) => {
-				console.log(res);
-				alert('You\'re connected');*/
-				this.router.navigate(['/user']);
-			/*})
-			.then((error) => {
-				console.log(error);
-				this.username.setValue('');
+			.then(body => {
+				if(body && body.id > 0){
+					console.log('Connection fulfilled');
+					this.router.navigate(['/user']);
+				} else {
+					console.log('Connection failed');
+					alert('Wrong password or username');
+				}
+			});
+
+			/*.then((res) => {
+				if(res.id){
+					console.log('RES', res.id);
+					this.router.navigate(['/user']);
+				} else {
+					alert('Try again');
+				}
 			});*/
 	}
 }
