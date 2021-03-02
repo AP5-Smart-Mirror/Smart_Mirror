@@ -39,18 +39,12 @@ export class RegisterComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		/*this.account.username = this.username.value;
+		this.account.username = this.username.value;
     this.account.password = this.password.value;
     this.accountService.register(this.account)
       .then((res) => {
-        console.log(res);*/
+        console.log('res', res);
         this.router.navigate(['/login']);
-      /*})
-      .then((error) => {
-        console.log(error);
-        this.password.setValue('');
-        this.username.setValue('');
-        alert('Nom d\'utilisateur déjà utilisé');
-      });*/
+      });
 	}
 }

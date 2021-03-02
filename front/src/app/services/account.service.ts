@@ -7,11 +7,12 @@ import { Account } from '../models/account';
 	providedIn: 'root',
 })
 export class AccountService {
+	//private axios = require('axios').default;
 	private url: string = environment.serverBaseUrl;
 
 	constructor(private httpClient: HttpClient) {}
 
-	getAccount(id: number): Promise<Account> {
+	/*getAccount(id: number): Promise<Account> {
 		return new Promise<Account>((resolve, reject) => {
 			this.httpClient
 				.get<Account>(this.url + '/account/' + id)
@@ -45,23 +46,17 @@ export class AccountService {
 					}
 				);
 		});
-	}
+	}*/
 
-	register(account: Account) {
-		return new Promise<any>((resolve, reject) => {
-			this.httpClient
-				.post<Account>(this.url + '/register', account)
-				.toPromise()
-				.then(
-					(res) => {
-						// Success
-						resolve(res);
-					},
-					(msg) => {
-						// Error
-						reject(msg);
-					}
-				);
-		});
+	register(account: Account): Promise<any> {
+		return this.httpClient.post<Account>(this.url + '/bdd/account/register', account).toPromise();
+		//return Promise.resolve(1);
+		/*return this.axios.post(this.url + '/bdd/account/register', {account})
+		  .then((response: any) => {
+			console.log(response);
+		  })
+		  .catch((error: any) => {
+			console.log(error);
+		  });*/
 	}
 }
