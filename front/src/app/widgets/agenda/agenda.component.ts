@@ -17,7 +17,7 @@ export class AgendaComponent implements OnInit {
 		this.loading = true;
 		this.agenda = new Agenda();
 		this.init();
-		setInterval(() => this.init(), 600000);
+		//setInterval(() => this.init(), 600000);
 	}
 
 	init(): void {
