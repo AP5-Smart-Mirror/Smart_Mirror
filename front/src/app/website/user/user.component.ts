@@ -28,22 +28,18 @@ export class UserComponent implements OnInit {
     this.profiles = [];
 		this.loadAccount(this.activatedRoute.snapshot.paramMap.get('id'));
 		this.loadProfiles(this.activatedRoute.snapshot.paramMap.get('id'));
-    console.log('PROFILES IFNALE', this.profiles);
 	}
 
 	loadAccount(id: string) {
 		this.accountService.getAccount(id).then((res) => {
-			console.log('ACCOUNT', res);
 			this.currentAccount.username = res.username;
 		});
 	}
 
 	loadProfiles(id: string) {
 		this.profileService.getProfilesById(id).then((profiles) => {
-			console.log('PROFILES', profiles.profiles);
 			this.loading = true;
       profiles.profiles.forEach((profile) => {
-        console.log('PROFILE', profile);
         this.profiles.push(profile);
       });
     }).then(() => (this.loading = false));

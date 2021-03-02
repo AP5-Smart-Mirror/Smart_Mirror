@@ -12,6 +12,7 @@ async function getLogin(body) {
 
   if (bcrypt.compareSync(password, data[0].password)) {
     result['id'] = data[0].id;
+    result['username'] = data[0].username;
     result['profiles'] = await db
       .select('id', 'username')
       .from('profiles')
