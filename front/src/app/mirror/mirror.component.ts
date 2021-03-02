@@ -1,6 +1,5 @@
 import { HostListener, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { Configuration } from '../models/configuration';
 import { Profile } from '../models/profile';
 import { Widget } from '../models/widget';
 import { WidgetName } from '../enums/widget-name';
