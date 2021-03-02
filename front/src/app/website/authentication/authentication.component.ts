@@ -38,8 +38,6 @@ export class AuthenticationComponent implements OnInit {
 		this.account.username = this.username.value;
 		this.account.password = this.password.value;
 
-		console.log('SERVICE', this.authenticationService.login(this.account));
-
 		this.authenticationService
 			.login(this.account)
 			.then(body => {
