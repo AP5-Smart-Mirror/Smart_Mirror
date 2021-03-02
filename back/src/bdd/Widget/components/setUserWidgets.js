@@ -1,0 +1,17 @@
+var db = require('../../Database/database');
+
+async function setUserWidgets(body) {
+  var result = {};
+  var profile = body.id_profile;
+  var widgets = body.widgets;
+  await db('associative').where({ id_profile: profile }).del();
+  widgets.forEach(async (widget) => {
+    await db
+      .insert({ id_profile: profile, id_widget: widget.id })
+      .from('associative');
+  });
+  result['msg'] = 'done';
+  return result;
+}
+
+exports.setUserWidgets = setUserWidgets;
