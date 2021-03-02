@@ -18,17 +18,18 @@ async function getAll(body) {
       .select('id', 'username')
       .from('profiles')
       .where('id_account', data[0].id);
-    await profilesDB.forEach(async (profile) => {
+    console.log('SIZE', profilesDB.length);
+    for (var i = 0; i < profilesDB.length; i++) {
       var newProfile = {};
-      newProfile['id'] = profile.id;
-      newProfile['username'] = profile.username;
+      newProfile['id'] = profilesDB[i].id;
+      newProfile['username'] = profilesDB[i].username;
       newProfile['widgets'] = await db('profiles')
         .join('associative', 'profiles.id', '=', 'associative.id_profile')
         .join('widgets', 'widgets.id', '=', 'associative.id_widget')
         .select('widgets.id', 'widgets.widget')
-        .where('associative.id_profile', profile.id);
-      console.log(newProfile);
-    });
+        .where('associative.id_profile', profilesDB[i].id);
+      profiles.push(newProfile);
+    }
     console.log(profiles);
     result['profiles'] = profiles;
   } else {
