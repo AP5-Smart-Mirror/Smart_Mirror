@@ -10,10 +10,12 @@ mat-form-field {
 	align-items: center;
 	width: 100%;
 	height: 90%;
+	
 }
 
 h1,
 h3 {
+	color :white;
 	font-size: xx-large;
 }
 
@@ -22,6 +24,7 @@ h3 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	
 }
 
 .container-profile {
@@ -31,6 +34,7 @@ h3 {
 	align-items: center;
 	width: 100%;
 	height: 50%;
+	
 }
 
 app-profile {
@@ -42,6 +46,7 @@ app-profile {
 	align-content: center;
 	box-shadow: 0px 0px 9px 0px black;
 	transition: width 0.3s, height 0.5s, box-shadow 0.3s;
+	background-color:  #988a6d;
 }
 
 app-profile:hover {
@@ -58,11 +63,12 @@ app-profile:hover {
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0px 0px 20px 0px gray;
-    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+	transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+	background-color:  #988a6d;
 }
 
 .create-profile:hover {
-	background-color: black;
+	background-color: #996d0d;
 	color: white;
 	cursor: pointer;
 	box-shadow: 0px 0px 20px 0px black;

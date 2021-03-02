@@ -2,6 +2,12 @@
 html,
 body {
   height: 100%;
+  background-image: url(assets/icons/Medusa.PNG);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #104b35;
+  
 }
 
 body {
