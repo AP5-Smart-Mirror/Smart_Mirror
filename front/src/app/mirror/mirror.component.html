@@ -1,6 +1,6 @@
 <div class="content">
     <div class="welcome">
-      <h1 id="animated">Bonjour <span *ngIf="currentProfile.name !== 'default'">{{ currentProfile.name }}, <br> Vous êtes
+      <h1 id="animated">Bonjour <span *ngIf="currentProfile.username !== 'default'">{{ currentProfile.username }}, <br> Vous êtes
           rayonnant(e) aujourd'hui.</span></h1>
     </div>
     <app-date *ngIf="searchWidget(currentProfile.widgets, widgetName.date)"

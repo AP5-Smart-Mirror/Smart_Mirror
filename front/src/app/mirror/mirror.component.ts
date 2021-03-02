@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { Profile } from '../models/profile';
 import { Widget } from '../models/widget';
 import { WidgetName } from '../enums/widget-name';
-import { WidgetService } from '../services/widget.service';
 import { ProfileService } from '../services/profile.service';
+import { AccountService } from '../services/account.service';
+import { Configuration } from '../models/configuration';
 
 @Component({
   selector: 'app-mirror',
@@ -17,12 +18,11 @@ export class MirrorComponent implements OnInit {
 	currentProfile: Profile;
 	widgets: Array<Widget>;
 	widgetName = WidgetName;
-
 	htmlAnimated: HTMLElement;
 
 	constructor(
 		private profileService: ProfileService,
-		private widgetService: WidgetService) {}
+		private accountService: AccountService) {}
 
 	@HostListener('document:keyup', ['$event'])
 	/*When ArrowUp key is pressed, we browse the next profile.
@@ -43,14 +43,14 @@ export class MirrorComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.profiles = new Array<Profile>();
+		this.profiles = [];
 		this.init();
 		this.currentProfile = this.profiles[0];
 		this.playAnimation();
 	}
 
 	init(): void {
-		/*this.profiles.push(
+		this.profiles.push(
 			new Profile(
 				null,
 				'default',
@@ -119,14 +119,14 @@ export class MirrorComponent implements OnInit {
 				),
 				null
 			)
-		);*/
-		this.profileService.getAll()
-		.then(profiles => {
+		);
+		//console.log('OK', this.accountService.getAll());
+		/*.then(profiles => {
 			console.log('ALL PROFILES', profiles);
-			profiles.forEach(profile => {
+			//profiles.forEach(profile => {
 				//this.profiles.push(new Profile());
-			});
-		});
+			//});
+		});*/
 	}
 
 	searchWidget(widget: Array<Widget>, name: WidgetName): boolean {
