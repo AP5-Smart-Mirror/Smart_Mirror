@@ -21,9 +21,9 @@ export class AccountService {
 			.toPromise();
 	}
 
-	getAll(): Promise<Profile[]> {
+	getAll(): Promise<any> {
 		return this.httpClient
-			.post<Profile[]>(this.url + '/bdd/account/get_all',
+			.post<any>(this.url + '/bdd/account/get_all',
 			{
 				'username': 'Claire',
 				'password': 'testtest'

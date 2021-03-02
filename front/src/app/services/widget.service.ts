@@ -14,13 +14,13 @@ export class WidgetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWidgetsById(idProfile: string): Promise<Widget[]> {
-    return this.httpClient.post<Widget[]>(this.url + '/bdd/widget/get_user_widgets', {'id_profile': idProfile})
+  getWidgetsById(idProfile: string): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/widget/get_user_widgets', {'id_profile': idProfile})
         .toPromise();
   }
 
-  setWidgetsById(profile: Profile): Promise<Widget[]> {
-    return this.httpClient.post<Widget[]>(this.url + '/bdd/widget/setProfileWidgets',
+  setWidgetsById(profile: Profile): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/widget/setProfileWidgets',
     {
       'id_profile': profile.id,
       'widgets': profile.widgets

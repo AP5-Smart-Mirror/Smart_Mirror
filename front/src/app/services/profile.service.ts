@@ -14,8 +14,8 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfilesById(idAccount: string): Promise<Array<any>> {
-    return this.httpClient.post<Array<any>>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
+  getProfilesById(idAccount: string): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
         .toPromise();
   }
 
