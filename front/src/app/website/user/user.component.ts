@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 import { Account } from 'src/app/models/account';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-user',
@@ -16,6 +17,8 @@ export class UserComponent implements OnInit {
 	currentAccount: Account;
 	profiles: Array<Profile>;
 
+	name = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+
 	constructor(
 		private profileService: ProfileService,
 		private accountService: AccountService,
@@ -24,8 +27,13 @@ export class UserComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.init();
+	}
+
+	init() {
+		this.profiles = [];
 		this.currentAccount = new Account();
-    	this.profiles = [];
+		this.currentAccount.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 		this.loadAccount(this.activatedRoute.snapshot.paramMap.get('id'));
 		this.loadProfiles(this.activatedRoute.snapshot.paramMap.get('id'));
 	}
@@ -37,13 +45,16 @@ export class UserComponent implements OnInit {
 	}
 
 	loadProfiles(id: string) {
-		this.profileService.getProfilesById(id).then((profiles) => {
-			this.loading = true;
-      profiles.profiles.forEach((profile) => {
-        this.profiles.push(profile);
-      });
-    }).then(() => (this.loading = false));
-
+		this.profiles = [];
+		this.profileService
+			.getProfilesById(id)
+			.then((profiles) => {
+				this.loading = true;
+				profiles.profiles.forEach((profile) => {
+					this.profiles.push(profile);
+				});
+			})
+			.then(() => (this.loading = false));
 
 		/*this.profiles.push(new Profile(null, 'Gaspard', null, 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'));
     this.profiles.push(new Profile(null, 'Roger', null, 'https://images.unsplash.com/photo-1489702932289-406b7782113c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80'));
@@ -56,7 +67,24 @@ export class UserComponent implements OnInit {
 		this.router.navigate(['/widget-page', id]);
 	}
 
-  getProfileImg(profile: Profile): string {
-    return profile.img ? profile.img : 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80';
-  }
+	getProfileImg(profile: Profile): string {
+		return profile.img
+			? profile.img
+			: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80';
+	}
+
+	addNewProfile(): void {
+		if (this.profiles.length >= 5) {
+			console.log('Maximum of profiles reached');
+			this.name.setValue('');
+		} else if (this.name.valid) {
+			this.profileService.addProfile(
+				String(this.currentAccount.id),
+				this.name.value
+			);
+			this.name.setValue('');
+			console.log('New profile added correctly');
+			this.init();
+		}
+	}
 }

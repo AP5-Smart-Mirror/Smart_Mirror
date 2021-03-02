@@ -9,7 +9,16 @@
             <app-profile profileName='{{profile.username}}' profileImg='{{getProfileImg(profile)}}' (click)="choseProfile(profile.id)"></app-profile>
         </ng-container>
     </div>
-    <div class="create-profile">
+    <div class="create-profile" (click)='addNewProfile()'>
+        <mat-form-field style='width: 100px'>
+            <input matInput type="text" [formControl]="name" placeholder="Nom">
+            <mat-error *ngIf="name.hasError('required')">
+                Entrez votre nom d'utilisateur
+            </mat-error>
+            <mat-error *ngIf="name.hasError('minlength')">
+                Votre nom d'utilisateur doit être d'au moins 3 caractères.
+            </mat-error>
+        </mat-form-field>
         <p class="plus">+</p>
     </div>
 </div>

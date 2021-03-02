@@ -27,4 +27,12 @@ export class ProfileService {
   getAll(): Promise<Profile[]> {
     return this.httpClient.get<Profile[]>(this.url + '/bdd/profile/get_all').toPromise();
   }
+
+  addProfile(idAccount: string, username: string): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/profile/register',
+    {
+      'id_account': idAccount,
+      'username': username
+    }).toPromise();
+  }
 }
