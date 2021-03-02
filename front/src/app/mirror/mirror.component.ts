@@ -125,7 +125,7 @@ export class MirrorComponent implements OnInit {
 		.then(profiles => {
 			console.log('ALL PROFILES', profiles);
 			profiles.forEach(profile => {
-				this.profiles.push(new Profile());
+				//this.profiles.push(new Profile());
 			});
 		});
 	}
