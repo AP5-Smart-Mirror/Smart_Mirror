@@ -1,10 +1,11 @@
+
 .content {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
     align-items: center;
 	height: 50%;
-    width: 100%;
+	width: 100%;
 }
 
 .title {
@@ -12,10 +13,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	color: white;
 }
 
 h1 {
 	font-size: xx-large;
+	
 }
 
 .button-part {
@@ -23,17 +26,21 @@ h1 {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-    width: 100%;
+	width: 100%;
+	
 }
 
 button {
-    font-size: large;
-    width: 200px;
+	font-size: large;
+	color :white;
+  width: 15%;
 	margin: 5px;
-    transition: width 0.3s, margin 0.3s, font-size 0.3s;
+	transition: width 0.3s, margin 0.3s, font-size 0.3s;
+	background-color: #996d0d;
 }
 
 button:hover {
     font-size: x-large;
-    width: 18%;
+	width: 18%;
+	background-color: #988a6d;
 }
