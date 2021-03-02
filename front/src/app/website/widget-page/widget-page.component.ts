@@ -59,6 +59,9 @@ export class WidgetPageComponent implements OnInit {
       }
     }
     console.log(this.currentprofile);
-    this.router.navigate(['/home']);
+    this.widgetService.setWidgetsById(this.currentprofile).then(() => {
+      console.log('INSEIDE');
+      this.router.navigate(['/home']);
+    });
   }
 }
