@@ -62,7 +62,6 @@ async function listeMails(auth, labelId) {
     labelIds: [
       labelId
     ],
-    "maxResult" : 10
   }, async (err, res) => {
     if (err) {
       return console.error('The API returned an error: ' + err);
@@ -74,10 +73,6 @@ async function listeMails(auth, labelId) {
           await getMailInformations(auth, message.id);
         });
       } 
-    } else {
-      let errorMessage = {};
-      errorMessage["Error Message"] = 'NO ' + labelId + ' MESSAGES FOUND';
-      messages_list.push(errorMessage);
     }
   });
 }
@@ -142,7 +137,6 @@ async function getMail(){
     }
     // Authorize a client with credentials, then call the Gmail API.
     await authorize(JSON.parse(content), "UNREAD");
-    await authorize(JSON.parse(content), "STARRED");
   });
   return messages_list;
 }

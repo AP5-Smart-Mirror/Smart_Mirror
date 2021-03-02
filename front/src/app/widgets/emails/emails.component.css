@@ -7,3 +7,17 @@
 .spinner {
     stroke: white;
 }
+
+.mails {
+    display: flex;
+    margin: 0px;
+}
+
+.sender {
+    color: #EA4335;
+}
+
+.logo {
+    height: 50px;
+    width: 75px;
+}
