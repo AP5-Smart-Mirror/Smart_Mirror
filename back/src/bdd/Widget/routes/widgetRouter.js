@@ -4,6 +4,7 @@ var deleteWidget = require('../components/deleteWidget');
 var addUserWidget = require('../components/addProfileWidget');
 var deleteUserWidget = require('../components/deleteProfileWidget');
 var listWidget = require('../components/listWidget');
+var getUserWidgets = require('../components/getUserWidgets');
 var router = express.Router();
 
 /* POST auth callback. */
@@ -26,6 +27,10 @@ router.post('/deleteProfileWidget', async function (req, res, next) {
 
 router.post('/listWidget', async function (req, res, next) {
   res.send(await listWidget.getList(req.body));
+});
+
+router.post('/get_user_widgets', async function (req, res, next) {
+  res.send(await getUserWidgets.getUserWidgets(req.body));
 });
 
 module.exports = router;
