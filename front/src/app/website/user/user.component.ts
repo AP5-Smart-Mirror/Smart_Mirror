@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
 	}
 
 	choseProfile(id: number) {
-		this.router.navigate(['/widget-page']);
+		this.router.navigate(['/widget-page', id]);
 	}
 
   getProfileImg(profile: Profile): string {

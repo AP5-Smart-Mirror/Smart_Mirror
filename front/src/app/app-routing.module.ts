@@ -18,7 +18,7 @@ const routes: Routes = [
 	{ path: 'login', component: AuthenticationComponent },
 	{ path: 'settings', component: WifiSettingsComponent },
 	{ path: 'user/:id', component: UserComponent /*, canActivate: [AuthGuard]*/},
-	{ path: 'widget-page', component: WidgetPageComponent},
+	{ path: 'widget-page/:id', component: WidgetPageComponent},
 	{ path: '**', redirectTo: '' }
 ];
 
