@@ -400,9 +400,9 @@ definitions:
   Widget:
     type: object
     properties:
-      param:
-        type: string
-        example: Clock
-      profil_idProfil:
+      id:
         type: integer
-        example: 2
+        example: 1
+      widget:
+        type: string
+        example: news

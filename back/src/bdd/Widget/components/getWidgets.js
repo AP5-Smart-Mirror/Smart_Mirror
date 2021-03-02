@@ -1,15 +1,15 @@
 var db = require('../../Database/database');
 
-async function getProfiles(body) {
+async function getWidgets(body) {
   var data = await db
-    .select('id', 'username', 'id_account')
-    .from('profiles')
+    .select('id', 'widget')
+    .from('widgets')
     .then((data) => {
       return data;
     });
   return data;
 }
 
-exports.getProfiles = getProfiles;
+exports.getWidgets = getWidgets;
  
 
