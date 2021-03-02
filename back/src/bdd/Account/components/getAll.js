@@ -8,16 +8,15 @@ async function getAll(body) {
   var data = await db
     .select('id', 'username', 'password')
     .from('accounts')
-    .where('username', name);
+    .where('id', 1);
 
-  if (bcrypt.compareSync(password, data[0].password)) {
     result['id'] = data[0].id;
     result['username'] = data[0].username;
     var profiles = [];
     var profilesDB = await db
       .select('id', 'username')
       .from('profiles')
-      .where('id_account', data[0].id);
+      .where('id_account',1);
     console.log('SIZE', profilesDB.length);
     for (var i = 0; i < profilesDB.length; i++) {
       var newProfile = {};
@@ -32,9 +31,7 @@ async function getAll(body) {
     }
     console.log(profiles);
     result['profiles'] = profiles;
-  } else {
-    result['id'] = -1;
-  }
+
 
   return result;
 }
