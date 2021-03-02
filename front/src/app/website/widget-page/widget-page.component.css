@@ -1,0 +1,39 @@
+.welcome {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1,
+h3 {
+	font-size: xx-large;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 60%;
+	box-shadow: 0px 0px 8px 0px black;
+	padding: 30px;
+}
+
+.form-part {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.button-part {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}

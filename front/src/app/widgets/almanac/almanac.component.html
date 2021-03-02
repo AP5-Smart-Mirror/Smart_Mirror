@@ -1,0 +1,9 @@
+<div class="content">
+    <mat-progress-spinner *ngIf="loading" class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <div *ngIf="!loading">
+        <h3>
+            <img src="../../../assets/icons/arrow_upward-white-18dp.svg" alt="Lever soleil"/> {{ sunrise | date:'HH:mm' }}
+            <img src="../../../assets/icons/arrow_downward-white-18dp.svg" alt="Coucher soleil"/> {{ sunset | date:'HH:mm' }}
+        </h3>
+    </div>
+</div>

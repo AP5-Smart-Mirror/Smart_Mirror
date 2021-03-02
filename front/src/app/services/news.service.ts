@@ -7,7 +7,7 @@ import { News } from '../models/news';
   providedIn: 'root'
 })
 export class NewsService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -9,7 +9,7 @@ import { WeatherForecast } from '../models/weatherForecast';
   providedIn: 'root'
 })
 export class WeatherService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -27,9 +27,10 @@ export class WeatherService {
         );
     });
   }
+
   getWeatherForecast(): Promise<WeatherForecast> {
     return new Promise<WeatherForecast>((resolve, reject) => {
-      this.httpClient.get<WeatherForecast>(environment.server_base_url + '/weather_forecast')
+      this.httpClient.get<WeatherForecast>(this.url + '/weather/forecast')
         .toPromise()
         .then(
           res => { // Success

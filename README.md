@@ -1,31 +1,57 @@
-# Smart_Mirror
+# Smart Mirror
 
-##Please read this carefully
-##Before developping a new feature do this :
+# Introduction 
 
-git checkout master
-git pull
+Hello and welcome to this open-source project, it is maintained by a team of 12 students as part of an engineering school project.
 
-then you create a new branch feature (you need to be on master):
+# Contributing Guidelines
 
-git checkout -b feature/'branch-name'
+Contributions of all kinds are welcome, not only in the form of code but also with regards bug reports and documentation.
 
-##You want to push your modification :
-###Only do that if your code runs correctly without error in terminal and in console (on your browser):
+Please keep the following in mind:
 
-npm run lint
--> fix all errors given by the lint script then: 
+- **Bug Reports**:  Make sure you're running the latest version. If the issue(s) still  persist: please open a clearly documented issue with a clear title.
+- **Bug Fixes** : Please send a pull request with a clear explanation of the issue or a link to the issue it solves.
+- **New Features**: send a pull request with a clear explanation of the code. We will discuss it with you to see why and how this feature can improve the project.
 
-git add .
-git commit -m "explain here what you developed"
-git push
+# Get Started
 
-Then go on github and create pull request.
-Assign a referent of your domain as reviewer and assign yoursefl on the PR.
+1.  clone the repo
 
+2. go in both Back and front directory and execute this command
+```bash
+npm install   
+ ```
 
-## To improve FRONT :
-### -> go to the folder FRONT and read README.md
+3.   in the back directory execute this command to launch a development server using **nodemon**.
 
-## To improve BACK :
-### -> go to the folder BACK and read README.md
+   ```bash
+   npm run dev   
+   ```
+   
+   if you want to launch a production server execute this command
+   
+   ```bash
+   npm run start
+   ```
+   
+4. in the front directory execute this command to launch a development server.
+
+```bash
+npm run start
+```
+
+   to build the angular project use the command.
+
+```bash
+npm run build
+```
+   
+# Questions
+
+For questions and support please use  [github project issues](https://github.com/AP5-Smart-Mirror/Smart_Mirror/issues)
+
+# License
+
+Smart Mirror project is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+

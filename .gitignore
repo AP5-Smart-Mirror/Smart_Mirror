@@ -1,3 +1,5 @@
 
 back/token.json
 back/credentials.json
+.idea
+back/package-lock.json

@@ -1,0 +1,33 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.content:hover {
+	cursor: pointer;
+}
+
+.container-image {
+	width: 100%;
+	height: 80%;
+}
+
+.container-image img {
+	height: 100%;
+	width: 100%;
+}
+
+.container-title {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	width: 100%;
+	height: 20%;
+}
+
+h1 {
+	font-size: x-large;
+}

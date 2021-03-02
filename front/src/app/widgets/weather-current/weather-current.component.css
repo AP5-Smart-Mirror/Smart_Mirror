@@ -1,0 +1,15 @@
+.content {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+}
+
+.horizontal {
+	display: flex;
+	align-items: center;
+}
+
+.spinner {
+	stroke: white;
+}

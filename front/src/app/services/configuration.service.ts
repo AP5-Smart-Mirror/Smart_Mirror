@@ -8,13 +8,13 @@ import { Configuration } from '../models/configuration';
   providedIn: 'root'
 })
 export class ConfigurationService {
-  private url: string = environment.server_base_url;
+  private url: string = environment.serverBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 
-  getConfiguration(id_widget: number): Promise<Configuration> {
+  getConfiguration(idWidget: number): Promise<Configuration> {
     return new Promise<Configuration>((resolve, reject) => {
-      this.httpClient.get<Configuration>(this.url + '/configuration/' + id_widget)
+      this.httpClient.get<Configuration>(this.url + '/configuration/' + idWidget)
         .toPromise()
         .then(
           res => { // Success
