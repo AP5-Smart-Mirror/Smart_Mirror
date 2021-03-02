@@ -8,8 +8,8 @@ router.get('/calendar', function (req, res, next) {
   res.send(gCal.getCalendar());
 });
 
-router.get('/mails', function (req, res, next) {
-  res.send(gMail.getMail());
+router.get('/mails', async function (req, res, next) {
+  res.send(await gMail.getMail());
 });
 
 module.exports = router;

@@ -13,7 +13,7 @@ export class EmailsService {
 
   getMail(): Promise<Emails[]> {
     return new Promise<Emails[]>((resolve, reject) => {
-      this.httpClient.get<Emails[]>(this.url + '/google_mail')
+      this.httpClient.get<Emails[]>(this.url + '/google/mails')
         .toPromise()
         .then(
           res => { // Success
