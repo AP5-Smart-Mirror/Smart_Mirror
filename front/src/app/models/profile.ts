@@ -2,13 +2,13 @@ import { Widget } from './widget';
 
 export class Profile {
     id: number;
-    name: string;
+    username: string;
     widgets: Array<Widget>;
     img: string;
 
-    constructor(id: number, name: string, widgets: Array<Widget>, img: string){
+    constructor(id: number, username: string, widgets: Array<Widget>, img: string){
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.widgets = widgets;
         this.img = img;
     }

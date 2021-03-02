@@ -11,33 +11,8 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfilesById(idAccount: number): Promise<Profile[]> {
-    return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profiles/' + idAccount)
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
+  getProfilesById(idAccount: string): Promise<Array<any>> {
+    return this.httpClient.post<Array<any>>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
+        .toPromise();
   }
-
-  /*getProfilesByUsername(account: Account): Promise<Profile[]> {
-    return new Promise<Profile[]>((resolve, reject) => {
-      this.httpClient.get<Profile[]>(this.url + '/profiles/' + username, {'password': password});
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
-  }*/
 }
