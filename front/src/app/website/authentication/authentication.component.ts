@@ -37,9 +37,6 @@ export class AuthenticationComponent implements OnInit {
 	onSubmit(): void {
 		this.account.username = this.username.value;
 		this.account.password = this.password.value;
-
-		console.log('SERVICE', this.authenticationService.login(this.account));
-
 		this.authenticationService
 			.login(this.account)
 			.then(body => {
@@ -51,14 +48,5 @@ export class AuthenticationComponent implements OnInit {
 					alert('Wrong password or username');
 				}
 			});
-
-			/*.then((res) => {
-				if(res.id){
-					console.log('RES', res.id);
-					this.router.navigate(['/user']);
-				} else {
-					alert('Try again');
-				}
-			});*/
 	}
 }

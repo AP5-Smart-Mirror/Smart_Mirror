@@ -29,9 +29,9 @@ export class AuthenticationService {
 		.toPromise();
 	}
 
-	logout() {
+	/*logout() {
 		// remove user from local storage and set current user to null
 		localStorage.removeItem('currentAccount');
 		this.currentAccountSubject.next(null);
-	}
+	}*/
 }

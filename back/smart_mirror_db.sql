@@ -30,9 +30,6 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- Listage des données de la table smart_mirror_db.accounts : ~0 rows (environ)
 DELETE FROM `accounts`;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` (`id`, `username`, `password`) VALUES
-	(1, 'Claire', '$2a$10$BvCNdNllCLP8mEUpGHaRmeUVIbTiuJpi2gx8fGnlzB482BtkyhYw.');
-/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 
 -- Listage de la structure de la table smart_mirror_db. associative
 DROP TABLE IF EXISTS `associative`;
@@ -79,12 +76,16 @@ DELETE FROM `widgets`;
 /*!40000 ALTER TABLE `widgets` DISABLE KEYS */;
 INSERT INTO `widgets` (`id`, `widget`) VALUES
 	(1, 'news'),
-	(2, 'weather'),
+	(2, 'weather_current'),
 	(3, 'weather_forecast'),
-	(4, 'google_mail'),
-	(5, 'google_calendar'),
-	(6, 'analogue_clock'),
-	(7, 'digital_clock');
+  (4, 'weather_weekend'),
+	(5, 'mail'),
+	(6, 'agenda'),
+	(7, 'analog_clock'),
+	(8, 'digital_clock'),
+  (9, 'almanac'),
+  (10, 'date');
+
 /*!40000 ALTER TABLE `widgets` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

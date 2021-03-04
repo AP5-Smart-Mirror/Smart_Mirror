@@ -21,8 +21,8 @@ router.post('/get_account', async function (req, res, next) {
 });
 
 /* POST auth callback. */
-router.post('/get_all', async function (req, res, next) {
-  res.send(await getAll.getAll(req.body));
+router.get('/get_all', async function (req, res, next) {
+  res.send(await getAll.getAll());
 });
 
 module.exports = router;

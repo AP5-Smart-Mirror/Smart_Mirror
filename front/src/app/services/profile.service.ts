@@ -14,18 +14,14 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfilesById(idAccount: string): Promise<Array<any>> {
-    return this.httpClient.post<Array<any>>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
+  getProfilesById(idAccount: string): Promise<any> {
+    return this.httpClient.post<any>(this.url + '/bdd/profile/get_profiles', {'id_account': idAccount})
         .toPromise();
   }
 
   getProfile(id: string): Promise<Profile> {
     return this.httpClient.post<Profile>(this.url + '/bdd/profile/get_profile', {'id': id})
         .toPromise();
-  }
-
-  getAll(): Promise<Profile[]> {
-    return this.httpClient.get<Profile[]>(this.url + '/bdd/profile/get_all').toPromise();
   }
 
   addProfile(idAccount: string, username: string): Promise<any> {
