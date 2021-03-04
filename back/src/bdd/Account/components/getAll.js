@@ -14,7 +14,7 @@ async function getAll() {
   var profilesDB = await db
     .select('id', 'username')
     .from('profiles')
-    .where('id_account', 1);
+    .where('id_account', data[0].id);
   console.log('SIZE', profilesDB.length);
   for (var i = 0; i < profilesDB.length; i++) {
     var newProfile = {};
