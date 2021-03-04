@@ -11,36 +11,15 @@ export class AgendaComponent implements OnInit {
 	loading: boolean;
 	agenda: Agenda;
 
-	constructor(private agendaService: AgendaService) {}
+	constructor() {}
 
 	ngOnInit(): void {
 		this.loading = true;
 		this.agenda = new Agenda();
 		this.init();
-		//setInterval(() => this.init(), 600000);
 	}
 
 	init(): void {
-		/*this.agendaService
-			.getAuth()
-			.then(() => {
-				console.log('auth');
-			})
-			.then(() => (this.loading = false));
-
-		this.agendaService
-			.getAgenda()
-			.then((agenda) => {
-				console.log('agenda', agenda);
-				this.loading = true;
-				this.agenda.subject = agenda.subject;
-				this.agenda.organizer.name = agenda.organizer.name;
-				this.agenda.start = agenda.start;
-				this.agenda.end = agenda.end;
-			})
-			.then(() => (this.loading = false));
-			*/
-
 		// Données en dur à supprimer
 		this.agenda.id = '1';
 		this.agenda.subject = 'Sujet de test';

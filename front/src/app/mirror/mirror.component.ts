@@ -45,16 +45,13 @@ export class MirrorComponent implements OnInit {
 	ngOnInit(): void {
 		this.init();
 		this.currentProfile = this.profiles[0];
-		console.log('THIS PROFILES', this.profiles);
 		this.playAnimation();
 	}
 
 	init(): void {
 		this.accountService.getAll().then((profiles) => {
-			console.log('ALL PROFILES', profiles.profiles);
 			profiles.profiles.forEach((profile) => {
 				const widgetsTo = this.addConfigurationWidget(profile.widgets);
-				console.log('WIDGET METHOD', widgetsTo);
 				this.profiles.push(
 					new Profile(profile.id, profile.username, widgetsTo, null)
 				);
@@ -64,7 +61,6 @@ export class MirrorComponent implements OnInit {
 
 	addConfigurationWidget(widget: Widget[]): Widget[] {
 		const result: Widget[] = [];
-		console.log('WIDGET', widget);
 		widget.forEach(w => {
 			switch (w.widget) {
 				case WidgetName.agenda:
@@ -98,7 +94,6 @@ export class MirrorComponent implements OnInit {
 					result.push(new Widget(null, WidgetName.mail, new Configuration(null, 9, 11, 4, 7)));
 					break;
 				default:
-					console.log('WIDGET NOT FOUND');
 					break;
 			}
 		});

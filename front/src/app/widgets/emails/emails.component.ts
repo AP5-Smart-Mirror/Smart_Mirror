@@ -21,7 +21,6 @@ export class EmailsComponent implements OnInit {
     this.mailGoogle = [];
     this.init();
     setInterval(() => this.init(), 600000);
-    //setInterval(() => this.nextMailGoogle(), 10000);
   }
 
 
@@ -37,7 +36,6 @@ export class EmailsComponent implements OnInit {
       });
       cpt = 0;
       console.log(this.mailGoogle);
-     // this.currentMailGoogle = this.mailGoogle[0];
     }).then(() => this.loading = false);
   }
 

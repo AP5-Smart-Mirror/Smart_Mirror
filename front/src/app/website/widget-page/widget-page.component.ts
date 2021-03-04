@@ -3,11 +3,8 @@ import { WidgetName } from 'src/app/enums/widget-name';
 import { Profile } from 'src/app/models/profile';
 import { Widget } from 'src/app/models/widget';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Account } from '../../models/account';
 import { WidgetService } from 'src/app/services/widget.service';
-import { Configuration } from 'src/app/models/configuration';
 
 @Component({
   selector: 'app-widget-page',
@@ -17,14 +14,7 @@ import { Configuration } from 'src/app/models/configuration';
 
 export class WidgetPageComponent implements OnInit {
   widgetName = WidgetName;
-  currentprofile: Profile = new Profile(
-    1,
-    'Claire',
-    [
-      new Widget(1, WidgetName.agenda, new Configuration(null, 1, 1, 1, 1)),
-      new Widget(2, WidgetName.almanac, new Configuration(null, 1, 1, 1, 1)),
-      new Widget(3, WidgetName.digitalClock, new Configuration(null, 1, 1, 1, 1))
-    ], null);
+  currentprofile: Profile;
 
   constructor(
     private widgetService: WidgetService,
