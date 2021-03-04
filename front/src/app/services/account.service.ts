@@ -23,11 +23,7 @@ export class AccountService {
 
 	getAll(): Promise<any> {
 		return this.httpClient
-			.post<any>(this.url + '/bdd/account/get_all',
-			{
-				'username': 'Claire',
-				'password': 'testtest'
-			})
+			.get<any>(this.url + '/bdd/account/get_all')
 			.toPromise();
 	}
 
@@ -35,13 +31,5 @@ export class AccountService {
 		return this.httpClient
 			.post<Account>(this.url + '/bdd/account/register', account)
 			.toPromise();
-		//return Promise.resolve(1);
-		/*return this.axios.post(this.url + '/bdd/account/register', {account})
-		  .then((response: any) => {
-			console.log(response);
-		  })
-		  .catch((error: any) => {
-			console.log(error);
-		  });*/
 	}
 }

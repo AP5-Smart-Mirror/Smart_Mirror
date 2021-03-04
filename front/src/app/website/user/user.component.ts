@@ -31,9 +31,10 @@ export class UserComponent implements OnInit {
 	}
 
 	init() {
-		this.profiles = [];
 		this.currentAccount = new Account();
-		this.currentAccount.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+		this.currentAccount.id = Number(
+			this.activatedRoute.snapshot.paramMap.get('id')
+		);
 		this.loadAccount(this.activatedRoute.snapshot.paramMap.get('id'));
 		this.loadProfiles(this.activatedRoute.snapshot.paramMap.get('id'));
 	}
@@ -46,15 +47,11 @@ export class UserComponent implements OnInit {
 
 	loadProfiles(id: string) {
 		this.profiles = [];
-		this.profileService
-			.getProfilesById(id)
-			.then((profiles) => {
-				this.loading = true;
-				profiles.profiles.forEach((profile) => {
-					this.profiles.push(profile);
-				});
-			})
-			.then(() => (this.loading = false));
+		this.profileService.getProfilesById(id).then((profiles) => {
+			profiles.profiles.forEach((profile) => {
+				this.profiles.push(profile);
+			});
+		});
 	}
 
 	choseProfile(id: number) {

@@ -42,7 +42,6 @@ export class WidgetPageComponent implements OnInit {
     this.profileService.getProfile(id)
     .then(profile => {
       this.currentprofile = profile;
-      console.log('PROFILE', profile);
     });
   }
 
@@ -51,9 +50,7 @@ export class WidgetPageComponent implements OnInit {
 
     this.widgetService.getWidgetsById(idProfile)
     .then(widgets => {
-      console.log('WIDGETS', widgets.widgets);
       widgets.widgets.forEach(widget => {
-        console.log('WIDGET', widget);
         this.currentprofile.widgets.push(widget);
       });
     });
@@ -71,7 +68,6 @@ export class WidgetPageComponent implements OnInit {
     }
     console.log(this.currentprofile);
     this.widgetService.setWidgetsById(this.currentprofile).then(() => {
-      console.log('INSEIDE');
       this.router.navigate(['/home']);
     });
   }

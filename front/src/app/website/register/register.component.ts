@@ -42,8 +42,8 @@ export class RegisterComponent implements OnInit {
 		this.account.username = this.username.value;
     this.account.password = this.password.value;
     this.accountService.register(this.account)
-      .then((res) => {
-        console.log('res', res);
+      .then(() => {
+        console.log('REGISTER SUCCESSFUL');
         this.router.navigate(['/login']);
       });
 	}
