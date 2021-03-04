@@ -1,10 +1,8 @@
 var db = require('../../Database/database');
 const bcrypt = require('bcryptjs');
 
-async function getAll(body) {
+async function getAll() {
   var result = {};
-  let name = body.username;
-  let password = body.password;
   var data = await db
     .select('id', 'username', 'password')
     .from('accounts')
