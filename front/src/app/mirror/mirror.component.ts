@@ -19,9 +19,7 @@ export class MirrorComponent implements OnInit {
 	widgetName = WidgetName;
 	htmlAnimated: HTMLElement;
 
-	constructor(
-		private profileService: ProfileService,
-		private accountService: AccountService
+	constructor(private accountService: AccountService
 	) {}
 
 	@HostListener('document:keyup', ['$event'])

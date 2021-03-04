@@ -12,17 +12,7 @@ export class EmailsService {
   constructor(private httpClient: HttpClient) { }
 
   getMail(): Promise<Emails[]> {
-    return new Promise<Emails[]>((resolve, reject) => {
-      this.httpClient.get<Emails[]>(this.url + '/google/mails')
-        .toPromise()
-        .then(
-          res => { // Success
-          resolve(res);
-          },
-          msg => { // Error
-          reject(msg);
-          }
-        );
-    });
+    return this.httpClient.get<Emails[]>(this.url + '/google/mails')
+        .toPromise();
   }
 }
