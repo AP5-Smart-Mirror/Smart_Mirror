@@ -28,7 +28,7 @@ export class MirrorComponent implements OnInit {
 	/*When ArrowUp key is pressed, we browse the next profile.
   If we reach the end of the list, we display default profile again
   Loop*/
-	public onKeyUp(eventData: KeyboardEvent): void {
+	onKeyUp(eventData: KeyboardEvent): void {
 		if (eventData.key === 'ArrowUp') {
 			const idxCurrentProfile = this.profiles.indexOf(this.currentProfile);
 			// If we don't reach the end of the list
@@ -50,76 +50,6 @@ export class MirrorComponent implements OnInit {
 	}
 
 	init(): void {
-		/*this.profiles.push(
-			new Profile(
-				null,
-				'default',
-				new Array<Widget>(
-					new Widget(
-						1,
-						WidgetName.weatherForecast,
-						new Configuration(null, 1, 3, 4, 6)
-					),
-					new Widget(2, WidgetName.date, new Configuration(null, 3, 8, 1, 2)),
-					new Widget(
-						3,
-						WidgetName.analogClock,
-						new Configuration(null, 8, 9, 1, 2)
-					),
-					new Widget(4, WidgetName.news, new Configuration(null, 2, 10, 6, 7))
-				),
-				null
-			)
-		);
-		this.profiles.push(
-			new Profile(
-				1,
-				'Claire',
-				new Array<Widget>(
-					new Widget(
-						1,
-						WidgetName.weatherForecast,
-						new Configuration(null, 1, 3, 1, 4)
-					),
-					new Widget(2, WidgetName.date, new Configuration(null, 3, 8, 1, 2)),
-					new Widget(
-						3,
-						WidgetName.analogClock,
-						new Configuration(null, 8, 9, 1, 2)
-					),
-					new Widget(4, WidgetName.agenda, new Configuration(null, 9, 11, 4, 7)),
-					new Widget(5, WidgetName.news, new Configuration(null, 1, 11, 6, 7)),
-					new Widget(
-						6,
-						WidgetName.weatherWeekend,
-						new Configuration(null, 9, 11, 1, 3)
-					)
-				),
-				null
-			)
-		);
-		this.profiles.push(
-			new Profile(
-				2,
-				'Stephan',
-				new Array<Widget>(
-					new Widget(
-						1,
-						WidgetName.weatherCurrent,
-						new Configuration(null, 1, 3, 1, 2)
-					),
-					new Widget(2, WidgetName.date, new Configuration(null, 4, 7, 1, 2)),
-					new Widget(
-						4,
-						WidgetName.digitalClock,
-						new Configuration(null, 10, 11, 1, 2)
-					),
-					new Widget(5, WidgetName.news, new Configuration(null, 3, 9, 6, 7)),
-					new Widget(6, WidgetName.almanac, new Configuration(null, 1, 3, 2, 3))
-				),
-				null
-			)
-		);*/
 		this.accountService.getAll().then((profiles) => {
 			console.log('ALL PROFILES', profiles.profiles);
 			profiles.profiles.forEach((profile) => {
@@ -153,7 +83,7 @@ export class MirrorComponent implements OnInit {
 					result.push(new Widget(null, WidgetName.date, new Configuration(null, 3, 8, 1, 2)));
 					break;
 				case WidgetName.weatherCurrent:
-					result.push(new Widget(null, WidgetName.weatherCurrent, new Configuration(null, 9, 11, 4, 7)));
+					result.push(new Widget(null, WidgetName.weatherCurrent, new Configuration(null, 1, 3, 1, 2)));
 					break;
 				case WidgetName.news:
 					result.push(new Widget(null, WidgetName.news, new Configuration(null, 1, 11, 6, 7)));

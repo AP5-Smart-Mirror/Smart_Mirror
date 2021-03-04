@@ -15,7 +15,7 @@ export class WeatherService {
 
   getWeather(): Promise<Weather> {
     return new Promise<Weather>((resolve, reject) => {
-      this.httpClient.get<Weather>(this.url + '/weather')
+      this.httpClient.get<Weather>(this.url + '/weather/current')
         .toPromise()
         .then(
           res => { // Success
